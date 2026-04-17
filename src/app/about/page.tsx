@@ -149,7 +149,7 @@ const team = [
     desc: "Oversees on-site civil works and interior execution. Ensures construction quality, material compliance, and project timelines are met at every stage.",
     color: "#4a5c6e",
     initials: "P",
-    img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80",
+    img: "/prashu.jpg",
   },
 ];
 
