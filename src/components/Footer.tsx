@@ -47,6 +47,7 @@ export default function Footer() {
             <Link href="/about">About Us</Link>
             <Link href="/services">Services</Link>
             <Link href="/portfolio">Our Projects</Link>
+            <Link href="/careers">Careers</Link>
             <Link href="/blog">Blog & Articles</Link>
           </div>
           <div className={styles.linkGroup}>

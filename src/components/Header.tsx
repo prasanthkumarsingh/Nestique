@@ -22,6 +22,7 @@ export default function Header() {
           <Link href="/portfolio">Our Projects</Link>
           <Link href="/services">Services</Link>
           <Link href="/about">About</Link>
+          <Link href="/careers">Careers</Link>
           <Link href="/blog">Blog</Link>
           <Link href="/contact">Contact</Link>
         </nav>
@@ -48,6 +49,7 @@ export default function Header() {
           <Link href="/portfolio" onClick={() => setMenuOpen(false)}>Our Projects</Link>
           <Link href="/services" onClick={() => setMenuOpen(false)}>Services</Link>
           <Link href="/about" onClick={() => setMenuOpen(false)}>About</Link>
+          <Link href="/careers" onClick={() => setMenuOpen(false)}>Careers</Link>
           <Link href="/blog" onClick={() => setMenuOpen(false)}>Blog</Link>
           <Link href="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
           <Link href="/consultation" onClick={() => setMenuOpen(false)} className={styles.mobileBookBtn}>
