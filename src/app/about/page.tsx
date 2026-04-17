@@ -133,7 +133,7 @@ const team = [
   },
   {
     name: "Preethi",
-    role: "Interior Designer",
+    role: "Lead Interior Designer",
     dept: "Interiors",
     qual: "Interior Design Specialist",
     desc: "Transforms bare spaces into stunning, functional interiors. Expert in residential and commercial space planning, colour theory, and modular furniture.",
