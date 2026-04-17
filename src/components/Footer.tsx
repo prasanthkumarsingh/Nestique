@@ -15,7 +15,7 @@ export default function Footer() {
             />
           </div>
           <p className={styles.tagline}>
-            Premier architecture, interior design, and construction services across India.
+            Best interior design & civil construction company in Visakhapatnam and Hyderabad. Home interiors, modular kitchens, false ceilings, villa construction & office fit-outs.
           </p>
           <div className={styles.contact}>
             <a href="mailto:hello@nestiquestudio.in">hello@nestiquestudio.in</a>
@@ -45,24 +45,29 @@ export default function Footer() {
           <div className={styles.linkGroup}>
             <h4>Company</h4>
             <Link href="/about">About Us</Link>
-            <Link href="/services">Services</Link>
+            <Link href="/services">Our Services</Link>
             <Link href="/portfolio">Our Projects</Link>
             <Link href="/careers">Careers</Link>
             <Link href="/blog">Blog & Articles</Link>
-          </div>
-          <div className={styles.linkGroup}>
-            <h4>Services</h4>
-            <Link href="/services">Architecture</Link>
-            <Link href="/services">Construction</Link>
-            <Link href="/services">Interior Design</Link>
-            <Link href="/services">Renovation</Link>
-            <Link href="/services">Civil Works</Link>
-          </div>
-          <div className={styles.linkGroup}>
-            <h4>Support</h4>
             <Link href="/contact">Contact Us</Link>
-            <Link href="/consultation">Book Consultation</Link>
-            <Link href="/portfolio">Project Gallery</Link>
+          </div>
+          <div className={styles.linkGroup}>
+            <h4>Interior Design</h4>
+            <Link href="/services">Home Interior Design Visakhapatnam</Link>
+            <Link href="/services">Interior Design Hyderabad</Link>
+            <Link href="/services">Modular Kitchen Vizag</Link>
+            <Link href="/services">False Ceiling Design Vizag</Link>
+            <Link href="/services">Office Interior Hyderabad</Link>
+            <Link href="/services">Apartment Interiors Hyderabad</Link>
+          </div>
+          <div className={styles.linkGroup}>
+            <h4>Civil Construction</h4>
+            <Link href="/services">House Construction Visakhapatnam</Link>
+            <Link href="/services">Villa Construction Vizag</Link>
+            <Link href="/services">Civil Contractor Hyderabad</Link>
+            <Link href="/services">Residential Construction Hyderabad</Link>
+            <Link href="/services">Home Renovation Visakhapatnam</Link>
+            <Link href="/consultation">Free Consultation</Link>
           </div>
         </div>
       </div>
@@ -70,7 +75,7 @@ export default function Footer() {
       <div className={styles.bottom}>
         <span>&copy; {new Date().getFullYear()} Nestique Studio. All rights reserved.</span>
         <span className={styles.cities}>
-          Visakhapatnam &middot; Vijayawada &middot; Hyderabad &middot; Bangalore &middot; Mumbai &middot; Pune
+          Interior Design &amp; Civil Construction in Visakhapatnam &middot; Hyderabad &middot; Vijayawada &middot; Bangalore &middot; Mumbai &middot; Pune
         </span>
       </div>
     </footer>

@@ -7,25 +7,40 @@ import styles from "./home.module.css";
 const SITE_URL = "https://www.nestiquestudio.in";
 
 export const metadata: Metadata = {
-  title: "Nestique Studio | Best Architecture, Interior Design & Construction — Hyderabad, Vizag, Bangalore",
+  title: "Best Interior Design & Civil Construction in Visakhapatnam & Hyderabad | Nestique Studio",
   description:
-    "Nestique Studio — top-rated architecture, interior design & construction company in Hyderabad, Vizag, Vijayawada & Bangalore. Custom homes, commercial buildings, mall construction, office interiors. Free consultation available.",
+    "Nestique Studio — best interior designer & civil contractor in Visakhapatnam and Hyderabad. Home interiors, modular kitchens, false ceilings, house construction, villa construction & office interiors. 130+ projects. Free consultation today.",
   keywords: [
-    "architecture firm Hyderabad",
-    "interior design Hyderabad",
-    "best architect Hyderabad",
-    "construction company Visakhapatnam",
-    "residential construction Hyderabad",
-    "commercial construction India",
-    "mall construction India",
-    "office interior design Hyderabad",
-    "home construction Vizag",
-    "interior designer Vizag",
-    "turnkey construction Hyderabad",
-    "architecture interior design Bangalore",
-    "construction company AP Telangana",
-    "residential architect Vijayawada",
+    // High-intent Vizag
+    "interior designer in Visakhapatnam",
+    "best interior designer Visakhapatnam",
+    "interior design Vizag",
+    "home interior design Visakhapatnam",
+    "modular kitchen Visakhapatnam",
+    "false ceiling Visakhapatnam",
+    "civil contractor Visakhapatnam",
+    "house construction Visakhapatnam",
+    "villa construction Vizag",
+    "residential construction Visakhapatnam",
+    "apartment interior Vizag",
+    "bedroom interior design Visakhapatnam",
+    "interior design cost Vizag",
+    "best civil contractor Vizag",
+    // High-intent Hyderabad
+    "interior designer Hyderabad",
     "best interior designer Hyderabad",
+    "home interior design Hyderabad",
+    "modular kitchen Hyderabad",
+    "false ceiling Hyderabad",
+    "civil contractor Hyderabad",
+    "house construction Hyderabad",
+    "villa construction Hyderabad",
+    "apartment interior design Hyderabad",
+    "office interior design Hyderabad",
+    "turnkey interior Hyderabad",
+    "home renovation Hyderabad",
+    "construction company Hyderabad",
+    "best civil contractor Hyderabad",
   ],
   alternates: { canonical: SITE_URL },
   openGraph: {
@@ -44,50 +59,66 @@ const faqSchema = {
   mainEntity: [
     {
       "@type": "Question",
+      name: "Who is the best interior designer in Visakhapatnam?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Nestique Studio is one of the top-rated interior design firms in Visakhapatnam (Vizag), with 130+ completed projects. We offer full home interior packages including living room, bedroom, modular kitchen, false ceiling, wardrobe, and bathroom design. Call +91 78160 86291 for a free consultation.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How much does interior design cost in Visakhapatnam?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Interior design cost in Visakhapatnam typically ranges from ₹800–₹2,500 per sq ft depending on the scope and material quality. A 2BHK apartment interior can start from ₹4–8 lakhs. Nestique Studio provides transparent, all-inclusive quotes with no hidden charges. Contact us for a free estimate.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Who is the best civil contractor in Visakhapatnam?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Nestique Studio is a trusted civil contractor in Visakhapatnam, handling house construction, villa construction, apartment buildings, and commercial projects. We provide end-to-end civil work from foundation to finishing. Call us at +91 78160 86291 for a site visit and free estimate.",
+      },
+    },
+    {
+      "@type": "Question",
       name: "How much does it cost to build a house in Hyderabad?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Residential construction in Hyderabad typically ranges from ₹1,800–₹3,500 per sq ft depending on the specification level (standard, premium, or luxury). Nestique Studio offers transparent, all-inclusive packages starting from ₹1,800/sq ft. Contact us for a free, detailed estimate for your plot.",
+        text: "House construction cost in Hyderabad ranges from ₹1,800–₹3,500 per sq ft depending on the grade (standard, premium, or luxury). Nestique Studio offers all-inclusive construction packages starting from ₹1,800/sq ft. Contact us for a free, detailed estimate for your plot.",
       },
     },
     {
       "@type": "Question",
-      name: "What interior design services does Nestique Studio offer?",
+      name: "What interior design services are available in Hyderabad?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Nestique Studio provides full interior design services including living room, bedroom, modular kitchen, wardrobe, bathroom, false ceiling, lighting design, flooring, and complete home interior packages. We serve residential apartments and independent homes across Hyderabad, Vizag, Vijayawada, and Bangalore.",
+        text: "Nestique Studio provides complete interior design services in Hyderabad including home interiors, modular kitchens, false ceilings, wardrobes, bedroom design, office interiors, and commercial space fit-outs. We handle design, procurement, and execution under one roof.",
       },
     },
     {
       "@type": "Question",
-      name: "Does Nestique Studio handle commercial construction and mall projects?",
+      name: "Does Nestique Studio do modular kitchen and false ceiling work?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. Nestique Studio handles end-to-end commercial construction projects including office buildings, retail showrooms, hotels, and large-scale mall construction across India. We manage design, structural engineering, approvals, and site execution.",
+        text: "Yes. Nestique Studio specialises in modular kitchen design and false ceiling work across Visakhapatnam and Hyderabad. We use premium materials, offer custom designs, and complete work on time with a quality guarantee.",
       },
     },
     {
       "@type": "Question",
-      name: "How long does it take to build a home?",
+      name: "Can I get a free consultation for home interior or construction?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "A typical individual house (1,500–2,500 sq ft) takes 10–14 months from design approval to handover. Timelines vary based on design complexity, floor count, and finishes. Nestique Studio provides a project-specific timeline before construction begins.",
+        text: "Yes. Nestique Studio offers a free, no-obligation consultation for all interior design and civil construction projects. Book online or call +91 78160 86291. We cover Visakhapatnam, Hyderabad, Vijayawada, and Bangalore.",
       },
     },
     {
       "@type": "Question",
-      name: "Does Nestique Studio work in Vizag and Vijayawada?",
+      name: "Does Nestique Studio build villas and independent houses in Vizag?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Yes. Nestique Studio has delivered 130+ projects across Visakhapatnam (Vizag), Vijayawada, Hyderabad, and Bangalore. We have a dedicated team and local site supervisors in both AP and Telangana.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Can I get a free design consultation?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Absolutely. Nestique Studio offers a free, no-obligation design consultation. You can book online or call +91 78160 86291. We'll discuss your requirements, site, and budget and provide an initial estimate within 24 hours.",
+        text: "Yes. Nestique Studio builds custom villas, independent houses, and duplexes in Visakhapatnam. We handle architectural design, structural drawings, approvals, civil construction, and interior fit-out — complete turnkey delivery.",
       },
     },
   ],

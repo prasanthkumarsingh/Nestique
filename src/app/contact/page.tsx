@@ -6,15 +6,18 @@ import styles from "./contact.module.css";
 const SITE_URL = "https://www.nestiquestudio.in";
 
 export const metadata: Metadata = {
-  title: "Contact Nestique Studio | Architecture & Interior Design — Hyderabad, Vizag",
-  description: "Contact Nestique Studio for architecture, construction, interior design & renovation in Hyderabad, Vizag, Vijayawada & Bangalore. Call +91 78160 86291 or email hello@nestiquestudio.in. We respond within 24 hours.",
+  title: "Contact Nestique Studio | Interior Design & Civil Construction — Visakhapatnam & Hyderabad",
+  description: "Contact Nestique Studio for home interior design, modular kitchen, false ceiling, house construction or villa construction in Visakhapatnam and Hyderabad. Call +91 78160 86291 or email hello@nestiquestudio.in.",
   keywords: [
-    "contact architecture firm Hyderabad",
-    "contact interior designer Vizag",
+    "contact interior designer Visakhapatnam",
+    "contact civil contractor Vizag",
+    "interior design company contact Hyderabad",
+    "construction company contact Visakhapatnam",
     "Nestique Studio phone number",
-    "Nestique Studio email",
-    "architecture consultation Hyderabad",
-    "construction company contact Vizag",
+    "Nestique Studio Visakhapatnam",
+    "Nestique Studio Hyderabad",
+    "interior design enquiry Vizag",
+    "civil work enquiry Hyderabad",
   ],
   alternates: { canonical: `${SITE_URL}/contact` },
   openGraph: {

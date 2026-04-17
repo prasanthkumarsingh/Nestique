@@ -6,17 +6,20 @@ import styles from "./consultation.module.css";
 const SITE_URL = "https://www.nestiquestudio.in";
 
 export const metadata: Metadata = {
-  title: "Free Consultation | Architecture, Construction & Interior Design — Nestique Studio",
+  title: "Free Interior Design & Construction Consultation in Vizag & Hyderabad | Nestique Studio",
   description:
-    "Book a free architecture, construction, or interior design consultation with Nestique Studio. Get a personalised estimate, design ideas, and expert advice. No obligations. Hyderabad, Vizag, Vijayawada & Bangalore.",
+    "Book a free interior design or civil construction consultation with Nestique Studio in Visakhapatnam and Hyderabad. Get a personalised estimate for home interiors, modular kitchen, house construction or villa. No obligations. Call +91 78160 86291.",
   keywords: [
-    "free architecture consultation Hyderabad",
-    "free interior design consultation Vizag",
+    "free interior design consultation Visakhapatnam",
+    "free civil construction consultation Vizag",
+    "interior design estimate Visakhapatnam",
     "construction estimate Hyderabad",
-    "book architect consultation India",
-    "free home design consultation AP",
-    "construction consultation Vijayawada",
-    "interior designer consultation Bangalore",
+    "free home interior consultation Hyderabad",
+    "free consultation interior designer Vizag",
+    "modular kitchen consultation Visakhapatnam",
+    "house construction estimate Hyderabad",
+    "villa construction consultation Vizag",
+    "free design consultation AP Telangana",
   ],
   alternates: { canonical: `${SITE_URL}/consultation` },
   openGraph: {

@@ -5,24 +5,41 @@ import styles from "./services.module.css";
 const SITE_URL = "https://www.nestiquestudio.in";
 
 export const metadata: Metadata = {
-  title: "Architecture, Interior Design & Construction Services | Nestique Studio",
+  title: "Interior Design & Civil Construction Services in Visakhapatnam & Hyderabad | Nestique Studio",
   description:
-    "Complete architecture, interior design, and construction services in Hyderabad, Vizag, Vijayawada & Bangalore. Residential homes, commercial buildings, mall construction, office interiors, renovation, and landscape design. Packages from ₹1,800/sq ft.",
+    "Complete interior design & civil construction services in Visakhapatnam and Hyderabad. Modular kitchens, false ceilings, home interiors, house construction, villa construction, office fit-outs, renovation. Free consultation available.",
   keywords: [
-    "architecture services Hyderabad",
-    "interior design services Vizag",
-    "construction services Hyderabad",
-    "commercial construction Hyderabad",
+    // Interior Vizag
+    "interior design services Visakhapatnam",
+    "modular kitchen design Visakhapatnam",
+    "false ceiling design Visakhapatnam",
+    "home interior design Vizag",
+    "bedroom interior Visakhapatnam",
+    "wardrobe design Vizag",
+    "living room interior design Vizag",
+    "bathroom interior design Visakhapatnam",
+    // Civil Vizag
+    "civil construction services Visakhapatnam",
     "residential construction Vizag",
-    "mall construction services India",
-    "office interior design Hyderabad",
-    "home renovation Hyderabad",
-    "turnkey construction company AP",
-    "landscape design Visakhapatnam",
+    "house construction Visakhapatnam",
+    "villa construction Vizag",
+    "civil contractor services Vizag",
+    // Interior Hyderabad
+    "interior design services Hyderabad",
     "modular kitchen design Hyderabad",
-    "3D architectural design India",
+    "false ceiling Hyderabad",
+    "home interior design Hyderabad",
+    "office interior design Hyderabad",
+    "apartment interior Hyderabad",
+    "turnkey interior design Hyderabad",
+    // Civil Hyderabad
+    "civil construction services Hyderabad",
+    "residential construction Hyderabad",
+    "house construction Hyderabad",
+    "villa construction Hyderabad",
     "construction cost per sqft Hyderabad",
-    "vastu compliant architecture",
+    "home renovation Hyderabad",
+    "construction company AP Telangana",
   ],
   alternates: { canonical: `${SITE_URL}/services` },
   openGraph: {
