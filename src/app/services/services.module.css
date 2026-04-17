@@ -1,0 +1,427 @@
+.main {
+  background: #f5efe8;
+}
+
+/* ── Page Header ── */
+.pageHeader {
+  background: #faf8f5;
+  padding: 72px 32px 64px;
+  text-align: center;
+  border-bottom: 1px solid #ede8e0;
+}
+
+.pageHeaderInner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.breadcrumb {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #e8773a;
+  margin-bottom: 14px;
+}
+
+.pageHeader h1 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+
+.headerSub {
+  font-size: 1.05rem;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+/* ── Services Section ── */
+.servicesSection {
+  background: #fff;
+  padding: 80px 0;
+}
+
+.inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}
+
+.serviceCard {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.serviceCardAlt {
+  flex-direction: row-reverse;
+}
+
+.serviceImgBox {
+  flex: 0 0 280px;
+  height: 280px;
+  background: #f5efe8;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid #ede8e0;
+}
+
+.serviceEmoji {
+  font-size: 5rem;
+}
+
+.serviceText {
+  flex: 1;
+}
+
+.serviceText h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+}
+
+.serviceDesc {
+  font-size: 0.97rem;
+  color: #6b7280;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.servicePoints {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.servicePoints li {
+  font-size: 0.9rem;
+  color: #374151;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkIcon {
+  color: #e8773a;
+  font-weight: 700;
+}
+
+.orangeBtn {
+  display: inline-block;
+  background: #e8773a;
+  color: #fff;
+  font-weight: 600;
+  padding: 12px 26px;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.orangeBtn:hover {
+  background: #cf5e20;
+}
+
+.outlineBtn {
+  display: inline-block;
+  background: transparent;
+  color: #1a1a1a;
+  font-weight: 600;
+  padding: 11px 26px;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  border: 1.5px solid #1a1a1a;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.outlineBtn:hover {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+/* ── Builders Banner ── */
+.buildersBanner {
+  background: #1a1a1a;
+  padding: 72px 32px;
+}
+
+.buildersBannerInner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.buildersBannerLeft h2 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.buildersBannerLeft h2 span {
+  color: #e8773a;
+}
+
+.buildersBannerLeft p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+.buildersBannerRight {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.builderType {
+  background: #2a2a2a;
+  border: 1px solid #333;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: border-color 0.2s;
+}
+
+.builderType:hover {
+  border-color: #e8773a;
+}
+
+.builderTypeIcon {
+  font-size: 1.8rem;
+}
+
+.builderType h4 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.builderType p {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .buildersBannerInner {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .buildersBannerLeft h2 {
+    font-size: 1.8rem;
+  }
+}
+
+/* ── Packages ── */
+.packagesSection {
+  background: #faf8f5;
+  padding: 80px 0;
+}
+
+.sectionCenter {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 32px;
+  text-align: center;
+}
+
+.eyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #e8773a;
+  margin-bottom: 10px;
+}
+
+.sectionCenter h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+.sectionSub {
+  color: #6b7280;
+  font-size: 1rem;
+  margin-bottom: 40px;
+}
+
+.packagesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.packageCard {
+  background: #fff;
+  border: 1.5px solid #e8e0d4;
+  border-radius: 16px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.packageHighlight {
+  border-color: #e8773a;
+  box-shadow: 0 4px 24px rgba(232, 119, 58, 0.15);
+}
+
+.packageCard h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.packagePrice {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1a1a1a;
+}
+
+.packagePriceSub {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  margin-bottom: 18px;
+}
+
+.packageFeatures {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-top: 1px solid #ede8e0;
+  padding-top: 16px;
+}
+
+.packageFeatures li {
+  font-size: 0.88rem;
+  color: #374151;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid #f0ebe4;
+  padding-bottom: 10px;
+}
+
+.plusIcon {
+  color: #e8773a;
+  font-weight: 700;
+}
+
+.packageNote {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  margin-top: 8px;
+}
+
+/* ── CTA Banner ── */
+.ctaBanner {
+  background: linear-gradient(135deg, #e8773a, #cf5e20);
+  padding: 72px 32px;
+  text-align: center;
+}
+
+.ctaBanner h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.ctaBanner p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.05rem;
+  margin-bottom: 28px;
+}
+
+.ctaBtn {
+  display: inline-block;
+  background: #fff;
+  color: #e8773a;
+  font-weight: 700;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.ctaBtn:hover {
+  background: #faf8f5;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .serviceCard,
+  .serviceCardAlt {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .serviceImgBox {
+    flex: none;
+    width: 100%;
+    height: 200px;
+  }
+
+  .packagesGrid {
+    grid-template-columns: 1fr;
+    max-width: 440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .servicePoints {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .pageHeader h1 {
+    font-size: 1.9rem;
+  }
+
+  .inner,
+  .sectionCenter {
+    padding: 0 20px;
+  }
+
+  .servicesSection {
+    padding: 60px 0;
+  }
+
+  .packagesSection {
+    padding: 60px 0;
+  }
+}

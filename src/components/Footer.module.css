@@ -1,0 +1,161 @@
+.footer {
+  background: #0d1117;
+  color: #cbd5e1;
+  padding: 64px 0 0 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  gap: 64px;
+  flex-wrap: wrap;
+}
+
+.brand {
+  flex: 1;
+  min-width: 220px;
+  max-width: 280px;
+}
+
+.logoRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.footerLogo {
+  object-fit: contain;
+  width: auto;
+  height: 52px;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+
+.tagline {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 20px;
+}
+
+.contact a {
+  color: #e8773a;
+  font-size: 0.88rem;
+  transition: color 0.2s;
+}
+
+.contact a:hover {
+  color: #fff;
+}
+
+.contact span {
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+.socials {
+  display: flex;
+  gap: 10px;
+}
+
+.socials a {
+  width: 36px;
+  height: 36px;
+  background: #1e2a3a;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+  transition: background 0.2s, color 0.2s;
+}
+
+.socials a:hover {
+  background: #e8773a;
+  color: #fff;
+}
+
+.links {
+  display: flex;
+  gap: 48px;
+  flex-wrap: wrap;
+  flex: 2;
+}
+
+.linkGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 120px;
+}
+
+.linkGroup h4 {
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.linkGroup a {
+  color: #9ca3af;
+  font-size: 0.88rem;
+  transition: color 0.2s;
+}
+
+.linkGroup a:hover {
+  color: #e8773a;
+}
+
+.bottom {
+  border-top: 1px solid #1e2a3a;
+  margin-top: 48px;
+  padding: 20px 32px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.83rem;
+  color: #4b5563;
+}
+
+.cities {
+  color: #374151;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    gap: 32px;
+    padding: 0 20px;
+  }
+
+  .brand {
+    max-width: 100%;
+  }
+
+  .links {
+    gap: 28px;
+  }
+
+  .bottom {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+}

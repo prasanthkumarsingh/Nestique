@@ -1,0 +1,131 @@
+.header {
+  width: 100%;
+  background: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid #ede8e0;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logoImg {
+  object-fit: contain;
+  width: auto;
+  height: 52px;
+}
+
+.nav {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.nav a {
+  color: #374151;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+
+.nav a:hover {
+  color: #e8773a;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.bookBtn {
+  background: #e8773a;
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.bookBtn:hover {
+  background: #cf5e20;
+}
+
+.menuBtn {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.menuBtn span {
+  width: 24px;
+  height: 2px;
+  background: #374151;
+  border-radius: 2px;
+  display: block;
+}
+
+.mobileMenu {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-top: 1px solid #ede8e0;
+  padding: 20px 32px;
+  gap: 18px;
+}
+
+.mobileMenu a {
+  color: #374151;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.mobileBookBtn {
+  background: #e8773a;
+  color: #fff !important;
+  font-weight: 600;
+  padding: 12px 22px;
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 4px;
+}
+
+@media (max-width: 900px) {
+  .nav {
+    gap: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav,
+  .actions {
+    display: none;
+  }
+
+  .menuBtn {
+    display: flex;
+  }
+}
