@@ -107,7 +107,7 @@ const founders = [
     bio: "Abhisheak drives the creative soul of Nestique Studio. With a Master's in Architecture, he brings cutting-edge design thinking and structural expertise to every project — from intimate residential interiors to large-scale commercial builds. His philosophy: every space should tell a story.",
     color: "#e8773a",
     initials: "A",
-    img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80",
+    img: "/abhi.jpg",
   },
   {
     name: "Tulasi",
@@ -116,7 +116,7 @@ const founders = [
     bio: "Tulasi is the strategic engine behind Nestique Studio. She ensures every client relationship, project timeline, and financial commitment is handled with precision and care. Her drive to create seamless, hassle-free experiences is what sets Nestique Studio apart in the market.",
     color: "#4a5c6e",
     initials: "T",
-    img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80",
+    img: "/tulasi.jpg",
   },
 ];
 
@@ -129,7 +129,7 @@ const team = [
     desc: "Leads structural and architectural design across all projects. Specialises in modern residential design, 3D planning, and Vastu-compliant layouts.",
     color: "#e8773a",
     initials: "A",
-    img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80",
+    img: "/abhi.jpg",
   },
   {
     name: "Preethi",
