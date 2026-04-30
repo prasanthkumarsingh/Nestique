@@ -1,0 +1,410 @@
+.main {
+  background: #f5efe8;
+}
+
+/* ── Hero ── */
+.hero {
+  background: #1a1a1a;
+  padding: 80px 32px 72px;
+  text-align: center;
+}
+
+.heroInner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.breadcrumb {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #e8773a;
+  margin-bottom: 14px;
+}
+
+.hero h1 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 18px;
+}
+
+.heroSub {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+.heroBtns {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.heroBtn {
+  background: #e8773a;
+  color: #fff;
+  font-weight: 700;
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.97rem;
+  transition: background 0.2s;
+}
+
+.heroBtn:hover {
+  background: #cf5e20;
+}
+
+.heroBtnOutline {
+  background: transparent;
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.97rem;
+  transition: border-color 0.2s;
+}
+
+.heroBtnOutline:hover {
+  border-color: #fff;
+}
+
+/* ── Stats Bar ── */
+.statsBar {
+  background: #fff;
+  border-bottom: 1px solid #ede8e0;
+  padding: 24px 32px;
+}
+
+.statsBarInner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.statItem {
+  text-align: center;
+}
+
+.statNum {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #e8773a;
+}
+
+.statLabel {
+  font-size: 0.82rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* ── Section shared ── */
+.section {
+  padding: 72px 32px;
+}
+
+.sectionAlt {
+  padding: 72px 32px;
+  background: #faf8f5;
+}
+
+.sectionInner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #e8773a;
+  margin-bottom: 10px;
+}
+
+.sectionInner h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+}
+
+.sectionSub {
+  font-size: 1rem;
+  color: #6b7280;
+  max-width: 600px;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+/* ── Services Grid ── */
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.serviceCard {
+  background: #fff;
+  border: 1px solid #ede8e0;
+  border-radius: 14px;
+  padding: 28px 24px;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.serviceCard:hover {
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.serviceIcon {
+  font-size: 2rem;
+  margin-bottom: 14px;
+  display: block;
+}
+
+.serviceCard h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.serviceCard p {
+  font-size: 0.88rem;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+/* ── Why Choose Us ── */
+.whyGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.whyCard {
+  background: #fff;
+  border: 1px solid #ede8e0;
+  border-radius: 14px;
+  padding: 28px 24px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.whyIcon {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  background: #fdf3ec;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.whyCard h3 {
+  font-size: 0.97rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 6px;
+}
+
+.whyCard p {
+  font-size: 0.87rem;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+/* ── Areas Served ── */
+.areasGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.areaBadge {
+  background: #fff;
+  border: 1.5px solid #e8773a;
+  color: #e8773a;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 6px 16px;
+  border-radius: 20px;
+}
+
+/* ── Process ── */
+.processGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.processCard {
+  background: #fff;
+  border: 1px solid #ede8e0;
+  border-radius: 14px;
+  padding: 28px 20px;
+  text-align: center;
+}
+
+.stepNum {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #e8773a;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.processCard h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 8px;
+}
+
+.processCard p {
+  font-size: 0.85rem;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+/* ── FAQ ── */
+.faqList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 800px;
+}
+
+.faqItem {
+  background: #fff;
+  border: 1px solid #ede8e0;
+  border-radius: 12px;
+  padding: 22px 24px;
+}
+
+.faqItem h3 {
+  font-size: 0.97rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+.faqItem p {
+  font-size: 0.9rem;
+  color: #4b5563;
+  line-height: 1.65;
+}
+
+/* ── CTA Banner ── */
+.ctaBanner {
+  background: #e8773a;
+  padding: 72px 32px;
+  text-align: center;
+}
+
+.ctaBannerInner {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.ctaBanner h2 {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 14px;
+  line-height: 1.2;
+}
+
+.ctaBanner p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 28px;
+  line-height: 1.6;
+}
+
+.ctaBtns {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ctaBtnWhite {
+  background: #fff;
+  color: #e8773a;
+  font-weight: 700;
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.97rem;
+  transition: background 0.2s;
+}
+
+.ctaBtnWhite:hover {
+  background: #fdf3ec;
+}
+
+.ctaBtnOutline {
+  background: transparent;
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.97rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .servicesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .processGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 1.9rem;
+  }
+
+  .servicesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .whyGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .processGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .section,
+  .sectionAlt {
+    padding: 48px 20px;
+  }
+
+  .ctaBanner {
+    padding: 56px 20px;
+  }
+}

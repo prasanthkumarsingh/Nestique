@@ -53,20 +53,20 @@ export default function Footer() {
           </div>
           <div className={styles.linkGroup}>
             <h4>Interior Design</h4>
-            <Link href="/services">Home Interior Design Visakhapatnam</Link>
-            <Link href="/services">Interior Design Hyderabad</Link>
-            <Link href="/services">Modular Kitchen Vizag</Link>
-            <Link href="/services">False Ceiling Design Vizag</Link>
-            <Link href="/services">Office Interior Hyderabad</Link>
-            <Link href="/services">Apartment Interiors Hyderabad</Link>
+            <Link href="/interior-design-visakhapatnam">Home Interior Design Visakhapatnam</Link>
+            <Link href="/interior-design-hyderabad">Interior Design Hyderabad</Link>
+            <Link href="/interior-design-visakhapatnam">Modular Kitchen Vizag</Link>
+            <Link href="/interior-design-visakhapatnam">False Ceiling Design Vizag</Link>
+            <Link href="/interior-design-hyderabad">Office Interior Hyderabad</Link>
+            <Link href="/interior-design-hyderabad">Apartment Interiors Hyderabad</Link>
           </div>
           <div className={styles.linkGroup}>
             <h4>Civil Construction</h4>
-            <Link href="/services">House Construction Visakhapatnam</Link>
-            <Link href="/services">Villa Construction Vizag</Link>
+            <Link href="/villa-construction-vizag">House Construction Visakhapatnam</Link>
+            <Link href="/villa-construction-vizag">Villa Construction Vizag</Link>
             <Link href="/services">Civil Contractor Hyderabad</Link>
             <Link href="/services">Residential Construction Hyderabad</Link>
-            <Link href="/services">Home Renovation Visakhapatnam</Link>
+            <Link href="/villa-construction-vizag">Home Renovation Visakhapatnam</Link>
             <Link href="/consultation">Free Consultation</Link>
           </div>
         </div>
