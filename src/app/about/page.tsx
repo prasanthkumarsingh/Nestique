@@ -7,12 +7,13 @@ const SITE_URL = "https://www.nestiquestudio.in";
 export const metadata: Metadata = {
   title: "About Nestique Studio | Architecture & Interior Design Firm — Hyderabad, Vizag",
   description:
-    "Nestique Studio was founded by Abhisheak (MTech Architecture, Creative Co-Founder) and Tulasi (Business Co-Founder). 130+ projects, 6 cities. Meet the team behind South India's most trusted architecture, interior design & construction studio.",
+    "Nestique Studio was founded by Tulasi (Business Co-Founder), Abhisheak (MTech Architecture), and D. Sumanth (IIT Kharagpur). 130+ projects, 6 cities. Meet the team behind South India's most trusted architecture, interior design & construction studio.",
   keywords: [
     "Nestique Studio about",
     "best architecture firm Hyderabad",
     "interior design firm Vizag",
     "Abhisheak architect Hyderabad",
+    "IIT Kharagpur architect India",
     "architecture company founders India",
     "trusted construction company Hyderabad",
   ],
@@ -40,6 +41,13 @@ const aboutSchema = {
     founder: [
       {
         "@type": "Person",
+        name: "Tulasi",
+        jobTitle: "Business Co-Founder",
+        description: "Leads business development, client relations, and operations at Nestique Studio.",
+        worksFor: { "@type": "Organization", name: "Nestique Studio" },
+      },
+      {
+        "@type": "Person",
         name: "Abhisheak",
         jobTitle: "Creative Co-Founder & Lead Architect",
         description: "MTech in Architecture. Leads design direction, architectural projects, and creative vision at Nestique Studio.",
@@ -47,9 +55,9 @@ const aboutSchema = {
       },
       {
         "@type": "Person",
-        name: "Tulasi",
-        jobTitle: "Business Co-Founder",
-        description: "Leads business development, client relations, and operations at Nestique Studio.",
+        name: "D. Sumanth",
+        jobTitle: "Visionary Co-Founder & Architect",
+        description: "Academic foundation from IIT Kharagpur. Brings deep expertise in architecture and a vision for spaces that resonate with culture, context, and purposeful design.",
         worksFor: { "@type": "Organization", name: "Nestique Studio" },
       },
     ],
@@ -58,6 +66,12 @@ const aboutSchema = {
         "@type": "Person",
         name: "Abhisheak",
         jobTitle: "Lead Architect",
+        worksFor: { "@type": "Organization", name: "Nestique Studio" },
+      },
+      {
+        "@type": "Person",
+        name: "D. Sumanth",
+        jobTitle: "Visionary Co-Founder & Architect",
         worksFor: { "@type": "Organization", name: "Nestique Studio" },
       },
       {
@@ -101,6 +115,15 @@ const values = [
 
 const founders = [
   {
+    name: "Tulasi",
+    role: "Business Co-Founder",
+    tag: "Business & Operations",
+    bio: "Tulasi is the strategic engine behind Nestique Studio. She ensures every client relationship, project timeline, and financial commitment is handled with precision and care. Her drive to create seamless, hassle-free experiences is what sets Nestique Studio apart in the market.",
+    color: "#4a5c6e",
+    initials: "T",
+    img: "/tulasi.jpg",
+  },
+  {
     name: "Abhisheak",
     role: "Creative Co-Founder",
     tag: "MTech in Architecture",
@@ -110,13 +133,13 @@ const founders = [
     img: "/abhi.jpg",
   },
   {
-    name: "Tulasi",
-    role: "Business Co-Founder",
-    tag: "Business & Operations",
-    bio: "Tulasi is the strategic engine behind Nestique Studio. She ensures every client relationship, project timeline, and financial commitment is handled with precision and care. Her drive to create seamless, hassle-free experiences is what sets Nestique Studio apart in the market.",
-    color: "#4a5c6e",
-    initials: "T",
-    img: "/tulasi.jpg",
+    name: "D. Sumanth",
+    role: "Visionary Co-Founder",
+    tag: "Architecture · IIT Kharagpur",
+    bio: "With an academic foundation from IIT Kharagpur and professional experience spanning diverse regions of India, Sumanth's journey has been shaped by a deep understanding of context, culture, and detail. This venture was founded with a vision to create spaces that go beyond aesthetics — spaces that resonate with people, reflect their lifestyles, and enhance their everyday experiences. At the core of our practice lies a commitment to craft, collaboration, and purposeful design — where every project becomes a dialogue between creativity, functionality, and emotion.",
+    color: "#2d6a4f",
+    initials: "S",
+    img: "/coFounder2.jpeg",
   },
 ];
 
@@ -130,6 +153,16 @@ const team = [
     color: "#e8773a",
     initials: "A",
     img: "/abhi.jpg",
+  },
+  {
+    name: "D. Sumanth",
+    role: "Visionary Co-Founder",
+    dept: "Architecture",
+    qual: "IIT Kharagpur",
+    desc: "Brings a pan-India design perspective rooted in context, culture, and craft. Leads projects with a focus on purposeful design that resonates with people and elevates everyday experiences.",
+    color: "#2d6a4f",
+    initials: "S",
+    img: "/coFounder2.jpeg",
   },
   {
     name: "Preethi",
@@ -232,7 +265,7 @@ export default function AboutPage() {
           <p className={styles.eyebrow}>Leadership</p>
           <h2>Meet Our Co-Founders</h2>
           <p className={styles.sectionSub}>
-            Two complementary minds united by one goal — to build spaces that truly matter.
+            Three visionary minds — united by a shared purpose to design spaces that inspire, endure, and transform lives.
           </p>
           <div className={styles.foundersGrid}>
             {founders.map((f, i) => (

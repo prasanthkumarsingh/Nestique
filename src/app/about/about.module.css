@@ -225,7 +225,7 @@
 
 .foundersGrid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 28px;
   margin-top: 8px;
   text-align: left;
@@ -586,6 +586,10 @@
   }
 
   .teamGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .foundersGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
