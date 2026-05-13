@@ -1,15 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 
-const transporter = nodemailer.createTransport({
-  host: "smtp.hostinger.com",
-  port: 465,
-  secure: true,
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: NextRequest) {
   try {
@@ -19,8 +11,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    await transporter.sendMail({
-      from: `"Nestique Studio Website" <${process.env.SMTP_USER}>`,
+    await resend.emails.send({
+      from: "Nestique Studio <hello@nestiquestudio.in>",
       to: "hello@nestiquestudio.in",
       replyTo: email,
       subject: `Consultation Request: ${projectType || "General"} — ${name} (${city || "City N/A"})`,

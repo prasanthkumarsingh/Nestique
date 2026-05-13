@@ -12,7 +12,8 @@
     "next": "16.1.6",
     "nodemailer": "^8.0.5",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "resend": "^6.12.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -26,6 +27,9 @@
     "typescript": "^5"
   },
   "pnpm": {
-    "ignoredBuiltDependencies": ["sharp", "unrs-resolver"]
+    "ignoredBuiltDependencies": [
+      "sharp",
+      "unrs-resolver"
+    ]
   }
 }
