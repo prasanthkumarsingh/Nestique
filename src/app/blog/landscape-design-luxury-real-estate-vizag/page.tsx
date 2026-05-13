@@ -1,19 +1,48 @@
+import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import styles from "../bangkok-luxury-structural-design-international-project/post.module.css";
 
-export const metadata = {
+const SITE_URL = "https://www.nestiquestudio.in";
+const POST_URL = `${SITE_URL}/blog/landscape-design-luxury-real-estate-vizag`;
+
+export const metadata: Metadata = {
   title: "Landscape Design for Luxury Real Estate in Vizag | Nestique Studio",
-  description: "Explore Nestique Studio's approach to luxury landscape design — creating serene, functional outdoor spaces for high-end real estate in Visakhapatnam.",
+  description: "Nestique Studio's approach to luxury landscape design in Visakhapatnam — serene outdoor spaces, water features, native planting & pergolas for high-end villas. See the full project.",
+  keywords: [
+    "landscape design Visakhapatnam",
+    "luxury garden design Vizag",
+    "outdoor design luxury villa Visakhapatnam",
+    "landscape architect Vizag",
+    "villa landscape design AP",
+  ],
+  alternates: { canonical: POST_URL },
+  openGraph: {
+    type: "article",
+    url: POST_URL,
+    title: "Landscape Design for Luxury Real Estate in Vizag | Nestique Studio",
+    description: "Nestique Studio transforms a luxury Vizag villa's grounds with layered landscaping, a natural swimming pond, and a pergola terrace.",
+    images: [{ url: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1200&q=85", width: 1200, height: 630 }],
+    publishedTime: "2024-02-16T00:00:00.000Z",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Landscape Design for Luxury Real Estate in Vizag | Nestique Studio",
+    description: "Nestique Studio transforms a luxury Vizag villa's grounds with layered landscaping and a natural swimming pond.",
+    images: ["https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1200&q=85"],
+  },
 };
 
 export default function LandscapeLuxuryVizag() {
   return (
     <main className={styles.main}>
       <div className={styles.heroImg}>
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1200&q=85"
           alt="Luxury Landscape Design Vizag"
-          className={styles.heroImgEl}
+          fill
+          style={{ objectFit: "cover", objectPosition: "center 40%" }}
+          priority
         />
         <div className={styles.heroOverlay} />
         <div className={styles.heroText}>
@@ -41,10 +70,12 @@ export default function LandscapeLuxuryVizag() {
           </p>
 
           <div className={styles.imageBlock}>
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80"
               alt="Garden landscape design"
-              className={styles.inlineImg}
+              width={900}
+              height={600}
+              style={{ width: "100%", height: "auto" }}
             />
             <p className={styles.caption}>Rear garden — designed for privacy and seasonal colour</p>
           </div>
@@ -68,10 +99,12 @@ export default function LandscapeLuxuryVizag() {
           </ul>
 
           <div className={styles.imageBlock}>
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=900&q=80"
               alt="Outdoor terrace and garden"
-              className={styles.inlineImg}
+              width={900}
+              height={600}
+              style={{ width: "100%", height: "auto" }}
             />
             <p className={styles.caption}>Completed terrace and outdoor dining zone at dusk</p>
           </div>

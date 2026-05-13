@@ -1,19 +1,49 @@
+import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import styles from "../bangkok-luxury-structural-design-international-project/post.module.css";
 
-export const metadata = {
+const SITE_URL = "https://www.nestiquestudio.in";
+const POST_URL = `${SITE_URL}/blog/interior-design-residential-apartments-ap-telangana`;
+
+export const metadata: Metadata = {
   title: "Interior Design for Residential Apartments in AP & Telangana | Nestique Studio",
-  description: "How Nestique Studio transforms residential apartments in Andhra Pradesh and Telangana with innovative interior design — maximising space, light, and style.",
+  description: "How Nestique Studio transforms 2BHK & 3BHK apartments in Andhra Pradesh and Telangana — modular kitchens, false ceilings, wardrobes & space-maximising interiors.",
+  keywords: [
+    "interior design residential apartments AP",
+    "apartment interior design Telangana",
+    "2BHK interior design Visakhapatnam",
+    "3BHK interior design Hyderabad",
+    "interior designer Andhra Pradesh",
+    "modular kitchen AP Telangana",
+  ],
+  alternates: { canonical: POST_URL },
+  openGraph: {
+    type: "article",
+    url: POST_URL,
+    title: "Interior Design for Residential Apartments in AP & Telangana | Nestique Studio",
+    description: "How Nestique Studio transforms 2BHK & 3BHK apartments across AP and Telangana with bespoke interiors, modular kitchens, and false ceilings.",
+    images: [{ url: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=1200&q=85", width: 1200, height: 630 }],
+    publishedTime: "2024-02-14T00:00:00.000Z",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Interior Design for Residential Apartments in AP & Telangana | Nestique Studio",
+    description: "How Nestique Studio transforms 2BHK & 3BHK apartments across AP and Telangana.",
+    images: ["https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=1200&q=85"],
+  },
 };
 
 export default function InteriorDesignApts() {
   return (
     <main className={styles.main}>
       <div className={styles.heroImg}>
-        <img
+        <Image
           src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=1200&q=85"
           alt="Interior Design Residential Apartments"
-          className={styles.heroImgEl}
+          fill
+          style={{ objectFit: "cover", objectPosition: "center 40%" }}
+          priority
         />
         <div className={styles.heroOverlay} />
         <div className={styles.heroText}>
@@ -44,10 +74,12 @@ export default function InteriorDesignApts() {
           </p>
 
           <div className={styles.imageBlock}>
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&q=80"
               alt="Modern living room design"
-              className={styles.inlineImg}
+              width={900}
+              height={600}
+              style={{ width: "100%", height: "auto" }}
             />
             <p className={styles.caption}>Living room — warm tones with built-in storage solutions</p>
           </div>
@@ -63,10 +95,12 @@ export default function InteriorDesignApts() {
           </ul>
 
           <div className={styles.imageBlock}>
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=80"
               alt="Modern modular kitchen"
-              className={styles.inlineImg}
+              width={900}
+              height={600}
+              style={{ width: "100%", height: "auto" }}
             />
             <p className={styles.caption}>Modular kitchen — handleless design with quartz countertop</p>
           </div>

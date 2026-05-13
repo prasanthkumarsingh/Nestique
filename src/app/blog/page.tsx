@@ -1,7 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import styles from "./blog.module.css";
 
-export const metadata = {
+const SITE_URL = "https://www.nestiquestudio.in";
+
+export const metadata: Metadata = {
   title: "Interior Design & Construction Blog | Tips for Vizag & Hyderabad Homeowners — Nestique Studio",
   description: "Expert interior design and civil construction tips for Visakhapatnam and Hyderabad homeowners. Cost guides, project stories, modular kitchen ideas, and more from Nestique Studio.",
   keywords: [
@@ -12,6 +15,20 @@ export const metadata = {
     "modular kitchen ideas Vizag",
     "interior designer tips India",
   ],
+  alternates: { canonical: `${SITE_URL}/blog` },
+  openGraph: {
+    type: "website",
+    url: `${SITE_URL}/blog`,
+    title: "Interior Design & Construction Blog | Nestique Studio",
+    description: "Expert interior design and civil construction tips for Visakhapatnam and Hyderabad homeowners.",
+    images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Interior Design & Construction Blog | Nestique Studio",
+    description: "Expert interior design and civil construction tips for Visakhapatnam and Hyderabad homeowners.",
+    images: [`${SITE_URL}/og-image.jpg`],
+  },
 };
 
 const blogPosts = [

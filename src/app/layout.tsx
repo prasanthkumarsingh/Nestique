@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import JsonLd from "../components/JsonLd";
 import WhatsAppButton from "../components/WhatsAppButton";
+
+const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 const SITE_URL = "https://www.nestiquestudio.in";
 
@@ -116,7 +119,7 @@ export const metadata: Metadata = {
 
 const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": ["LocalBusiness", "InteriorDesigner"],
   "@id": SITE_URL,
   name: "Nestique Studio",
   alternateName: ["Nestique Architecture & Interior Design", "Nestique Civil & Interiors"],
@@ -207,7 +210,7 @@ const websiteSchema = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className={inter.className}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#e8773a" />
