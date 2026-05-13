@@ -5,25 +5,24 @@ import styles from "../city-page.module.css";
 const SITE_URL = "https://www.nestiquestudio.in";
 
 export const metadata: Metadata = {
-  title: "Architect in Visakhapatnam | Best Architecture Firm Vizag — Nestique Studio",
+  title: "Architect in Visakhapatnam | Commercial Architecture Firm Vizag — Nestique Studio",
   description:
-    "Looking for an architect in Visakhapatnam? Nestique Studio offers residential & commercial architecture, house design, 3D planning, structural drawings & Vastu-compliant layouts in Vizag. IIT Kharagpur-trained architects. Free consultation: hello@nestiquestudio.in",
+    "IIT Kharagpur-trained commercial architect in Visakhapatnam. Nestique Studio designs offices, hospitals, hotels & residential buildings in Vizag — structural drawings, 3D design & VMRDA approval. Free consultation: hello@nestiquestudio.in",
   keywords: [
     "architect in Visakhapatnam",
-    "architect Vizag",
-    "best architect Visakhapatnam",
-    "architecture firm Vizag",
-    "house design Visakhapatnam",
-    "residential architect Vizag",
     "commercial architect Visakhapatnam",
-    "building architect Vizag",
-    "architecture design Visakhapatnam",
-    "Vastu architect Vizag",
-    "3D house design Visakhapatnam",
-    "structural drawings Vizag",
-    "building plan approval Visakhapatnam",
-    "architect near me Vizag",
+    "architect Vizag",
+    "architecture firm Visakhapatnam",
     "IIT architect Visakhapatnam",
+    "commercial architecture Vizag",
+    "office architect Visakhapatnam",
+    "hospital architect Vizag",
+    "best architect Visakhapatnam",
+    "building architect Vizag",
+    "structural drawings Visakhapatnam",
+    "VMRDA plan approval Vizag",
+    "3D architectural design Visakhapatnam",
+    "architect near me Vizag",
   ],
   alternates: { canonical: `${SITE_URL}/architect-visakhapatnam` },
   openGraph: {
@@ -151,10 +150,10 @@ export default function ArchitectVizagPage() {
       <section className={styles.hero}>
         <div className={styles.heroInner}>
           <p className={styles.breadcrumb}>Architecture · Visakhapatnam</p>
-          <h1>Architect in<br />Visakhapatnam</h1>
+          <h1>Commercial Architect in<br />Visakhapatnam</h1>
           <p className={styles.heroSub}>
-            IIT Kharagpur-trained architects serving Visakhapatnam. Residential homes, commercial buildings,
-            3D design, structural drawings & VMRDA plan approval — all under one roof.
+            IIT Kharagpur-trained commercial architects in Visakhapatnam. Offices, hospitals, hotels & residential buildings —
+            3D design, structural drawings, VMRDA approvals & site supervision all under one roof.
           </p>
           <div className={styles.heroBtns}>
             <a href="/consultation" className={styles.heroBtn}>Book Free Consultation</a>

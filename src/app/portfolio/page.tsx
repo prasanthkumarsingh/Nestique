@@ -6,9 +6,9 @@ import styles from "./portfolio.module.css";
 const SITE_URL = "https://www.nestiquestudio.in";
 
 export const metadata: Metadata = {
-  title: "Portfolio | Architecture, Interior Design & Construction Projects — Nestique Studio",
+  title: "Commercial Interior Design Projects in Visakhapatnam & Hyderabad | Nestique Studio",
   description:
-    "See Nestique Studio's completed projects — luxury residential homes, commercial buildings, interior design, and landscape design across Hyderabad, Vizag, Vijayawada & Bangalore, plus international work.",
+    "See Nestique Studio's completed commercial and residential projects — offices, hospitals, hotels, villas & apartment interiors across Visakhapatnam, Hyderabad, Vijayawada & Bangalore.",
   keywords: [
     "architecture portfolio Hyderabad",
     "construction projects Vizag",

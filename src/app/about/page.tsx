@@ -5,9 +5,9 @@ import styles from "./about.module.css";
 const SITE_URL = "https://www.nestiquestudio.in";
 
 export const metadata: Metadata = {
-  title: "About Nestique Studio | Architecture & Interior Design Firm — Hyderabad, Vizag",
+  title: "About Nestique Studio | Commercial Interior Design Firm in Visakhapatnam & Hyderabad",
   description:
-    "Nestique Studio was founded by Tulasi (Business Co-Founder), Abhisheak (MTech Architecture), and D. Sumanth (IIT Kharagpur). 130+ projects, 6 cities. Meet the team behind South India's most trusted architecture, interior design & construction studio.",
+    "Nestique Studio — commercial interior design specialists for offices, hospitals & hotels in Visakhapatnam & Hyderabad. IIT Kharagpur-trained founders, 130+ projects. Meet the team.",
   keywords: [
     "Nestique Studio about",
     "best architecture firm Hyderabad",

@@ -7,9 +7,9 @@ import styles from "./home.module.css";
 const SITE_URL = "https://www.nestiquestudio.in";
 
 export const metadata: Metadata = {
-  title: "Best Interior Design & Civil Construction in Visakhapatnam & Hyderabad | Nestique Studio",
+  title: "Nestique Studio | Commercial Interior Design & Architecture in Visakhapatnam & Hyderabad",
   description:
-    "Nestique Studio — best interior designer & civil contractor in Visakhapatnam and Hyderabad. Home interiors, modular kitchens, false ceilings, house construction, villa construction & office interiors. 130+ projects. Free consultation today.",
+    "Leading commercial interior design, architecture & construction firm in Visakhapatnam & Hyderabad. Specialists in offices, hospitals & hotels — residential projects also undertaken. IIT Kharagpur-trained architects. 130+ projects. Free consultation today.",
   keywords: [
     // High-intent Vizag
     "interior designer in Visakhapatnam",
