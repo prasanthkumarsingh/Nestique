@@ -80,12 +80,6 @@ const aboutSchema = {
         jobTitle: "Interior Designer",
         worksFor: { "@type": "Organization", name: "Nestique Studio" },
       },
-      {
-        "@type": "Person",
-        name: "Prasanth",
-        jobTitle: "Civil Works & Interior Manager",
-        worksFor: { "@type": "Organization", name: "Nestique Studio" },
-      },
     ],
   },
 };
@@ -173,16 +167,6 @@ const team = [
     color: "#c9a84c",
     initials: "P",
     img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80",
-  },
-  {
-    name: "Prasanth",
-    role: "Civil Works & Interior Manager",
-    dept: "Construction & Interiors",
-    qual: "Civil Works & Interior Management",
-    desc: "Oversees on-site civil works and interior execution. Ensures construction quality, material compliance, and project timelines are met at every stage.",
-    color: "#4a5c6e",
-    initials: "P",
-    img: "/prashu.jpg",
   },
 ];
 
