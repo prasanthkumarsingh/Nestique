@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { supabase } from "@/lib/supabase";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -10,6 +11,11 @@ export async function POST(req: NextRequest) {
     if (!name || !email || !message) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
+
+    await supabase.from("contact_submissions").insert({
+      name, email, phone: phone || null, city: city || null,
+      subject: subject || null, message,
+    });
 
     await resend.emails.send({
       from: "Nestique Studio <hello@nestiquestudio.in>",
