@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     title: "Careers at Nestique Studio | Architecture & Interior Design Jobs",
     description:
       "Join our team of architects, designers & builders. Shape inspiring spaces across South India. View open roles and apply today.",
-    images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630 }],
+    images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 }],
   },
 };
 

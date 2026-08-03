@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/about`,
     title: "About Nestique Studio | Architecture & Interior Design Firm",
     description: "Founded by Abhisheak & Tulasi. 130+ projects across Hyderabad, Vizag, Vijayawada & Bangalore.",
-    images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630 }],
+    images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 }],
   },
 };
 

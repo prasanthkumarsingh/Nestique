@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/consultation`,
     title: "Free Consultation | Architecture & Interior Design — Nestique Studio",
     description: "Book a free, no-obligation design consultation. Get expert advice, design concepts, and a clear cost estimate within 24 hours.",
-    images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630 }],
+    images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 }],
   },
 };
 

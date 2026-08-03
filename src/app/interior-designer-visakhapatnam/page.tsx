@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     title: "Interior Designer in Visakhapatnam | Nestique Studio",
     description:
       "Hire the best interior designer in Visakhapatnam. 130+ projects delivered. Modular kitchens, false ceilings, wardrobes & complete home interiors.",
-    images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630 }],
+    images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 }],
   },
 };
 

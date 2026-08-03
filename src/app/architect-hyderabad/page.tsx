@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: "Architect in Hyderabad | Nestique Studio",
     description:
       "IIT Kharagpur-trained architects in Hyderabad. Residential & commercial architecture, 3D design, structural drawings & GHMC plan approval. 130+ projects delivered.",
-    images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630 }],
+    images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 }],
   },
 };
 

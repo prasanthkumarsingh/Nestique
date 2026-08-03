@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: "Architect in Visakhapatnam | Nestique Studio",
     description:
       "IIT Kharagpur-trained architects in Visakhapatnam. Residential & commercial architecture, 3D design, structural drawings, Vastu-compliant plans. 130+ projects.",
-    images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630 }],
+    images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 }],
   },
 };
 

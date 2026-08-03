@@ -29,13 +29,13 @@ export const metadata: Metadata = {
     title: "Hospital Interior Design in Visakhapatnam | Nestique Studio",
     description:
       "Specialist hospital & healthcare interior design in Visakhapatnam. NABH-aware design for hospitals, clinics, diagnostic centres & pharmacies in Vizag.",
-    images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630 }],
+    images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Hospital Interior Design in Visakhapatnam | Nestique Studio",
     description: "Specialist hospital & healthcare interior design in Visakhapatnam. Clinics, diagnostic centres & pharmacies.",
-    images: [`${SITE_URL}/og-image.jpg`],
+    images: [`${SITE_URL}/og-image.png`],
   },
 };
 

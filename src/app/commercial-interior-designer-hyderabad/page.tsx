@@ -29,13 +29,13 @@ export const metadata: Metadata = {
     title: "Commercial Interior Designer in Hyderabad | Nestique Studio",
     description:
       "Top commercial interior designer in Hyderabad — offices, hospitals, hotels & corporate spaces. IIT-trained architects. Turnkey design & build.",
-    images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630 }],
+    images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Commercial Interior Designer in Hyderabad | Nestique Studio",
     description: "Top commercial interior designer in Hyderabad — offices, hospitals, hotels & corporate spaces.",
-    images: [`${SITE_URL}/og-image.jpg`],
+    images: [`${SITE_URL}/og-image.png`],
   },
 };
 

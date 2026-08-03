@@ -21,13 +21,13 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/blog`,
     title: "Interior Design & Construction Blog | Nestique Studio",
     description: "Expert interior design and civil construction tips for Visakhapatnam and Hyderabad homeowners.",
-    images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630 }],
+    images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Interior Design & Construction Blog | Nestique Studio",
     description: "Expert interior design and civil construction tips for Visakhapatnam and Hyderabad homeowners.",
-    images: [`${SITE_URL}/og-image.jpg`],
+    images: [`${SITE_URL}/og-image.png`],
   },
 };
 

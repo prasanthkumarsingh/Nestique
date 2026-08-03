@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: "Construction Company in Visakhapatnam | Nestique Studio",
     description:
       "Top-rated construction company in Visakhapatnam. Houses, villas & commercial buildings built with quality materials, transparent pricing, and on-time delivery. 130+ projects.",
-    images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630 }],
+    images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 }],
   },
 };
 

@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     title: "Architecture, Interior Design & Construction Services | Nestique Studio",
     description:
       "Complete architecture, interior design & construction services across Hyderabad, Vizag & Bangalore. Packages from ₹1,800/sq ft.",
-    images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630 }],
+    images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 }],
   },
 };
 

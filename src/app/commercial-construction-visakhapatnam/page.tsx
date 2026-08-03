@@ -29,13 +29,13 @@ export const metadata: Metadata = {
     title: "Commercial Construction in Visakhapatnam | Nestique Studio",
     description:
       "Trusted commercial construction company in Visakhapatnam. Offices, hospitals, hotels & commercial complexes built turnkey in Vizag.",
-    images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630 }],
+    images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Commercial Construction in Visakhapatnam | Nestique Studio",
     description: "Trusted commercial construction company in Visakhapatnam — offices, hospitals & hotels built turnkey.",
-    images: [`${SITE_URL}/og-image.jpg`],
+    images: [`${SITE_URL}/og-image.png`],
   },
 };
 

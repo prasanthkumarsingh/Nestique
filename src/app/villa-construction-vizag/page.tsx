@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: "Villa & House Construction in Visakhapatnam | Nestique Studio",
     description:
       "Custom villa and house construction in Visakhapatnam. End-to-end civil construction from design to handover. Transparent pricing. Free site visit.",
-    images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630 }],
+    images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 }],
   },
 };
 

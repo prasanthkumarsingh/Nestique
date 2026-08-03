@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/contact`,
     title: "Contact Nestique Studio | Architecture & Interior Design",
     description: "Reach us at +91 78160 86291 or hello@nestiquestudio.in. Offices in Vizag, Hyderabad & Bangalore.",
-    images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630 }],
+    images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 }],
   },
 };
 

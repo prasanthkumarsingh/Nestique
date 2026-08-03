@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     title: "Best Interior Designer in Hyderabad | Nestique Studio",
     description:
       "Complete home interior design in Hyderabad — modular kitchens, false ceilings, wardrobes, bedrooms, office interiors. 130+ projects. Free consultation.",
-    images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630 }],
+    images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 }],
   },
 };
 

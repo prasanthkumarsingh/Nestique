@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     title: "Nestique Studio | Architecture, Interior Design & Construction",
     description:
       "Top-rated architecture, interior design & construction firm in Hyderabad, Vizag & Bangalore. Residential, commercial, malls, offices. Book a free consultation today.",
-    images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630 }],
+    images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 }],
   },
 };
 

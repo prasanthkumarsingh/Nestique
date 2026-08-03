@@ -76,7 +76,7 @@ export const metadata: Metadata = {
       "Specialists in office, hospital & hotel interior design, architecture & construction in Visakhapatnam & Hyderabad. IIT Kharagpur-trained architects. 130+ projects.",
     images: [
       {
-        url: `${SITE_URL}/og-image.jpg`,
+        url: `${SITE_URL}/og-image.png`,
         width: 1200,
         height: 630,
         alt: "Nestique Studio — Commercial Interior Design, Architecture & Construction",
@@ -88,7 +88,7 @@ export const metadata: Metadata = {
     title: "Nestique Studio | Commercial Interior Design & Architecture",
     description:
       "Office, hospital & hotel interior design, architecture & construction in Visakhapatnam & Hyderabad.",
-    images: [`${SITE_URL}/og-image.jpg`],
+    images: [`${SITE_URL}/og-image.png`],
   },
   alternates: {
     canonical: SITE_URL,
@@ -112,7 +112,7 @@ const organizationSchema = {
     "Commercial interior design, architecture & construction specialists in Visakhapatnam and Hyderabad. Offices, hospitals, hotels, and residential projects. IIT Kharagpur-trained architects.",
   url: SITE_URL,
   logo: `${SITE_URL}/logo.png`,
-  image: `${SITE_URL}/og-image.jpg`,
+  image: `${SITE_URL}/og-image.png`,
   telephone: "+917816086291",
   email: "hello@nestiquestudio.in",
   foundingDate: "2020",

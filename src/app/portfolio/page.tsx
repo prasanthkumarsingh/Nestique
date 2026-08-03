@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/portfolio`,
     title: "Portfolio | Architecture & Construction Projects — Nestique Studio",
     description: "Completed projects across Hyderabad, Vizag, Vijayawada & Bangalore — homes, commercial buildings, interiors, and landscape.",
-    images: [{ url: `${SITE_URL}/og-image.jpg`, width: 1200, height: 630 }],
+    images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 }],
   },
 };
 
