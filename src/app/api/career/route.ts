@@ -10,11 +10,16 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    await getSupabase().from("career_applications").insert({
-      name, email, phone, city: city || null,
-      position, experience: experience || null,
-      portfolio: portfolio || null, message: message || null,
-    });
+    try {
+      const { error } = await getSupabase().from("career_applications").insert({
+        name, email, phone, city: city || null,
+        position, experience: experience || null,
+        portfolio: portfolio || null, message: message || null,
+      });
+      if (error) console.error("Career Supabase insert error:", error);
+    } catch (err) {
+      console.error("Career Supabase insert error:", err);
+    }
 
     await getResend().emails.send({
       from: "Nestique Studio Careers <hello@nestiquestudio.in>",
