@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Geist } from "next/font/google";
 import "./globals.css";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import JsonLd from "../components/JsonLd";
-import WhatsAppButton from "../components/WhatsAppButton";
+import JsonLd from "@/components/JsonLd";
 import { cn } from "@/lib/utils";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
@@ -202,12 +199,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <JsonLd data={organizationSchema} />
         <JsonLd data={websiteSchema} />
       </head>
-      <body>
-        <Header />
-        {children}
-        <Footer />
-        <WhatsAppButton />
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import styles from "../app/careers/careers.module.css";
+import styles from "../app/(marketing)/careers/careers.module.css";
 
 type Status = "idle" | "sending" | "success" | "error";
 

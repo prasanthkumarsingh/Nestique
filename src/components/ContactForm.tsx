@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import styles from "../app/contact/contact.module.css";
+import styles from "../app/(marketing)/contact/contact.module.css";
 
 type Status = "idle" | "sending" | "success" | "error";
 

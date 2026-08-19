@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import styles from "../app/consultation/consultation.module.css";
+import styles from "../app/(marketing)/consultation/consultation.module.css";
 
 type Status = "idle" | "sending" | "success" | "error";
 
