@@ -1,7 +1,12 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { getSessionUser } from "@/lib/supabase/middleware";
 
-export async function proxy(request: NextRequest) {
+// Deliberately using the legacy "middleware.ts" (Edge-only) convention rather
+// than Next.js 16's "proxy.ts" — proxy.ts is hard-locked to the Node.js
+// runtime, which OpenNext's Cloudflare adapter does not yet support
+// ("Node.js middleware is not currently supported"). middleware.ts still
+// runs on the Edge runtime and is what Cloudflare deploys can build.
+export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const { supabase, supabaseResponse, user } = await getSessionUser(request);
 
