@@ -1,9 +1,20 @@
+import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { AdminSidebar } from "@/components/admin/AdminSidebar";
 
 export default async function AdminDashboardLayout({ children }: { children: React.ReactNode }) {
   const supabase = await createClient();
   const { data } = await supabase.auth.getUser();
+
+  if (!data.user) redirect("/admin/login");
+
+  const { data: adminRow } = await supabase
+    .from("admins")
+    .select("id")
+    .eq("email", data.user.email!)
+    .maybeSingle();
+
+  if (!adminRow) redirect("/admin/login");
 
   return (
     <div className="flex min-h-screen bg-[var(--light-bg)]">

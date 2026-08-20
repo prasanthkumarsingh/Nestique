@@ -1,11 +1,23 @@
 import Link from "next/link";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { SignOutButton } from "@/components/portal/SignOutButton";
 
 export default async function ClientDashboardLayout({ children }: { children: React.ReactNode }) {
   const supabase = await createClient();
   const { data } = await supabase.auth.getUser();
+
+  if (!data.user) redirect("/client/login");
+
+  const { data: clientRow } = await supabase
+    .from("clients")
+    .select("id")
+    .eq("email", data.user.email!)
+    .eq("approved", true)
+    .maybeSingle();
+
+  if (!clientRow) redirect("/client/login");
 
   return (
     <div className="min-h-screen bg-[var(--light-bg)]">
