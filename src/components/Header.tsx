@@ -28,6 +28,9 @@ export default function Header() {
         </nav>
 
         <div className={styles.actions}>
+          <Link href="/client/login" className={styles.loginBtn}>
+            Client Login
+          </Link>
           <Link href="/consultation" className={styles.bookBtn}>
             Book Consultation
           </Link>
@@ -52,6 +55,9 @@ export default function Header() {
           <Link href="/careers" onClick={() => setMenuOpen(false)}>Careers</Link>
           <Link href="/blog" onClick={() => setMenuOpen(false)}>Blog</Link>
           <Link href="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
+          <Link href="/client/login" onClick={() => setMenuOpen(false)} className={styles.mobileLoginBtn}>
+            Client Login
+          </Link>
           <Link href="/consultation" onClick={() => setMenuOpen(false)} className={styles.mobileBookBtn}>
             Book Consultation
           </Link>

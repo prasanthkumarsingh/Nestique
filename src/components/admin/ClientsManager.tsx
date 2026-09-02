@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { Trash2, UserPlus } from "lucide-react";
+import { Mail, Trash2, UserPlus } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -20,17 +20,35 @@ export function ClientsManager({ initialClients }: { initialClients: Client[] })
   const [phone, setPhone] = useState("");
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [notice, setNotice] = useState<string | null>(null);
   const [busyId, setBusyId] = useState<string | null>(null);
+
+  async function sendSetupLink(targetEmail: string) {
+    const res = await fetch("/api/client/send-setup-link", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: targetEmail }),
+    });
+    const body = (await res.json().catch(() => ({}))) as { sent?: string; error?: string };
+    if (!res.ok) {
+      throw new Error(body.error || "Could not send the setup email.");
+    }
+    return body.sent === "reset"
+      ? `Password-reset link sent to ${targetEmail}.`
+      : `Create-password link sent to ${targetEmail}.`;
+  }
 
   async function handleAdd(e: FormEvent) {
     e.preventDefault();
     setError(null);
+    setNotice(null);
     setSaving(true);
 
     const supabase = createClient();
+    const newEmail = email.trim();
     const { data, error: insertError } = await supabase
       .from("clients")
-      .insert({ email: email.trim(), name: name.trim() || null, phone: phone.trim() || null })
+      .insert({ email: newEmail, name: name.trim() || null, phone: phone.trim() || null })
       .select()
       .single();
 
@@ -46,7 +64,27 @@ export function ClientsManager({ initialClients }: { initialClients: Client[] })
     setEmail("");
     setName("");
     setPhone("");
+
+    try {
+      setNotice(await sendSetupLink(newEmail));
+    } catch (err) {
+      setError(
+        `${(err as Error).message} The client was added — use "Resend link" once it's resolved.`
+      );
+    }
     setSaving(false);
+  }
+
+  async function handleResendLink(client: Client) {
+    setError(null);
+    setNotice(null);
+    setBusyId(client.id);
+    try {
+      setNotice(await sendSetupLink(client.email));
+    } catch (err) {
+      setError((err as Error).message);
+    }
+    setBusyId(null);
   }
 
   async function toggleApproved(client: Client) {
@@ -115,6 +153,12 @@ export function ClientsManager({ initialClients }: { initialClients: Client[] })
       </form>
 
       {error && <ErrorState message={error} />}
+      {notice && (
+        <div className="flex items-center gap-2 rounded-lg border border-emerald-500/30 bg-emerald-500/5 px-4 py-3 text-sm text-emerald-700">
+          <Mail className="size-4 shrink-0" />
+          <span>{notice}</span>
+        </div>
+      )}
 
       {clients.length === 0 ? (
         <EmptyState
@@ -154,16 +198,28 @@ export function ClientsManager({ initialClients }: { initialClients: Client[] })
                       </Badge>
                     </button>
                   </td>
-                  <td className="px-5 py-4 text-right">
-                    <Button
-                      type="button"
-                      variant="ghost"
-                      size="icon-sm"
-                      disabled={busyId === client.id}
-                      onClick={() => handleDelete(client)}
-                    >
-                      <Trash2 className="size-4 text-destructive" />
-                    </Button>
+                  <td className="px-5 py-4">
+                    <div className="flex items-center justify-end gap-1">
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="sm"
+                        disabled={busyId === client.id}
+                        onClick={() => handleResendLink(client)}
+                      >
+                        <Mail className="size-3.5" />
+                        Resend link
+                      </Button>
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="icon-sm"
+                        disabled={busyId === client.id}
+                        onClick={() => handleDelete(client)}
+                      >
+                        <Trash2 className="size-4 text-destructive" />
+                      </Button>
+                    </div>
                   </td>
                 </tr>
               ))}

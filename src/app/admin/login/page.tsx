@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { OtpLoginForm } from "@/components/portal/OtpLoginForm";
+import { AdminLoginForm } from "@/components/portal/AdminLoginForm";
 
 export const metadata: Metadata = {
   title: "Admin Login",
@@ -22,5 +22,5 @@ export default async function AdminLoginPage() {
     if (adminRow) redirect("/admin");
   }
 
-  return <OtpLoginForm role="admin" redirectTo="/admin" />;
+  return <AdminLoginForm redirectTo="/admin" />;
 }

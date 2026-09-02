@@ -52,7 +52,24 @@
 .actions {
   display: flex;
   align-items: center;
+  gap: 14px;
   flex-shrink: 0;
+}
+
+.loginBtn {
+  color: #374151;
+  font-weight: 600;
+  padding: 9px 18px;
+  border: 1px solid #d9d2c6;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  transition: border-color 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+.loginBtn:hover {
+  color: #e8773a;
+  border-color: #e8773a;
 }
 
 .bookBtn {
@@ -103,6 +120,16 @@
   font-size: 1rem;
 }
 
+.mobileLoginBtn {
+  border: 1px solid #d9d2c6;
+  color: #374151 !important;
+  font-weight: 600;
+  padding: 12px 22px;
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 4px;
+}
+
 .mobileBookBtn {
   background: #e8773a;
   color: #fff !important;
@@ -110,7 +137,6 @@
   padding: 12px 22px;
   border-radius: 8px;
   text-align: center;
-  margin-top: 4px;
 }
 
 @media (max-width: 900px) {

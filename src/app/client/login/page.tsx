@@ -1,14 +1,19 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { OtpLoginForm } from "@/components/portal/OtpLoginForm";
+import { ClientLoginForm } from "@/components/portal/ClientLoginForm";
 
 export const metadata: Metadata = {
   title: "Client Login",
   robots: { index: false, follow: false },
 };
 
-export default async function ClientLoginPage() {
+export default async function ClientLoginPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ error?: string }>;
+}) {
+  const { error } = await searchParams;
   const supabase = await createClient();
   const { data } = await supabase.auth.getUser();
 
@@ -23,5 +28,5 @@ export default async function ClientLoginPage() {
     if (clientRow) redirect("/client");
   }
 
-  return <OtpLoginForm role="client" redirectTo="/client" />;
+  return <ClientLoginForm redirectTo="/client" linkExpired={error === "link_expired"} />;
 }
