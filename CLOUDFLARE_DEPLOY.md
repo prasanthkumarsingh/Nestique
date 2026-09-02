@@ -13,11 +13,14 @@ This project now targets **Cloudflare Workers** via `@opennextjs/cloudflare`.
    `middleware.ts` in the repo. (If one is added later it must run on the Edge
    runtime — the default — not `runtime: 'nodejs'`.)
 3. **`Could not find compiled Open Next config, did you run the build command?`**
-   — the dashboard was set to build with `pnpm run build` (plain `next build`,
-   which only writes `.next/`) and deploy with `npx wrangler deploy`. Wrangler
-   then looks for `.open-next/` and finds nothing. Only
-   `opennextjs-cloudflare build` produces `.open-next/`. Fix: deploy with
-   **`pnpm run deploy`** (see below), not `npx wrangler deploy`.
+   — the dashboard builds with `pnpm run build` and deploys with
+   `npx wrangler deploy`. `wrangler deploy` on an OpenNext project just calls
+   `opennextjs-cloudflare deploy`, which needs `.open-next/` from a prior
+   `opennextjs-cloudflare build` — but `pnpm run build` was plain `next build`
+   (writes only `.next/`). **Fixed in code:** `"build"` in `package.json` is now
+   `opennextjs-cloudflare build`, so the dashboard's existing
+   `pnpm run build` → `npx wrangler deploy` pair works with no dashboard change.
+   Plain Next build is still available as `pnpm run build:next`.
 
 All server code is `fetch`-based (`supabase-js`, `resend`); no Node built-ins, so
 it runs on Workers with the `nodejs_compat` flag.
@@ -26,12 +29,13 @@ it runs on Workers with the `nodejs_compat` flag.
 
 | Script | Runs | Use |
 | --- | --- | --- |
-| `build` | `next build` | local sanity check only — does **not** create `.open-next/` |
-| `deploy` | `opennextjs-cloudflare build && opennextjs-cloudflare deploy` | the real deploy — self-contained, runs its own Next build |
+| `build` | `opennextjs-cloudflare build` | produces `.open-next/`; this is what CI's build step runs |
+| `build:next` | `next build` | plain Next build for local sanity checks (no `.open-next/`) |
+| `deploy` | `opennextjs-cloudflare build && opennextjs-cloudflare deploy` | manual deploy — self-contained |
 | `preview` | `opennextjs-cloudflare build && opennextjs-cloudflare preview` | local Worker at `http://localhost:8788` |
 
-`opennextjs-cloudflare build` invokes `next build` itself, so `deploy` / `preview`
-never assume a prior `pnpm run build`.
+`opennextjs-cloudflare build` invokes `next build` itself, so nothing assumes a
+prior separate Next build.
 
 ## Files added / changed
 
@@ -49,7 +53,7 @@ never assume a prior `pnpm run build`.
 ```bash
 pnpm install                 # lockfile already matches package.json
 cp .dev.vars.example .dev.vars   # then fill in real values
-pnpm run build               # sanity-check the plain Next build first
+pnpm run build:next          # sanity-check the plain Next build first
 pnpm run preview             # builds with OpenNext + runs the Worker at http://localhost:8788
 ```
 
@@ -65,8 +69,9 @@ pnpm run preview             # builds with OpenNext + runs the Worker at http://
 - move the repo out of `OneDrive\` (OneDrive + `node_modules` is trouble anyway).
 
 The Cloudflare build runs on **Linux**, where this is a non-issue — a Windows
-`EPERM` here does not mean the CI deploy will fail. `pnpm run build` (plain
-`next build`) works on Windows regardless.
+`EPERM` here does not mean the CI deploy will fail. `pnpm run build:next` (plain
+`next build`) works on Windows regardless. Note `pnpm run build` now runs the
+OpenNext build, so it too hits the symlink step on Windows.
 
 ## First deploy from your machine
 
@@ -77,13 +82,16 @@ pnpm run deploy
 
 ## Continuous deploys (Cloudflare Workers Builds / Git integration)
 
-In the Cloudflare dashboard for the `nestique` Worker → **Settings → Build**:
+In the Cloudflare dashboard for the `nestique` Worker → **Settings → Build**.
+Since `"build"` now runs `opennextjs-cloudflare build`, either pairing works:
 
-- **Build command:** `pnpm install` — or leave blank. Do **not** use
-  `pnpm run build`; that only makes `.next/`, and the deploy then fails with
-  `Could not find compiled Open Next config`.
-- **Deploy command:** `pnpm run deploy` — **not** `npx wrangler deploy`.
-  `pnpm run deploy` is what produces `.open-next/` and then ships it.
+| Build command | Deploy command | Notes |
+| --- | --- | --- |
+| `pnpm run build` | `npx wrangler deploy` | current dashboard setup — now fine, build produces `.open-next/` and wrangler forwards to `opennextjs-cloudflare deploy` |
+| `pnpm install` | `pnpm run deploy` | also fine — deploy step builds + ships itself |
+
+Don't combine `pnpm run build` **and** `pnpm run deploy` (harmless but builds twice).
+
 - **Root directory:** `/`
 
 ## Environment variables (Cloudflare dashboard → Settings → Variables and Secrets)
