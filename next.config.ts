@@ -1,11 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "standalone",
-  compress: true,
   poweredByHeader: false,
   images: {
-    formats: ["image/avif", "image/webp"],
+    // Cloudflare Workers has no Next.js image-optimization server. Serve images
+    // as-is; swap in a Cloudflare Images loader later if optimization is needed.
+    unoptimized: true,
     remotePatterns: [
       { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "plus.unsplash.com" },
@@ -15,3 +15,8 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
+// Lets `next dev` reach the Cloudflare bindings/vars (.dev.vars) locally.
+// No-op in production. Must stay after the default export.
+import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
+initOpenNextCloudflareForDev();

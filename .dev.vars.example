@@ -1,0 +1,10 @@
+# Copy to .dev.vars (gitignored) for local `pnpm preview` / `pnpm dev` under the
+# Cloudflare adapter. In production these are set in the Cloudflare dashboard.
+
+NEXT_PUBLIC_SUPABASE_URL=https://tpkawdequqsvvtwsjfya.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=sb_publishable_xxx
+NEXT_PUBLIC_SITE_URL=http://localhost:8788
+
+# Secrets — never commit real values
+SUPABASE_SERVICE_ROLE_KEY=eyJ...
+RESEND_API_KEY=re_...
