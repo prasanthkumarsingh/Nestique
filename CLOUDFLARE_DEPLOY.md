@@ -17,10 +17,16 @@ This project now targets **Cloudflare Workers** via `@opennextjs/cloudflare`.
    `npx wrangler deploy`. `wrangler deploy` on an OpenNext project just calls
    `opennextjs-cloudflare deploy`, which needs `.open-next/` from a prior
    `opennextjs-cloudflare build` — but `pnpm run build` was plain `next build`
-   (writes only `.next/`). **Fixed in code:** `"build"` in `package.json` is now
+   (writes only `.next/`). **Fixed:** `"build"` in `package.json` is now
    `opennextjs-cloudflare build`, so the dashboard's existing
    `pnpm run build` → `npx wrangler deploy` pair works with no dashboard change.
-   Plain Next build is still available as `pnpm run build:next`.
+4. **Build timed out, log looping `OpenNext — Building Next.js app` forever** —
+   after #3, `opennextjs-cloudflare build` runs its "Building Next.js app" step
+   as `pnpm build`, which is now `opennextjs-cloudflare build` again → infinite
+   recursion. **Fixed:** `open-next.config.ts` sets
+   `config.buildCommand = "pnpm run build:next"` so that inner step runs plain
+   `next build`. OpenNext still forces standalone output via
+   `NEXT_PRIVATE_STANDALONE`, so `build:next` needs no `output: "standalone"`.
 
 All server code is `fetch`-based (`supabase-js`, `resend`); no Node built-ins, so
 it runs on Workers with the `nodejs_compat` flag.
@@ -34,15 +40,16 @@ it runs on Workers with the `nodejs_compat` flag.
 | `deploy` | `opennextjs-cloudflare build && opennextjs-cloudflare deploy` | manual deploy — self-contained |
 | `preview` | `opennextjs-cloudflare build && opennextjs-cloudflare preview` | local Worker at `http://localhost:8788` |
 
-`opennextjs-cloudflare build` invokes `next build` itself, so nothing assumes a
-prior separate Next build.
+`opennextjs-cloudflare build` runs the Next build via `open-next.config.ts`'s
+`buildCommand` (`pnpm run build:next`), so nothing assumes a prior separate Next
+build and it does not recurse into the `build` script.
 
 ## Files added / changed
 
 | File | Purpose |
 | --- | --- |
 | `package.json` + `pnpm-lock.yaml` | `next` → 16.3.4; added `@opennextjs/cloudflare`, `wrangler`; `preview` / `deploy` / `cf-typegen` scripts; lockfile regenerated |
-| `open-next.config.ts` | OpenNext adapter config (minimal — no ISR cache yet) |
+| `open-next.config.ts` | OpenNext adapter config; `buildCommand: "pnpm run build:next"` to avoid build-script recursion |
 | `wrangler.jsonc` | Worker name, `nodejs_compat`, assets binding, public vars |
 | `next.config.ts` | dropped `output: standalone` + `compress`; `images.unoptimized: true`; `initOpenNextCloudflareForDev()` |
 | `.dev.vars.example` | template for local secrets |

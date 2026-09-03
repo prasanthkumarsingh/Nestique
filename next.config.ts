@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
@@ -17,6 +18,5 @@ const nextConfig: NextConfig = {
 export default nextConfig;
 
 // Lets `next dev` reach the Cloudflare bindings/vars (.dev.vars) locally.
-// No-op in production. Must stay after the default export.
-import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
+// No-op during `next build` / in production.
 initOpenNextCloudflareForDev();
