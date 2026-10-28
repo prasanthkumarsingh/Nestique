@@ -1,4 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowUpRight, ArrowDown, Handshake, Lightbulb, HeartHandshake, Leaf, Check } from "lucide-react";
+import ServiceImage from "@/components/ServiceImage";
+import StudioPortrait from "@/components/StudioPortrait";
+import { portfolioProjects } from "@/lib/portfolio.data";
 import JsonLd from "@/components/JsonLd";
 import styles from "./about.module.css";
 
@@ -101,10 +106,10 @@ const stats = [
 ];
 
 const values = [
-  { icon: "🤝", title: "Trust & Transparency", desc: "Honest pricing, open communication, and no hidden surprises throughout your project." },
-  { icon: "💡", title: "Creative Innovation", desc: "Every project is a canvas. We blend bold design thinking with functional, liveable spaces." },
-  { icon: "👤", title: "Client-First Approach", desc: "Your vision is our brief. We listen deeply, design thoughtfully, and deliver precisely." },
-  { icon: "🌿", title: "Sustainable Practices", desc: "Eco-conscious material choices and responsible building for a better environment." },
+  { icon: Handshake, title: "Trust & transparency", desc: "Open conversations, a clear scope, and considered decisions throughout your project." },
+  { icon: Lightbulb, title: "Creative thinking", desc: "Ideas that respond to the space, balancing expression with everyday functionality." },
+  { icon: HeartHandshake, title: "People come first", desc: "We listen to the way you live and work, then shape the design around what matters to you." },
+  { icon: Leaf, title: "Responsible choices", desc: "Thoughtful material selection and an awareness of the impact of what we build." },
 ];
 
 const founders = [
@@ -166,7 +171,7 @@ const team = [
     desc: "Transforms bare spaces into stunning, functional interiors. Expert in residential and commercial space planning, colour theory, and modular furniture.",
     color: "#c9a84c",
     initials: "P",
-    img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&q=80",
+    img: "",
   },
 ];
 
@@ -178,177 +183,52 @@ const steps = [
 ];
 
 export default function AboutPage() {
+  const villa = portfolioProjects.find((project) => project.slug === "villa85-iconica-grand")!;
+  const amogham = portfolioProjects.find((project) => project.slug === "amogham-telugu-kitchen")!;
   return (
     <main className={styles.main}>
-      <JsonLd data={aboutSchema} />
-      <JsonLd data={breadcrumbSchema} />
-
-      {/* ── Hero Header ── */}
-      <section className={styles.pageHeader}>
-        <div className={styles.pageHeaderInner}>
-          <p className={styles.breadcrumb}>About Us</p>
-          <h1>Built on Passion.<br />Delivered with Purpose.</h1>
-          <p className={styles.headerSub}>
-            Nestique Studio is a design-led architecture, interior design, and construction company.
-            We believe every space — home or commercial — deserves to be beautiful, functional, and built to last.
-          </p>
-        </div>
-      </section>
-
-      {/* ── Stats Bar ── */}
-      <section className={styles.statsSection}>
-        <div className={styles.statsInner}>
-          {stats.map((s, i) => (
-            <div className={styles.statItem} key={i}>
-              <span className={styles.statNum}>{s.num}</span>
-              <span className={styles.statLabel}>{s.label}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── Story / Mission ── */}
-      <section className={styles.storySection}>
-        <div className={styles.storyInner}>
-          <div className={styles.storyImgCol}>
-            <div className={styles.storyImgBox}>
-              <img
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80"
-                alt="Nestique Studio Team"
-                className={styles.storyImg}
-              />
-            </div>
-            <div className={styles.storyImgAccent}>
-              <img
-                src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=400&q=80"
-                alt="Architecture Design"
-                className={styles.storyImgSmall}
-              />
-            </div>
+      <JsonLd data={aboutSchema} /><JsonLd data={breadcrumbSchema} />
+      <section className={styles.hero}>
+        <div className={styles.heroInner}>
+          <div className={styles.heroCopy}>
+            <p className={styles.eyebrow}>Meet Nestique Studio</p>
+            <h1>Spaces with purpose.<br /><em>People at the heart.</em></h1>
+            <p className={styles.heroDescription}>We are a design-led architecture, interior design, and construction studio. We bring ideas and execution together to create spaces that feel right for the people who use them.</p>
+            <div className={styles.heroActions}><Link href="/consultation" className={styles.primaryButton}>Start a conversation <ArrowUpRight size={18} aria-hidden="true" /></Link><a href="#our-story" className={styles.textLink}>Discover our story <ArrowDown size={16} aria-hidden="true" /></a></div>
           </div>
-          <div className={styles.storyText}>
-            <p className={styles.eyebrow}>Our Story</p>
-            <h2>From a Shared Vision to Spaces that Inspire</h2>
-            <p>
-              Nestique Studio was founded with a simple but powerful belief — that great design should be accessible, not overwhelming. Too many families and businesses struggled with fragmented contractors, opaque pricing, and projects that dragged on forever.
-            </p>
-            <p>
-              We set out to change that. Under one roof, we bring together architecture, interior design, and construction — managed end-to-end with complete transparency and a deep commitment to craft.
-            </p>
-            <p>
-              Today, Nestique Studio operates across 6 major Indian cities, delivering homes, offices, and commercial spaces that stand out for their thoughtful design and quality execution.
-            </p>
-            <a href="/consultation" className={styles.orangeBtn}>Start Your Project</a>
+          <div className={styles.heroVisual}>
+            <div className={styles.heroMainPhoto}><ServiceImage src={villa.photos[0].url} title="Villa85 at Iconica Grand by Nestique Studio" index={0} /><div className={styles.photoShade} /><Link href="/portfolio#villa85-iconica-grand" className={styles.heroPhotoLabel}><span>Villa85 / Iconica Grand</span><ArrowUpRight size={18} aria-hidden="true" /></Link></div>
+            <div className={styles.heroInset}><ServiceImage src={amogham.photos[0].url} title="Amogham Telugu Kitchen interior by Nestique Studio" index={0} /></div>
+            <span className={styles.heroSideNote}>Thoughtfully designed. Carefully brought to life.</span>
           </div>
         </div>
       </section>
-
-      {/* ── Founders ── */}
-      <section className={styles.foundersSection}>
-        <div className={styles.sectionCenter}>
-          <p className={styles.eyebrow}>Leadership</p>
-          <h2>Meet Our Co-Founders</h2>
-          <p className={styles.sectionSub}>
-            Three visionary minds — united by a shared purpose to design spaces that inspire, endure, and transform lives.
-          </p>
-          <div className={styles.foundersGrid}>
-            {founders.map((f, i) => (
-              <div className={styles.founderCard} key={i}>
-                <div className={styles.founderImgBox} style={{ borderColor: f.color }}>
-                  <img src={f.img} alt={f.name} className={styles.founderImg} />
-                  <div className={styles.founderImgGradient} />
-                </div>
-                <div className={styles.founderBody}>
-                  <div className={styles.founderMeta}>
-                    <div>
-                      <h3>{f.name}</h3>
-                      <p className={styles.founderRole} style={{ color: f.color }}>{f.role}</p>
-                    </div>
-                    <span className={styles.founderTag}>{f.tag}</span>
-                  </div>
-                  <p className={styles.founderBio}>{f.bio}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Values ── */}
-      <section className={styles.valuesSection}>
-        <div className={styles.sectionCenter}>
-          <p className={styles.eyebrow}>Our Values</p>
-          <h2>What We Stand For</h2>
-          <p className={styles.sectionSub}>The principles behind every decision we make and every space we create.</p>
-          <div className={styles.valuesGrid}>
-            {values.map((v, i) => (
-              <div className={styles.valueCard} key={i}>
-                <span className={styles.valueIcon}>{v.icon}</span>
-                <h3>{v.title}</h3>
-                <p>{v.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Team ── */}
-      <section className={styles.teamSection}>
-        <div className={styles.sectionCenter}>
-          <p className={styles.eyebrow}>Our Team</p>
-          <h2>The People Behind Your Dream Space</h2>
-          <p className={styles.sectionSub}>
-            Skilled professionals who bring expertise, passion, and precision to every project.
-          </p>
-          <div className={styles.teamGrid}>
-            {team.map((m, i) => (
-              <div className={styles.teamCard} key={i}>
-                <div className={styles.teamImgBox}>
-                  <img src={m.img} alt={m.name} className={styles.teamImg} />
-                  <div className={styles.teamDeptBadge} style={{ background: m.color }}>{m.dept}</div>
-                </div>
-                <div className={styles.teamBody}>
-                  <h3>{m.name}</h3>
-                  <p className={styles.teamRole} style={{ color: m.color }}>{m.role}</p>
-                  <p className={styles.teamQual}>{m.qual}</p>
-                  <p className={styles.teamDesc}>{m.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Process ── */}
-      <section className={styles.processSection}>
-        <div className={styles.sectionCenter}>
-          <p className={styles.eyebrow}>How It Works</p>
-          <h2>Our Step-by-Step Process</h2>
-          <p className={styles.sectionSubOrange}>From first meeting to final handover — we&apos;re with you every step.</p>
-          <div className={styles.processGrid}>
-            {steps.map((s, i) => (
-              <div className={styles.processCard} key={i}>
-                <span className={styles.stepNum}>{s.step}</span>
-                <h3>{s.title}</h3>
-                <p>{s.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── CTA ── */}
-      <section className={styles.ctaBanner}>
-        <div className={styles.ctaBannerInner}>
-          <h2>Let&apos;s Build Something Remarkable Together</h2>
-          <p>Talk to our experts today and get a transparent quote for your dream space — home, office, or commercial.</p>
-          <div className={styles.ctaBannerBtns}>
-            <a href="/consultation" className={styles.ctaBtnWhite}>Book a Free Consultation</a>
-            <a href="/portfolio" className={styles.ctaBtnOutline}>View Our Work</a>
-          </div>
-        </div>
-      </section>
-
+      <section className={styles.statsSection} aria-label="Nestique Studio at a glance"><div className={styles.statsInner}>{stats.map((stat) => <div className={styles.statItem} key={stat.label}><strong>{stat.num}</strong><span>{stat.label}</span></div>)}</div></section>
+      <section id="our-story" className={styles.storySection} aria-labelledby="story-title"><div className={styles.storyInner}>
+        <div className={styles.storyHeading}><p className={styles.eyebrow}>Our story</p><h2 id="story-title">One shared vision.<br /><em>Many ways to belong.</em></h2><span className={styles.storyMark}>N<span>Architecture / Interiors / Construction</span></span></div>
+        <div className={styles.storyText}><p className={styles.storyLead}>A beautiful space should feel as good to live in as it looks.</p><p>Nestique Studio began with a belief that great design should feel approachable. Building or transforming a space is personal, and the journey deserves the same thought and care as the finished result.</p><p>We bring architecture, interior design, and construction under one roof. With a shared team and a coordinated approach, we connect the early ideas with the details that make them work on site.</p><p>Today, our work spans homes, restaurants, offices, and commercial spaces. Each project starts with listening, grows through collaboration, and is shaped by the people, place, and purpose behind it.</p><Link href="/services" className={styles.textLink}>Discover what we do <ArrowUpRight size={18} aria-hidden="true" /></Link></div>
+      </div></section>
+      <section className={styles.foundersSection} aria-labelledby="founders-title"><div className={styles.container}>
+        <header className={styles.sectionHeading}><div><p className={styles.eyebrow}>The people behind the practice</p><h2 id="founders-title">Different perspectives.<br /><em>A shared purpose.</em></h2></div><p>Our co-founders bring design, business, and architectural thinking together to guide the studio and the work we create.</p></header>
+        <div className={styles.foundersGrid}>{founders.map((founder, index) => <article className={styles.founderCard} key={founder.name}><div className={styles.founderPhoto}><StudioPortrait src={founder.img} name={founder.name} initials={founder.initials} /><span className={styles.founderIndex}>0{index + 1}</span></div><div className={styles.founderBody}><p className={styles.founderRole}>{founder.role}</p><h3>{founder.name}</h3><span className={styles.founderTag}>{founder.tag}</span><details className={styles.founderBio}><summary>Meet {founder.name}<span aria-hidden="true">+</span></summary><p>{founder.bio}</p></details></div></article>)}</div>
+      </div></section>
+      <section className={styles.valuesSection} aria-labelledby="values-title"><div className={styles.container}>
+        <header className={styles.sectionHeading}><div><p className={styles.eyebrow}>The things we hold close</p><h2 id="values-title">Good design begins<br /><em>with good principles.</em></h2></div><p>These are the ideas we come back to, in our conversations, our drawings, and the decisions we make on site.</p></header>
+        <div className={styles.valuesGrid}>{values.map((value) => { const Icon = value.icon; return <article className={styles.valueCard} key={value.title}><span className={styles.valueIcon}><Icon size={26} strokeWidth={1.4} aria-hidden="true" /></span><h3>{value.title}</h3><p>{value.desc}</p></article>; })}</div>
+      </div></section>
+      <section className={styles.teamSection} aria-labelledby="team-title"><div className={styles.container}>
+        <header className={styles.sectionHeading}><div><p className={styles.eyebrow}>Working together</p><h2 id="team-title">The expertise behind<br /><em>your everyday spaces.</em></h2></div><p>Architecture and interiors work best in conversation. Our team connects the bigger picture with the details you experience every day.</p></header>
+        <div className={styles.teamGrid}>{team.map((member) => <article className={styles.teamCard} key={member.name}><div className={styles.teamTop}><span className={styles.teamInitials} aria-hidden="true">{member.initials}</span><span className={styles.teamDepartment}>{member.dept}</span></div><h3>{member.name}</h3><p className={styles.teamRole}>{member.role}</p><p className={styles.teamQualification}>{member.qual}</p><p className={styles.teamDescription}>{member.desc}</p></article>)}</div>
+      </div></section>
+      <section className={styles.workSection} aria-labelledby="work-title"><div className={styles.workInner}>
+        <div className={styles.workVisual}><ServiceImage src={amogham.photos[1].url} title="Warm materials and carefully considered dining spaces at Amogham Telugu Kitchen" index={0} /></div>
+        <div className={styles.workCopy}><p className={styles.eyebrow}>Our approach, in practice</p><h2 id="work-title">Every space has a story.<br /><em>Let&apos;s find yours.</em></h2><p>From the character of Amogham Telugu Kitchen to the quiet warmth of Villa85, explore the materials, moods, and details that shape our work.</p><ul><li><Check size={16} aria-hidden="true" />Designed around a clear purpose</li><li><Check size={16} aria-hidden="true" />Considered from layout to finishing</li><li><Check size={16} aria-hidden="true" />A collaboration from the first conversation</li></ul><Link href="/portfolio" className={styles.primaryButton}>Explore our project gallery <ArrowUpRight size={18} aria-hidden="true" /></Link></div>
+      </div></section>
+      <section className={styles.processSection} aria-labelledby="process-title"><div className={styles.container}>
+        <header className={styles.sectionHeading}><div><p className={styles.eyebrow}>From first conversation to final detail</p><h2 id="process-title">A thoughtful journey.<br /><em>Every step, together.</em></h2></div><Link href="/services" className={styles.textLink}>Explore our services <ArrowUpRight size={18} aria-hidden="true" /></Link></header>
+        <div className={styles.processGrid}>{steps.map((step) => <article key={step.step}><span className={styles.stepNumber}>{step.step}</span><h3>{step.title}</h3><p>{step.desc}</p></article>)}</div>
+      </div></section>
+      <section className={styles.cta}><p className={styles.eyebrow}>Your ideas. Our next conversation.</p><h2>Something meaningful<br /><em>starts with you.</em></h2><p>Tell us about the space you have in mind.<br />We would love to help you shape it.</p><div className={styles.ctaActions}><Link href="/consultation" className={styles.primaryButton}>Book a free consultation <ArrowUpRight size={18} aria-hidden="true" /></Link><Link href="/portfolio" className={styles.ctaLink}>View our work <ArrowUpRight size={18} aria-hidden="true" /></Link></div></section>
     </main>
   );
 }

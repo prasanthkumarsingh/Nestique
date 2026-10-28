@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
+import { PencilRuler, ShieldCheck, BadgeIndianRupee, CalendarCheck, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import JsonLd from "@/components/JsonLd";
+import SelectedWorks from "@/components/SelectedWorks";
+import ServiceImage from "@/components/ServiceImage";
+import { selectedWorksSchema } from "@/components/selectedWorks.data";
 import styles from "./home.module.css";
 
 const SITE_URL = "https://www.nestiquestudio.in";
+
+// Curated project galleries use the named Supabase uploads bundled locally.
 
 export const metadata: Metadata = {
   title: "Nestique Studio | Commercial Interior Design & Architecture in Visakhapatnam & Hyderabad",
@@ -149,13 +155,13 @@ const IMG = {
   gallery2: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=80",
   gallery3: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
   gallery4: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=600&q=80",
-  svcInterior: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600&q=80",
-  svcResidential: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80",
-  svcCommercial: "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80",
-  svcRenovation: "https://images.unsplash.com/photo-1503174971373-b1f69850bded?w=600&q=80",
-  svcArchitecture: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=80",
-  svcLandscape: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
-  svcBuilders: "https://images.unsplash.com/photo-1590069261209-f8e9b8642343?w=600&q=80",
+  svcInterior: "https://tpkawdequqsvvtwsjfya.supabase.co/storage/v1/object/public/service-images/interior-f51e9d87d081.jpg",
+  svcResidential: "https://tpkawdequqsvvtwsjfya.supabase.co/storage/v1/object/public/service-images/residential-45025467c570.jpg",
+  svcCommercial: "https://tpkawdequqsvvtwsjfya.supabase.co/storage/v1/object/public/service-images/commercial-02855da2b530.jpg",
+  svcRenovation: "https://tpkawdequqsvvtwsjfya.supabase.co/storage/v1/object/public/service-images/renovation-08df7825f966.jpg",
+  svcArchitecture: "https://tpkawdequqsvvtwsjfya.supabase.co/storage/v1/object/public/service-images/architecture-2e06582e593c.jpg",
+  svcLandscape: "https://tpkawdequqsvvtwsjfya.supabase.co/storage/v1/object/public/service-images/landscape-27968a05b1ec.jpg",
+  svcBuilders: "https://tpkawdequqsvvtwsjfya.supabase.co/storage/v1/object/public/service-images/builders-bf0dd66ba529.jpg",
 };
 
 const services = [
@@ -218,10 +224,10 @@ const services = [
 ];
 
 const features = [
-  { icon: "✏️", title: "Designs matching vision", desc: "Functional layouts unique to your lifestyle and preferences." },
-  { icon: "💎", title: "High-quality materials", desc: "No compromises. Only certified-grade materials throughout." },
-  { icon: "💰", title: "Price transparency", desc: "Clear pricing with no surprises, just peace of mind." },
-  { icon: "📅", title: "On-time delivery", desc: "From planning to handover, our turnkey model stays on schedule." },
+  { icon: PencilRuler, title: "Designed around you", desc: "Thoughtful layouts shaped by your lifestyle, your ideas, and the way you want to live." },
+  { icon: ShieldCheck, title: "Quality in every detail", desc: "Carefully chosen materials and considered craftsmanship, from foundation to finishing." },
+  { icon: BadgeIndianRupee, title: "Clarity on every cost", desc: "Transparent pricing and a clear scope of work, so you can plan with confidence." },
+  { icon: CalendarCheck, title: "A team that stays on track", desc: "Coordinated planning, regular updates, and one team guiding your project to handover." },
 ];
 
 const steps = [
@@ -256,18 +262,13 @@ const testimonials = [
   { quote: "Nestique Studio made my dream home a hassle-free reality — clear costs, quality build, and service you can trust.", name: "Mr. Radhakrishna", city: "Bangalore" },
 ];
 
-const gallery = [
-  { img: IMG.gallery1, title: "Luxury Villa, Visakhapatnam", sub: "Residential Construction" },
-  { img: IMG.gallery2, title: "5-Floor Apartment Complex", sub: "Multi-Unit Residential" },
-  { img: IMG.gallery3, title: "Luxury Landscape & Garden", sub: "Landscape & Outdoor" },
-  { img: IMG.gallery4, title: "Modern Living Room Interior", sub: "Interior Design" },
-];
+export default async function HomePage() {
 
-export default function HomePage() {
   return (
     <main>
       <JsonLd data={faqSchema} />
       <JsonLd data={homeServiceSchema} />
+      <JsonLd data={selectedWorksSchema} />
       {/* ── Hero ── */}
       <section className={styles.hero}>
         <div className={styles.heroInner}>
@@ -323,107 +324,78 @@ export default function HomePage() {
       </section>
 
       {/* ── Services We Offer ── */}
-      <section className={styles.servicesSection}>
+      <section className={styles.servicesSection} aria-labelledby="services-heading">
         <div className={styles.sectionCenter}>
-          <p className={styles.eyebrow}>What We Do</p>
-          <h2 className={styles.sectionTitle}>All Services Under One Roof</h2>
-          <p className={styles.sectionSub}>
-            From interior design to full-scale construction — residential, commercial, and everything in between.
-          </p>
+          <header className={styles.servicesHead}>
+            <div>
+              <p className={styles.eyebrow}>Considered design. Complete execution.</p>
+              <h2 id="services-heading" className={styles.servicesTitle}>All Services<br /><span>Under One Roof</span></h2>
+            </div>
+            <div className={styles.servicesIntro}>
+              <p>From the first sketch to the final detail, we bring your space to life. One team for every step of your journey.</p>
+              <Link href="/consultation" className={styles.servicesConsult}>Let&apos;s plan your space <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10" strokeLinecap="round" strokeLinejoin="round" /></svg></Link>
+            </div>
+          </header>
           <div className={styles.servicesGrid}>
             {services.map((s, i) => (
-              <Link href={s.link} className={styles.serviceCard} key={i}>
+              <Link href={s.link} className={styles.serviceCard} key={s.title}>
                 <div className={styles.serviceImgBox}>
-                  <Image
-                    src={s.img}
-                    alt={s.title}
-                    fill
-                    style={{ objectFit: "cover" }}
-                    unoptimized
-                  />
+                  <ServiceImage key={s.img} src={s.img} title={s.title} index={i} />
                   <div className={styles.serviceImgOverlay} />
-                  <span className={styles.serviceCardIcon}>{s.icon}</span>
+                  <span className={styles.serviceNumber} aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+                  <span className={styles.serviceImageLabel}>{s.sub}</span>
                 </div>
                 <div className={styles.serviceCardBody}>
                   <h3>{s.title}</h3>
-                  <p className={styles.serviceCardSub}>{s.sub}</p>
                   <p className={styles.serviceCardDesc}>{s.desc}</p>
-                  <span className={styles.serviceCardCta}>Learn more →</span>
+                  <span className={styles.serviceCardCta}>Explore service <span className={styles.serviceArrow} aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M5 12h14m-6-6 6 6-6 6" strokeLinecap="round" strokeLinejoin="round" /></svg></span></span>
                 </div>
               </Link>
             ))}
           </div>
+          <div className={styles.servicesNote}><span aria-hidden="true">&#8212;</span> Your vision. Our expertise. Every detail, together.</div>
         </div>
       </section>
 
       {/* ── Why Nestique Studio ── */}
-      <section className={styles.whySection}>
+      <section className={styles.whySection} aria-labelledby="why-heading">
         <div className={styles.whyInner}>
           <div className={styles.whyLeft}>
             <div className={styles.whyImgBox}>
-              <Image
-                src={IMG.whyLeft}
-                alt="Why Nestique Studio"
-                fill
-                style={{ objectFit: "cover" }}
-                unoptimized
-              />
+              <ServiceImage src={IMG.svcInterior} title="Warm, contemporary interiors with considered materials and lighting" index={0} />
+              <div className={styles.whyImageShade} />
+              <div className={styles.whyImageCaption}>
+                <span>The Nestique approach</span>
+                <p>Spaces to love.<br />Details to live with.</p>
+              </div>
+            </div>
+            <div className={styles.whyPromise}>
+              <span className={styles.whyPromiseIcon}><ShieldCheck aria-hidden="true" strokeWidth={1.5} /></span>
+              <div><strong>One team. From vision to reality.</strong><p>Design, architecture &amp; construction, together.</p></div>
             </div>
           </div>
           <div className={styles.whyRight}>
-            <p className={styles.eyebrow}>Why Us</p>
-            <h2 className={styles.sectionTitle}>Why Nestique Studio</h2>
-            <p className={styles.sectionSub}>
-              You build your dream space once. Build it right with Nestique Studio.
-            </p>
+            <p className={styles.eyebrow}>Built on trust. Crafted with care.</p>
+            <h2 id="why-heading" className={styles.whyTitle}>Why Nestique <span>Studio</span></h2>
+            <p className={styles.whyIntro}>Your space is personal. So is our approach. We bring thoughtful design and careful execution together to make your journey feel as considered as the result.</p>
             <div className={styles.featureGrid}>
-              {features.map((f, i) => (
-                <div className={styles.featureCard} key={i}>
-                  <span className={styles.featureIcon}>{f.icon}</span>
-                  <div>
-                    <h3>{f.title}</h3>
-                    <p>{f.desc}</p>
+              {features.map((f) => {
+                const Icon = f.icon;
+                return (
+                  <div className={styles.featureCard} key={f.title}>
+                    <span className={styles.featureIcon}><Icon aria-hidden="true" strokeWidth={1.5} /></span>
+                    <div><h3>{f.title}</h3><p>{f.desc}</p></div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
+            <Link href="/about" className={styles.whyLink}>Get to know Nestique <ArrowUpRight aria-hidden="true" size={19} /></Link>
           </div>
         </div>
       </section>
 
-      {/* ── Project Gallery ── */}
-      <section className={styles.gallerySection}>
-        <div className={styles.sectionCenter}>
-          <p className={styles.eyebrow}>Our Work</p>
-          <h2 className={styles.sectionTitle}>Our Project Gallery</h2>
-          <p className={styles.sectionSub}>
-            Discover spaces built with care, quality, and attention to detail.
-          </p>
-          <div className={styles.galleryGrid}>
-            {gallery.map((p, i) => (
-              <div className={styles.galleryCard} key={i}>
-                <div className={styles.galleryImgBox}>
-                  <Image
-                    src={p.img}
-                    alt={p.title}
-                    fill
-                    style={{ objectFit: "cover" }}
-                    unoptimized
-                  />
-                  <div className={styles.galleryOverlay}>
-                    <span>View Project</span>
-                  </div>
-                </div>
-                <div className={styles.galleryInfo}>
-                  <p className={styles.galleryType}>{p.sub}</p>
-                  <h3>{p.title}</h3>
-                </div>
-              </div>
-            ))}
-          </div>
-          <Link href="/portfolio" className={styles.outlineBtn}>Explore More Projects</Link>
-        </div>
-      </section>
+      {/* ── Spaces With A Story — Selected Works ── */}
+      <SelectedWorks />
 
       {/* ── Building Process ── */}
       <section className={styles.processSection}>

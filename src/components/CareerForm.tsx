@@ -27,25 +27,25 @@ export default function CareerForm({ defaultPosition }: { defaultPosition?: stri
   }
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form className={styles.form} onSubmit={handleSubmit} aria-busy={status === "sending"}>
       <div className={styles.formRow}>
         <div className={styles.formGroup}>
-          <label>Full Name *</label>
-          <input type="text" name="name" placeholder="Your full name" required />
+          <label htmlFor="career-name">Full Name *</label>
+          <input type="text" id="career-name" name="name" autoComplete="name" placeholder="Your full name" required />
         </div>
         <div className={styles.formGroup}>
-          <label>Email Address *</label>
-          <input type="email" name="email" placeholder="you@example.com" required />
+          <label htmlFor="career-email">Email Address *</label>
+          <input type="email" id="career-email" name="email" autoComplete="email" placeholder="you@example.com" required />
         </div>
       </div>
       <div className={styles.formRow}>
         <div className={styles.formGroup}>
-          <label>Phone Number *</label>
-          <input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" required />
+          <label htmlFor="career-phone">Phone Number *</label>
+          <input type="tel" id="career-phone" name="phone" autoComplete="tel" placeholder="+91 XXXXX XXXXX" required />
         </div>
         <div className={styles.formGroup}>
-          <label>Current City</label>
-          <select name="city">
+          <label htmlFor="career-city">Current City</label>
+          <select id="career-city" name="city" autoComplete="address-level2">
             <option value="">Select your city</option>
             <option>Visakhapatnam</option>
             <option>Vijayawada</option>
@@ -59,8 +59,8 @@ export default function CareerForm({ defaultPosition }: { defaultPosition?: stri
       </div>
       <div className={styles.formRow}>
         <div className={styles.formGroup}>
-          <label>Position Applying For *</label>
-          <select name="position" required defaultValue={defaultPosition || ""}>
+          <label htmlFor="career-position">Position Applying For *</label>
+          <select id="career-position" name="position" required defaultValue={defaultPosition || ""}>
             <option value="">Select a position</option>
             <option>Architect</option>
             <option>Interior Designer</option>
@@ -73,8 +73,8 @@ export default function CareerForm({ defaultPosition }: { defaultPosition?: stri
           </select>
         </div>
         <div className={styles.formGroup}>
-          <label>Years of Experience</label>
-          <select name="experience">
+          <label htmlFor="career-experience">Years of Experience</label>
+          <select id="career-experience" name="experience">
             <option value="">Select experience</option>
             <option>Fresher (0–1 year)</option>
             <option>1–3 years</option>
@@ -85,21 +85,21 @@ export default function CareerForm({ defaultPosition }: { defaultPosition?: stri
         </div>
       </div>
       <div className={styles.formGroup}>
-        <label>Portfolio / LinkedIn / Behance URL</label>
-        <input type="url" name="portfolio" placeholder="https://your-portfolio.com" />
+        <label htmlFor="career-portfolio">Portfolio / LinkedIn / Behance URL</label>
+        <input type="url" id="career-portfolio" name="portfolio" placeholder="https://your-portfolio.com" />
       </div>
       <div className={styles.formGroup}>
-        <label>Cover Note</label>
-        <textarea name="message" rows={4} placeholder="Tell us why you want to join Nestique Studio and what makes you a great fit..." />
+        <label htmlFor="career-message">Cover Note</label>
+        <textarea id="career-message" name="message" rows={4} placeholder="Tell us why you want to join Nestique Studio and what makes you a great fit..." />
       </div>
 
       {status === "success" && (
-        <div className={styles.successMsg}>
+        <div className={styles.successMsg} role="status">
           Application submitted! We will review your profile and get back to you within 5–7 business days.
         </div>
       )}
       {status === "error" && (
-        <div className={styles.errorMsg}>
+        <div className={styles.errorMsg} role="alert">
           Something went wrong. Please try again or email us directly at hello@nestiquestudio.in
         </div>
       )}

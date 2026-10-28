@@ -39,6 +39,7 @@ const articleSchema = {
 export default function FiveFloorResidential() {
   return (
     <main className={styles.main}>
+      <JsonLd data={articleSchema} />
       <div className={styles.heroImg}>
         <img
           src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&q=85"

@@ -161,170 +161,123 @@
 
 /* ── Services We Offer ── */
 .servicesSection {
-  background: #fff;
-  padding: 80px 0;
+  background: #f7f4ef;
+  padding: 96px 0 72px;
 }
-
-.servicesGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 8px;
+.servicesHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 48px;
   text-align: left;
+  margin-bottom: 44px;
 }
-
+.servicesTitle {
+  font-size: clamp(2.1rem, 4vw, 3.25rem);
+  line-height: 1.12;
+  letter-spacing: -0.045em;
+  font-weight: 750;
+  color: #24221f;
+}
+.servicesTitle span { color: #a55d35; }
+.servicesIntro { max-width: 340px; padding-bottom: 4px; }
+.servicesIntro p { color: #706b64; font-size: 0.97rem; line-height: 1.75; margin-bottom: 18px; }
+.servicesConsult { display: inline-flex; align-items: center; gap: 20px; color: #292620; font-size: 0.9rem; font-weight: 600; text-decoration: none; border-bottom: 1px solid #b49e8b; padding-bottom: 7px; }
+.servicesConsult svg { color: #a55d35; width: 20px; height: 20px; flex-shrink: 0; }
+.servicesGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px; text-align: left; }
 .serviceCard {
-  background: #fff;
-  border: 1px solid #ede8e0;
-  border-radius: 16px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  transition: transform 0.2s, box-shadow 0.2s;
-  color: inherit;
+  min-width: 0; background: #fff; border: 1px solid #e8e1d7;
+  border-radius: 14px; overflow: hidden; display: flex; flex-direction: column;
+  text-decoration: none; color: inherit;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.serviceCard:hover { transform: translateY(-5px); box-shadow: 0 18px 40px #3f2c1414; border-color: #cba486; }
+.serviceCard:focus-visible, .servicesConsult:focus-visible { outline: 3px solid #e8773a; outline-offset: 5px; }
+.serviceImgBox { position: relative; aspect-ratio: 16 / 10; background: #ddd5c8; overflow: hidden; }
+.serviceImgBox img { transition: transform 0.6s ease; }
+.serviceCard:hover .serviceImgBox img { transform: scale(1.05); }
+.serviceImgOverlay { position: absolute; inset: 0; background: linear-gradient(180deg, #19150f20, transparent 35%, #19150fc9); z-index: 1; }
+.serviceNumber { position: absolute; top: 16px; left: 16px; width: 34px; height: 34px; display: grid; place-items: center; background: #fffcf4ed; color: #65452d; border-radius: 50%; z-index: 2; font-size: 0.73rem; font-weight: 700; letter-spacing: 0.04em; }
+.serviceImageLabel { position: absolute; bottom: 18px; left: 22px; right: 18px; z-index: 2; color: #fff; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; line-height: 1.6; }
+.serviceCardBody { padding: 24px; display: flex; flex-direction: column; flex: 1; }
+.serviceCardBody h3 { font-size: 1.18rem; font-weight: 650; letter-spacing: -0.025em; color: #292620; margin-bottom: 12px; line-height: 1.35; }
+.serviceCardDesc { color: #76716b; font-size: 0.87rem; line-height: 1.75; flex: 1; margin-bottom: 24px; }
+.serviceCardCta { display: flex; align-items: center; justify-content: space-between; gap: 12px; border-top: 1px solid #eee8df; padding-top: 16px; color: #92502e; font-size: 0.8rem; font-weight: 600; }
+.serviceArrow { display: grid; place-items: center; width: 32px; height: 32px; background: #f7f1e9; border-radius: 50%; transition: background 0.25s, color 0.25s; }
+.serviceArrow svg { width: 17px; height: 17px; }
+.serviceCard:hover .serviceArrow { background: #a55d35; color: #fff; }
+.serviceCard:last-child { grid-column: 1 / -1; flex-direction: row; }
+.serviceCard:last-child .serviceImgBox { width: 42%; flex-shrink: 0; aspect-ratio: 16 / 9; }
+.serviceCard:last-child .serviceCardBody { padding: 30px 36px; justify-content: center; }
+.serviceCard:last-child .serviceCardDesc { flex: 0; }
+.servicesNote { margin-top: 34px; color: #827264; font-family: Georgia, serif; font-style: italic; font-size: 1rem; }
+.servicesNote span { color: #bd9673; margin-right: 10px; }
+@media (max-width: 1100px) {
+  .servicesHead { gap: 30px; }
+  .servicesGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 680px) {
+  .servicesSection { padding: 64px 0 48px; }
+  .servicesHead { flex-direction: column; align-items: flex-start; gap: 22px; margin-bottom: 30px; }
+  .servicesIntro { max-width: 100%; }
+  .servicesGrid { grid-template-columns: 1fr; gap: 22px; }
+  .serviceCard:last-child { flex-direction: column; }
+  .serviceCard:last-child .serviceImgBox { width: 100%; aspect-ratio: 16 / 10; }
+  .serviceCard:last-child .serviceCardBody { padding: 24px; }
+  .servicesNote { font-size: 0.9rem; line-height: 1.7; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .serviceCard, .serviceImgBox img, .serviceArrow { transition: none; }
+  .serviceCard:hover, .serviceCard:hover .serviceImgBox img { transform: none; }
 }
 
-.serviceCard:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.1);
+.whySection { background: #fff; padding: 104px 0 110px; }
+.whyInner { max-width: 1200px; margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: 0.95fr 1.05fr; align-items: center; gap: 72px; }
+.whyLeft { min-width: 0; position: relative; padding-bottom: 34px; }
+.whyImgBox { position: relative; aspect-ratio: 4 / 5; min-height: 460px; overflow: hidden; border-radius: 100px 16px 16px 16px; background: #e7dbcb; }
+.whyImageShade { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 45%, #181511bd); pointer-events: none; }
+.whyImageCaption { position: absolute; left: 30px; bottom: 52px; color: #fff; }
+.whyImageCaption span { display: block; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 12px; }
+.whyImageCaption p { font-family: Georgia, serif; font-size: clamp(1.7rem, 3vw, 2.3rem); line-height: 1.2; }
+.whyPromise { position: absolute; left: 24px; right: -20px; bottom: 0; display: flex; align-items: center; gap: 16px; padding: 22px; background: #faf6ef; border: 1px solid #e9dfd1; border-radius: 12px; box-shadow: 0 14px 35px #38271812; }
+.whyPromiseIcon { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: #eee2d1; color: #96603c; flex-shrink: 0; }
+.whyPromiseIcon svg { width: 26px; height: 26px; }
+.whyPromise strong { color: #342c24; font-size: 0.88rem; font-weight: 650; }
+.whyPromise p { color: #847566; font-size: 0.75rem; line-height: 1.6; margin-top: 5px; }
+.whyRight { min-width: 0; }
+.whyTitle { font-size: clamp(2rem, 3.5vw, 2.85rem); letter-spacing: -0.045em; line-height: 1.15; font-weight: 750; color: #292620; margin-bottom: 20px; }
+.whyTitle span { color: #a55d35; }
+.whyIntro { color: #77716a; font-size: 0.97rem; line-height: 1.8; margin-bottom: 30px; }
+.featureGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.featureCard { display: flex; flex-direction: column; gap: 14px; padding: 20px 18px; border-radius: 12px; background: #faf8f4; border: 1px solid #eee7dd; transition: background 0.25s, border-color 0.25s, transform 0.25s; }
+.featureCard:hover { background: #f7efe4; border-color: #d5b895; transform: translateY(-3px); }
+.featureIcon { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 10px; color: #a5643a; background: #ede2d2; }
+.featureIcon svg { width: 22px; height: 22px; }
+.featureCard h3 { font-size: 0.9rem; line-height: 1.4; color: #352f28; font-weight: 650; margin-bottom: 7px; }
+.featureCard p { font-size: 0.8rem; color: #7c746b; line-height: 1.75; }
+.whyLink { display: inline-flex; align-items: center; gap: 20px; padding-bottom: 7px; border-bottom: 1px solid #c7ac92; font-size: 0.86rem; font-weight: 600; color: #92502e; text-decoration: none; margin-top: 28px; }
+.whyLink:hover { color: #5e321b; }
+.whyLink:focus-visible { outline: 3px solid #e8773a; outline-offset: 5px; }
+@media (max-width: 1024px) {
+  .whyInner { gap: 36px; }
+  .featureGrid { grid-template-columns: 1fr; }
+  .featureCard { flex-direction: row; padding: 16px; }
+  .featureIcon { flex-shrink: 0; }
+  .whyPromise { left: 12px; right: -12px; padding: 18px; }
+}
+@media (max-width: 768px) {
+  .whySection { padding: 64px 0; }
+  .whyInner { grid-template-columns: 1fr; gap: 38px; }
+  .whyImgBox { min-height: 0; max-height: none; aspect-ratio: 4 / 3; border-radius: 64px 12px 12px 12px; }
+  .whyPromise { left: 14px; right: 14px; }
+  .whyImageCaption { left: 24px; bottom: 58px; }
+  .whyTitle { font-size: 2.15rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .featureCard { transition: none; }
+  .featureCard:hover { transform: none; }
 }
 
-.serviceImgBox {
-  position: relative;
-  aspect-ratio: 16/9;
-  background: #ddd5c8;
-  overflow: hidden;
-}
-
-.serviceImgOverlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.35) 100%);
-  z-index: 1;
-}
-
-.serviceCardIcon {
-  position: absolute;
-  bottom: 12px;
-  left: 14px;
-  font-size: 1.6rem;
-  z-index: 2;
-  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.4));
-}
-
-.serviceCardBody {
-  padding: 18px 20px 22px;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.serviceCardBody h3 {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin-bottom: 3px;
-}
-
-.serviceCardSub {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #e8773a;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 8px;
-}
-
-.serviceCardDesc {
-  font-size: 0.85rem;
-  color: #6b7280;
-  line-height: 1.55;
-  flex: 1;
-  margin-bottom: 12px;
-}
-
-.serviceCardCta {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #e8773a;
-  transition: color 0.2s;
-}
-
-.serviceCard:hover .serviceCardCta {
-  color: #cf5e20;
-}
-
-/* ── Why Nestique Studio ── */
-.whySection {
-  background: #faf8f5;
-  padding: 80px 0;
-}
-
-.whyInner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 32px;
-  display: flex;
-  align-items: center;
-  gap: 64px;
-}
-
-.whyLeft {
-  flex: 1;
-  min-width: 0;
-}
-
-.whyImgBox {
-  border-radius: 16px;
-  overflow: hidden;
-  background: #f0e8dc;
-  aspect-ratio: 4/5;
-  max-height: 460px;
-  position: relative;
-}
-
-.whyRight {
-  flex: 1;
-  min-width: 0;
-}
-
-.featureGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-.featureCard {
-  background: #fff;
-  border: 1px solid #ede8e0;
-  border-radius: 12px;
-  padding: 20px 18px;
-  display: flex;
-  gap: 14px;
-  align-items: flex-start;
-}
-
-.featureIcon {
-  font-size: 1.5rem;
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-.featureCard h3 {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin-bottom: 4px;
-}
-
-.featureCard p {
-  font-size: 0.85rem;
-  color: #6b7280;
-  line-height: 1.5;
-}
-
-/* ── Gallery ── */
 .gallerySection {
   background: #fff;
   padding: 80px 0;
@@ -721,7 +674,7 @@
   }
 
   .whyImgBox {
-    max-height: 300px;
+    max-height: none;
   }
 
   .featureGrid {

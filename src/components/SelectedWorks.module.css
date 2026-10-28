@@ -1,0 +1,444 @@
+/* ── Spaces With A Story — Selected Works ──
+   Editorial project showcase. Matches the Nestique Studio design system:
+   cream/white sections, orange #e8773a accent, Segoe/Inter type, 8–16px radii.
+*/
+
+.section {
+  background: #fff;
+  padding: 96px 0 104px;
+}
+
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ── Section heading (left-aligned, editorial) ── */
+.head {
+  max-width: 640px;
+  margin-bottom: 76px;
+}
+
+.eyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #e8773a;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: #1a1a1a;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  margin-bottom: 18px;
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  color: #6b7280;
+  line-height: 1.7;
+  max-width: 520px;
+}
+
+/* ── Project list ── */
+.projects {
+  display: flex;
+  flex-direction: column;
+  gap: 112px;
+}
+
+.project {
+  scroll-margin-top: 120px;
+  display: grid;
+  grid-template-columns: 1.12fr 0.88fr;
+  gap: 56px;
+  align-items: center;
+}
+
+/* Alternate image / text sides on desktop */
+.project:nth-child(even) .media {
+  order: 2;
+}
+
+.project:nth-child(even) .body {
+  order: 1;
+}
+
+/* ── Media ── */
+.media {
+  position: relative;
+}
+
+.imageWrap {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #f0e8dc;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.1);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.6s ease;
+}
+
+.image[data-state="error"] {
+  opacity: 0;
+}
+
+/* Reveal states apply only once JS marks the section (see [data-animate]) */
+[data-animate] .image {
+  transform: scale(1.06);
+}
+
+[data-animate] .project.inView .image {
+  transform: scale(1);
+}
+
+.project:hover .image {
+  transform: scale(1.04);
+}
+
+/* Graceful placeholder shown until a real photograph is dropped in */
+.placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  padding: 24px;
+  background: linear-gradient(150deg, #f7f1e9 0%, #efe5d7 100%);
+}
+
+.placeholderMark {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #b08a63;
+}
+
+.placeholderNote {
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  color: #a9997f;
+}
+
+/* ── Oversized editorial numeral ── */
+.number {
+  position: absolute;
+  top: -30px;
+  left: -16px;
+  font-size: clamp(3.25rem, 7vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: #1a1a1a;
+  opacity: 0.1;
+  transition: opacity 0.9s ease 0.05s, transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0.05s;
+  pointer-events: none;
+}
+
+[data-animate] .number {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+[data-animate] .project.inView .number {
+  opacity: 0.1;
+  transform: translateY(0);
+}
+
+/* ── Body ── */
+.body {
+  transition: opacity 0.7s ease 0.08s, transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) 0.08s;
+}
+
+[data-animate] .body {
+  opacity: 0;
+  transform: translateY(26px);
+}
+
+[data-animate] .project.inView .body {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.category {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #e8773a;
+  margin-bottom: 14px;
+}
+
+.name {
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  font-weight: 800;
+  color: #1a1a1a;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+}
+
+.nameSub {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.6em;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: #6b7280;
+}
+
+.location {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  margin-bottom: 22px;
+}
+
+.concept {
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: #1a1a1a;
+  border-left: 2px solid #e8773a;
+  padding-left: 16px;
+  margin-bottom: 18px;
+}
+
+.description {
+  font-size: 0.95rem;
+  color: #6b7280;
+  line-height: 1.75;
+  margin-bottom: 24px;
+}
+
+.scope {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+  padding: 0;
+  list-style: none;
+}
+
+.scopeItem {
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  color: #6b4c30;
+  background: #f5efe8;
+  border: 1px solid #e8e0d4;
+  border-radius: 3px;
+  padding: 5px 12px;
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  border-bottom: 1.5px solid #1a1a1a;
+  padding-bottom: 4px;
+  transition: color 0.2s, border-color 0.2s, gap 0.2s;
+}
+
+.cta:hover {
+  color: #e8773a;
+  border-color: #e8773a;
+  gap: 15px;
+}
+
+.cta svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+/* ── Footer link to full portfolio ── */
+.footer {
+  margin-top: 92px;
+  text-align: center;
+}
+
+.footerBtn {
+  display: inline-block;
+  background: transparent;
+  color: #1a1a1a;
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 0.97rem;
+  border: 1.5px solid #1a1a1a;
+  transition: background 0.2s, color 0.2s;
+}
+
+.footerBtn:hover {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+/* ── Tablet ── */
+@media (max-width: 1024px) {
+  .section {
+    padding: 80px 0 88px;
+  }
+
+  .head {
+    margin-bottom: 56px;
+  }
+
+  .projects {
+    gap: 80px;
+  }
+
+  .project,
+  .project:nth-child(even) .media,
+  .project:nth-child(even) .body {
+    grid-template-columns: 1fr;
+    order: 0;
+  }
+
+  .project {
+    gap: 30px;
+  }
+
+  .number {
+    top: -22px;
+    left: -8px;
+    font-size: clamp(3rem, 9vw, 4rem);
+  }
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  .section {
+    padding: 64px 0 72px;
+  }
+
+  .inner {
+    padding: 0 20px;
+  }
+
+  .projects {
+    gap: 64px;
+  }
+
+  .concept {
+    font-size: 1.05rem;
+  }
+
+  .number {
+    top: -16px;
+    left: -4px;
+    font-size: 2.85rem;
+  }
+
+  .footer {
+    margin-top: 64px;
+  }
+}
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .image,
+  .number,
+  .body {
+    transition: none !important;
+    transform: none !important;
+  }
+
+  .image {
+    transform: scale(1) !important;
+  }
+
+  .body {
+    opacity: 1 !important;
+  }
+
+  .number {
+    opacity: 0.1 !important;
+  }
+
+  .project:hover .image {
+    transform: scale(1) !important;
+  }
+
+  .cta {
+    transition: none;
+  }
+}
+
+/* Photography-led galleries */
+.section {
+  background: linear-gradient(180deg, #faf8f5 0%, #ffffff 42%, #faf8f5 100%);
+}
+.head { max-width: 720px; }
+.title { letter-spacing: -0.045em; }
+.project { grid-template-columns: 1.3fr 0.9fr; gap: 52px; }
+.imageWrap { aspect-ratio: 16 / 11; border-radius: 14px; box-shadow: none; }
+.media { min-width: 0; }
+.galleryStage { position: relative; border-radius: 14px; overflow: hidden; box-shadow: 0 18px 45px #3827181a; }
+.galleryControls {
+  position: absolute; inset: auto 0 0; display: flex; align-items: center;
+  justify-content: space-between; padding: 32px 18px 16px;
+  background: linear-gradient(transparent, #17130ed9); color: white;
+  font-size: 0.8rem; font-variant-numeric: tabular-nums; letter-spacing: 0.15em;
+}
+.galleryArrows { display: flex; gap: 8px; }
+.galleryArrows button {
+  width: 40px; height: 40px; border: 1px solid #ffffff70; border-radius: 50%;
+  background: #ffffff18; color: #fff; cursor: pointer; font-size: 1.2rem;
+  transition: background 0.2s;
+}
+.galleryArrows button:hover { background: #e8773a; }
+.thumbnails {
+  display: flex; gap: 8px; overflow-x: auto; padding: 14px 2px 8px;
+  scrollbar-width: none; -ms-overflow-style: none; position: relative;
+}
+.thumbnails::-webkit-scrollbar { display: none; width: 0; height: 0; }
+.galleryArrows button { display: inline-flex; align-items: center; justify-content: center; }
+.galleryArrows svg { width: 20px; height: 20px; flex-shrink: 0; }
+.thumbnails button {
+  flex: 0 0 76px; height: 54px; padding: 3px; background: transparent;
+  border: 2px solid transparent; border-radius: 7px; cursor: pointer;
+  opacity: 0.6; transition: opacity 0.2s, border-color 0.2s;
+}
+.thumbnails button[aria-pressed="true"] { border-color: #e8773a; opacity: 1; }
+.thumbnails button:hover { opacity: 1; }
+.thumbnails img { width: 100%; height: 100%; object-fit: cover; border-radius: 3px; }
+.gallery button:focus-visible, .cta:focus-visible, .footerBtn:focus-visible { outline: 3px solid #e8773a; outline-offset: 3px; }
+.number { top: -24px; left: 18px; z-index: 1; color: #fff; text-shadow: 0 2px 12px #0006; }
+[data-animate] .project.inView .number { opacity: 0.85; }
+.number { opacity: 0.85; }
+.nameSub { color: #886343; letter-spacing: 0.12em; margin-top: 9px; }
+.location { color: #737373; }
+.footerBtn { background: #1a1a1a; color: white; border-radius: 999px; padding: 15px 32px; }
+.footerBtn:hover { background: #e8773a; border-color: #e8773a; }
+@media (max-width: 1024px) { .project { grid-template-columns: 1fr; gap: 28px; } }
+@media (max-width: 768px) {
+  .imageWrap { aspect-ratio: 4 / 3; }
+  .thumbnails button { flex-basis: 64px; height: 48px; }
+  .galleryControls { padding: 28px 12px 12px; }
+  .number { top: -16px; left: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gallery button { transition: none; }
+  .number { opacity: 0.85 !important; }
+}

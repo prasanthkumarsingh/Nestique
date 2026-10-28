@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowDown, ArrowUpRight, Check, PencilRuler, Layers3, HardHat, KeyRound } from "lucide-react";
 import JsonLd from "@/components/JsonLd";
+import ServiceImage from "@/components/ServiceImage";
+import images from "../../../../public/images/services/supabase-manifest.json";
+import { portfolioProjects } from "@/lib/portfolio.data";
 import styles from "./services.module.css";
 
 const SITE_URL = "https://www.nestiquestudio.in";
@@ -52,257 +57,81 @@ export const metadata: Metadata = {
   },
 };
 
-const servicesSchema = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  name: "Nestique Studio — Services",
-  url: `${SITE_URL}/services`,
-  numberOfItems: 6,
-  itemListElement: [
-    {
-      "@type": "ListItem",
-      position: 1,
-      item: {
-        "@type": "Service",
-        name: "Architecture & Structural Design",
-        provider: { "@type": "LocalBusiness", name: "Nestique Studio" },
-        areaServed: ["Hyderabad", "Visakhapatnam", "Vijayawada", "Bangalore"],
-        description: "Architectural design, floor plans, 3D visualisations, structural drawings, and Vastu-compliant layouts.",
-      },
-    },
-    {
-      "@type": "ListItem",
-      position: 2,
-      item: {
-        "@type": "Service",
-        name: "Residential & Commercial Construction",
-        provider: { "@type": "LocalBusiness", name: "Nestique Studio" },
-        areaServed: ["Hyderabad", "Visakhapatnam", "Vijayawada", "Bangalore"],
-        description: "Turnkey construction of homes, commercial buildings, and malls with quality materials and on-site supervision.",
-        offers: {
-          "@type": "AggregateOffer",
-          priceCurrency: "INR",
-          lowPrice: "1800",
-          highPrice: "2700",
-          description: "Construction packages from ₹1,800 to ₹2,700 per sq. ft.",
-        },
-      },
-    },
-    {
-      "@type": "ListItem",
-      position: 3,
-      item: {
-        "@type": "Service",
-        name: "Interior Design & Space Planning",
-        provider: { "@type": "LocalBusiness", name: "Nestique Studio" },
-        areaServed: ["Hyderabad", "Visakhapatnam", "Vijayawada", "Bangalore"],
-        description: "Full home and office interior design — living rooms, bedrooms, modular kitchens, wardrobes, false ceilings, and lighting.",
-      },
-    },
-    {
-      "@type": "ListItem",
-      position: 4,
-      item: {
-        "@type": "Service",
-        name: "Renovation & Civil Works",
-        provider: { "@type": "LocalBusiness", name: "Nestique Studio" },
-        areaServed: ["Hyderabad", "Visakhapatnam", "Vijayawada", "Bangalore"],
-        description: "Complete home and office renovation, structural repairs, bathroom and kitchen remodelling, flooring and tiling.",
-      },
-    },
-    {
-      "@type": "ListItem",
-      position: 5,
-      item: {
-        "@type": "Service",
-        name: "Landscape & Outdoor Design",
-        provider: { "@type": "LocalBusiness", name: "Nestique Studio" },
-        areaServed: ["Hyderabad", "Visakhapatnam", "Vijayawada", "Bangalore"],
-        description: "Luxury garden, terrace, and outdoor space design for villas and commercial properties.",
-      },
-    },
-    {
-      "@type": "ListItem",
-      position: 6,
-      item: {
-        "@type": "Service",
-        name: "Builders & Development",
-        provider: { "@type": "LocalBusiness", name: "Nestique Studio" },
-        areaServed: ["Hyderabad", "Visakhapatnam", "Vijayawada", "Bangalore"],
-        description: "Ground-up construction of independent houses, villas, multi-floor apartments, gated communities, and commercial complexes — fully managed turnkey delivery.",
-      },
-    },
-  ],
-};
-
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-    { "@type": "ListItem", position: 2, name: "Services", item: `${SITE_URL}/services` },
-  ],
-};
 
 const services = [
-  {
-    icon: "📐",
-    title: "Architecture & Structural Design",
-    desc: "From concept to blueprint, our architects craft spaces that are innovative, functional, and uniquely yours. We handle floor plans, elevations, structural drawings, and 3D visualisations.",
-    points: ["3D Renderings & Walkthroughs", "Floor Plan & Elevation Design", "Structural Engineering", "Vastu-compliant layouts"],
-  },
-  {
-    icon: "🏗️",
-    title: "Construction & Project Management",
-    desc: "End-to-end construction with certified-grade materials, skilled labour, and transparent progress tracking. We deliver on time and on budget.",
-    points: ["Turnkey Construction", "Quality Material Sourcing", "On-site Supervision", "Regular Progress Reports"],
-  },
-  {
-    icon: "🛋️",
-    title: "Interior Design & Space Planning",
-    desc: "Transform bare spaces into beautiful, liveable interiors. Our designers balance aesthetics and functionality to reflect your personal style.",
-    points: ["Living & Bedroom Design", "Kitchen & Bathroom Interiors", "Modular Furniture", "Lighting & Décor"],
-  },
-  {
-    icon: "🔧",
-    title: "Renovation & Civil Works",
-    desc: "Breathe new life into existing spaces. Whether it's a full home makeover or targeted civil repairs, we handle it with precision.",
-    points: ["Complete Home Renovation", "Structural Repairs", "Bathroom & Kitchen Remodelling", "Flooring & Tiling"],
-  },
-  {
-    icon: "🌿",
-    title: "Landscape & Outdoor Design",
-    desc: "Create serene, functional outdoor environments — from lush gardens and terraces to driveways and boundary walls.",
-    points: ["Garden Design", "Terrace & Balcony Landscaping", "Boundary Walls & Gates", "Outdoor Lighting"],
-  },
-  {
-    icon: "🏗️",
-    title: "Builders & Development",
-    desc: "We are builders. From laying the foundation to the final handover, we construct independent homes, multi-floor apartments, villas, and commercial complexes — ground-up, fully managed, on schedule.",
-    points: ["Independent Houses & Villas", "Multi-Floor Apartment Buildings", "Gated Community & Township Projects", "Commercial Complexes & Showrooms", "Farmhouses & Weekend Homes", "Turnkey Delivery with Warranty"],
-  },
+  { slug: "interior-design", title: "Interior Design", label: "Spaces that feel like you", image: images.interior, icon: 0, description: "Interiors shaped around daily life. We bring layout, materials, furniture, and lighting together to create spaces that are comfortable, practical, and personal.", points: ["Living rooms & bedrooms", "Modular kitchens & wardrobes", "Lighting & ceiling design", "Commercial & hospitality interiors"] },
+  { slug: "residential-construction", title: "Residential Construction", label: "A place to call your own", image: images.residential, icon: 1, description: "From an independent home to a villa or apartment building, we coordinate the construction journey with attention to the structure, finishes, and details you live with.", points: ["Independent homes & villas", "Structural & civil works", "Materials & site coordination", "Finishing & handover"] },
+  { slug: "commercial-construction", title: "Commercial Construction", label: "Built for the way you work", image: images.commercial, icon: 2, description: "Purposeful commercial spaces that support your business. We consider how people move, how teams operate, and how a building can serve its users well.", points: ["Offices & retail spaces", "Hospitality & showrooms", "Building services coordination", "Construction & site supervision"] },
+  { slug: "architecture", title: "Architecture & Design", label: "Good spaces begin with a plan", image: images.architecture, icon: 3, description: "A clear design direction, grounded in the needs of your site. We develop the plans, elevations, and visualisations that turn your ideas into a coordinated brief for execution.", points: ["Site & space planning", "Floor plans & elevations", "Structural drawings", "3D views & design development"] },
+  { slug: "renovation", title: "Renovation & Remodelling", label: "A fresh chapter for your space", image: images.renovation, icon: 4, description: "Make more of the space you already have. From a focused kitchen update to a full interior transformation, we plan changes around the existing building and your priorities.", points: ["Home & office makeovers", "Kitchen & bathroom upgrades", "Flooring & finish renewal", "Civil repairs & alterations"] },
+  { slug: "landscape", title: "Landscape Design", label: "Room to breathe, outdoors", image: images.landscape, icon: 5, description: "Outdoor spaces that feel like a natural extension of your home. We combine planting, materials, circulation, and lighting for gardens and terraces that invite you to stay.", points: ["Gardens & courtyards", "Terraces & balconies", "Pathways & outdoor seating", "Planting & landscape lighting"] },
+  { slug: "builders", title: "Builders & Development", label: "The bigger picture, thoughtfully built", image: images.builders, icon: 6, description: "A coordinated approach to larger residential and commercial developments. We connect architectural planning with construction and project management, from early concepts to the final details.", points: ["Villas & apartment buildings", "Residential developments", "Commercial complexes", "Project coordination & turnkey delivery"] },
 ];
 
-const packages = [
-  {
-    tier: "Standard",
-    price: "₹ 1,800",
-    highlight: false,
-    features: ["Design Consultation", "Structure", "Flooring & Dado", "Doors & Windows", "Plumbing", "Painting", "Electrical"],
-  },
-  {
-    tier: "Premium",
-    price: "₹ 2,200",
-    highlight: true,
-    features: ["Custom Design", "Structure", "Flooring & Dado", "Doors & Windows", "Plumbing", "Painting", "Electrical", "Railing & Handrails"],
-  },
-  {
-    tier: "Luxury",
-    price: "₹ 2,700",
-    highlight: false,
-    features: ["Premium Design", "Structure", "Flooring & Dado", "Doors & Windows", "Plumbing", "Painting", "Electrical", "Railing & Handrails", "Landscape Design"],
-  },
+const stages = [
+  { icon: PencilRuler, name: "Listen & understand", description: "We discuss your site, lifestyle or business needs, priorities, and budget." },
+  { icon: Layers3, name: "Design & define", description: "Layouts, materials, and the scope of work come together before execution." },
+  { icon: HardHat, name: "Coordinate & build", description: "Our team coordinates the site work and shares progress as your space takes shape." },
+  { icon: KeyRound, name: "Review & hand over", description: "We review the agreed scope and finishing details together before handover." },
 ];
+const packages = [
+  { name: "Standard", note: "The essentials, considered.", description: "A practical starting point for a clear, functional build.", features: ["Design consultation", "Structure & civil works", "Flooring, doors & windows", "Plumbing, electrical & painting"] },
+  { name: "Premium", note: "More room for expression.", description: "Custom design choices and a more detailed finishing scope.", features: ["Custom design development", "Structure & civil works", "Flooring, doors & windows", "Plumbing, electrical & painting", "Railing & handrails"] },
+  { name: "Luxury", note: "A more individual approach.", description: "A broader design scope with attention to indoor and outdoor living.", features: ["Premium design development", "Structure & civil works", "Flooring, doors & windows", "Plumbing, electrical & painting", "Railing, handrails & landscape"] },
+];
+const questions = [
+  { question: "Can I engage you for design only?", answer: "Yes. We offer architectural planning and interior design as well as construction and execution. We can discuss the level of support your project needs during the consultation." },
+  { question: "Do you work on both homes and commercial spaces?", answer: "Yes. Our services cover residential interiors and construction, as well as offices, restaurants, retail, and other commercial projects. You can explore examples in our project gallery." },
+  { question: "How is the project cost worked out?", answer: "Cost depends on the site, built-up area, design scope, materials, and finishes. After discussing your brief, we define the proposed scope and prepare an estimate for your review." },
+  { question: "What should I bring to the first consultation?", answer: "Bring any available floor plans or site dimensions, photos of the existing space, your preferred style, and an approximate budget. If you are just getting started, we can help you work through the brief." },
+];
+const servicesSchema = { "@context": "https://schema.org", "@type": "ItemList", name: "Nestique Studio Services", numberOfItems: services.length, itemListElement: services.map((service, index) => ({ "@type": "ListItem", position: index + 1, item: { "@type": "Service", name: service.title, description: service.description, url: SITE_URL + "/services#" + service.slug, provider: { "@type": "Organization", name: "Nestique Studio" } } })) };
+const breadcrumbSchema = { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: SITE_URL }, { "@type": "ListItem", position: 2, name: "Services", item: SITE_URL + "/services" }] };
 
 export default function ServicesPage() {
   return (
     <main className={styles.main}>
-      <JsonLd data={servicesSchema} />
-      <JsonLd data={breadcrumbSchema} />
-      {/* Header */}
-      <section className={styles.pageHeader}>
-        <div className={styles.pageHeaderInner}>
-          <p className={styles.breadcrumb}>Services</p>
-          <h1>Comprehensive Home Building Solutions</h1>
-          <p className={styles.headerSub}>
-            From architectural design to final handover, Nestique Studio manages every aspect of your dream home project.
-          </p>
-        </div>
-      </section>
-
-      {/* Services List */}
-      <section className={styles.servicesSection}>
-        <div className={styles.inner}>
-          {services.map((s, i) => (
-            <div className={`${styles.serviceCard} ${i % 2 === 1 ? styles.serviceCardAlt : ""}`} key={i}>
-              <div className={styles.serviceImgBox}>
-                <span className={styles.serviceEmoji}>{s.icon}</span>
-              </div>
-              <div className={styles.serviceText}>
-                <h2>{s.title}</h2>
-                <p className={styles.serviceDesc}>{s.desc}</p>
-                <ul className={styles.servicePoints}>
-                  {s.points.map((p, j) => (
-                    <li key={j}>
-                      <span className={styles.checkIcon}>✓</span> {p}
-                    </li>
-                  ))}
-                </ul>
-                <a href="/consultation" className={styles.orangeBtn}>Get a Quote</a>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Builders Banner */}
-      <section className={styles.buildersBanner}>
-        <div className={styles.buildersBannerInner}>
-          <div className={styles.buildersBannerLeft}>
-            <p className={styles.eyebrow} style={{ color: "#e8773a" }}>We Build</p>
-            <h2>We Are <span>Builders.</span><br />Not Just Designers.</h2>
-            <p>
-              Nestique Studio doesn&apos;t stop at drawings and renders. We put on our hard hats and build — from the foundation to the last coat of paint. Every structure we design, we also construct.
-            </p>
-            <a href="/consultation" className={styles.orangeBtn}>Start Your Build</a>
+      <JsonLd data={servicesSchema} /><JsonLd data={breadcrumbSchema} />
+      <section className={styles.hero}>
+        <div className={styles.heroInner}>
+          <div className={styles.heroCopy}>
+            <p className={styles.eyebrow}>Architecture / Interiors / Construction</p>
+            <h1>Thoughtful spaces.<br /><span>From the ground up.</span></h1>
+            <p className={styles.heroDescription}>One studio for the whole journey. We bring design, architecture, and construction together to create spaces that work beautifully for the people in them.</p>
+            <div className={styles.heroActions}><Link href="/consultation" className={styles.primaryButton}>Let&apos;s discuss your project <ArrowUpRight size={18} aria-hidden="true" /></Link><a href="#our-services" className={styles.textLink}>Explore our services <ArrowDown size={16} aria-hidden="true" /></a></div>
+            <div className={styles.heroDetails}><span>Homes &amp; commercial spaces</span><span>Design through handover</span></div>
           </div>
-          <div className={styles.buildersBannerRight}>
-            {[
-              { icon: "🏠", title: "Independent Houses", desc: "G+1, G+2, G+3 custom homes built to your plot size and lifestyle." },
-              { icon: "🏢", title: "Apartment Buildings", desc: "Multi-floor residential complexes with modern amenities." },
-              { icon: "🏘️", title: "Villas & Farmhouses", desc: "Luxury villas, duplex homes, and weekend farmhouses." },
-              { icon: "🏬", title: "Commercial Complexes", desc: "Showrooms, offices, hotels, and retail buildings." },
-            ].map((bt, i) => (
-              <div className={styles.builderType} key={i}>
-                <span className={styles.builderTypeIcon}>{bt.icon}</span>
-                <h4>{bt.title}</h4>
-                <p>{bt.desc}</p>
-              </div>
-            ))}
+          <div className={styles.heroVisual}>
+            <ServiceImage src={portfolioProjects[2].photos[0].url} title="Villa85 at Iconica Grand, a Nestique Studio residential interior" index={0} />
+            <div className={styles.imageShade} />
+            <Link href="/portfolio#villa85-iconica-grand" className={styles.heroCaption}><span><small>A closer look at our work</small><strong>Villa85 / Iconica Grand</strong></span><ArrowUpRight aria-hidden="true" /></Link>
           </div>
         </div>
       </section>
-
-      {/* Packages */}
-      <section className={styles.packagesSection}>
-        <div className={styles.sectionCenter}>
-          <p className={styles.eyebrow}>Pricing</p>
-          <h2>Transparent Packages for Every Budget</h2>
-          <p className={styles.sectionSub}>All packages include end-to-end project management and quality guarantees.</p>
-          <div className={styles.packagesGrid}>
-            {packages.map((pkg, i) => (
-              <div className={`${styles.packageCard} ${pkg.highlight ? styles.packageHighlight : ""}`} key={i}>
-                <h3>{pkg.tier}</h3>
-                <ul className={styles.packageFeatures}>
-                  {pkg.features.map((f, j) => (
-                    <li key={j}><span className={styles.plusIcon}>+</span> {f}</li>
-                  ))}
-                </ul>
-                <a href="/consultation" className={pkg.highlight ? styles.orangeBtn : styles.outlineBtn}>
-                  Get Started
-                </a>
-              </div>
-            ))}
-          </div>
+      <nav className={styles.serviceNav} aria-label="Explore services"><div>{services.map((service, index) => <a href={"#" + service.slug} key={service.slug}><span>{String(index + 1).padStart(2, "0")}</span>{service.title}</a>)}</div></nav>
+      <section id="our-services" className={styles.servicesSection} aria-labelledby="services-title">
+        <div className={styles.container}>
+          <header className={styles.sectionHeading}><div><p className={styles.eyebrow}>What we can do for you</p><h2 id="services-title">Every space starts<br />with <em>a possibility.</em></h2></div><p>Whether you are building something new or rethinking a familiar space, choose the support that fits your project.</p></header>
+          <div className={styles.servicesGrid}>{services.map((service, index) => <article id={service.slug} className={styles.serviceCard} key={service.slug}>
+            <div className={styles.serviceVisual}><ServiceImage src={service.image} title={service.title + " concept illustration"} index={service.icon} /><span className={styles.serviceNumber}>{String(index + 1).padStart(2, "0")}</span></div>
+            <div className={styles.serviceBody}><p className={styles.serviceLabel}>{service.label}</p><h3>{service.title}</h3><p className={styles.serviceDescription}>{service.description}</p><ul>{service.points.map((point) => <li key={point}><Check size={15} aria-hidden="true" />{point}</li>)}</ul><Link href="/consultation" className={styles.serviceLink}>Discuss this service <ArrowUpRight size={18} aria-hidden="true" /></Link></div>
+          </article>)}</div>
         </div>
       </section>
-
-      {/* CTA */}
-      <section className={styles.ctaBanner}>
-        <h2>Not Sure Which Service You Need?</h2>
-        <p>Our experts will help you figure out the best plan for your project and budget — for free.</p>
-        <a href="/consultation" className={styles.ctaBtn}>Book a Free Consultation</a>
-      </section>
+      <section className={styles.processSection} aria-labelledby="process-title"><div className={styles.container}>
+        <header className={styles.sectionHeading}><div><p className={styles.eyebrow}>The way we work</p><h2 id="process-title">A clear path.<br /><em>A shared vision.</em></h2></div><p>A considered process keeps the design and the decisions connected, from your first conversation to the final review.</p></header>
+        <div className={styles.processGrid}>{stages.map((stage, index) => { const Icon = stage.icon; return <article key={stage.name}><div className={styles.stageTop}><Icon strokeWidth={1.4} size={28} aria-hidden="true" /><span>0{index + 1}</span></div><h3>{stage.name}</h3><p>{stage.description}</p></article>; })}</div>
+      </div></section>
+      <section className={styles.workSection} aria-labelledby="work-title"><div className={styles.container}>
+        <header className={styles.sectionHeading}><div><p className={styles.eyebrow}>From our portfolio</p><h2 id="work-title">See the thinking<br /><em>come to life.</em></h2></div><Link href="/portfolio" className={styles.textLink}>Explore all projects <ArrowUpRight size={18} aria-hidden="true" /></Link></header>
+        <div className={styles.workGrid}>{portfolioProjects.slice(0, 3).map((project) => <Link href={"/portfolio#" + project.slug} className={styles.workCard} key={project.slug}><div className={styles.workVisual}><ServiceImage src={project.photos[0].url} title={project.name} index={0} /></div><div className={styles.workCaption}><div><p>{project.category}</p><h3>{project.name}</h3><span>{project.subtitle}</span></div><ArrowUpRight size={20} aria-hidden="true" /></div></Link>)}</div>
+      </div></section>
+      <section className={styles.packagesSection} aria-labelledby="packages-title"><div className={styles.container}>
+        <header className={styles.sectionHeading}><div><p className={styles.eyebrow}>Construction packages</p><h2 id="packages-title">Different needs.<br /><em>The same attention.</em></h2></div><p>Use these packages as a starting point. We will confirm materials, specifications, and pricing around your site and agreed scope.</p></header>
+        <div className={styles.packagesGrid}>{packages.map((pkg, index) => <article className={styles.packageCard} data-featured={index === 1} key={pkg.name}><p className={styles.packageIndex}>0{index + 1} / {pkg.note}</p><h3>{pkg.name}</h3><p className={styles.packageDescription}>{pkg.description}</p><ul>{pkg.features.map((feature) => <li key={feature}><Check size={16} aria-hidden="true" />{feature}</li>)}</ul><Link href="/consultation" className={index === 1 ? styles.primaryButton : styles.outlineButton}>Request an estimate <ArrowUpRight size={17} aria-hidden="true" /></Link></article>)}</div>
+      </div></section>
+      <section className={styles.faqSection} aria-labelledby="faq-title"><div className={styles.faqInner}><div><p className={styles.eyebrow}>Before we begin</p><h2 id="faq-title">A few things<br /><em>you may be wondering.</em></h2></div><div className={styles.questions}>{questions.map((question) => <details key={question.question}><summary>{question.question}<span aria-hidden="true">+</span></summary><p>{question.answer}</p></details>)}</div></div></section>
+      <section className={styles.cta}><div><p className={styles.eyebrow}>Let&apos;s start with a conversation</p><h2>Your next chapter.<br /><em>Thoughtfully designed.</em></h2><p>Tell us about your space, your ideas, and what matters to you.<br />We will help you find a way forward.</p><Link href="/consultation" className={styles.primaryButton}>Book a free consultation <ArrowUpRight size={18} aria-hidden="true" /></Link></div></section>
     </main>
   );
 }

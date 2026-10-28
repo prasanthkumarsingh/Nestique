@@ -1,4 +1,5 @@
 import { MetadataRoute } from "next";
+import { blogPosts } from "@/lib/blog.data";
 
 const SITE_URL = "https://www.nestiquestudio.in";
 
@@ -29,13 +30,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/about`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.65 },
     { url: `${SITE_URL}/contact`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.65 },
     { url: `${SITE_URL}/careers`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.55 },
-    // Blog
-    { url: `${SITE_URL}/blog`, lastModified: new Date(), changeFrequency: "weekly", priority: 0.75 },
-    { url: `${SITE_URL}/blog/interior-design-cost-visakhapatnam-2025`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-    { url: `${SITE_URL}/blog/house-construction-cost-hyderabad-2025`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
-    { url: `${SITE_URL}/blog/bangkok-luxury-structural-design-international-project`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.55 },
-    { url: `${SITE_URL}/blog/5-floor-residential-building-construction-vizag-hyderabad`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.55 },
-    { url: `${SITE_URL}/blog/landscape-design-luxury-real-estate-vizag`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.55 },
-    { url: `${SITE_URL}/blog/interior-design-residential-apartments-ap-telangana`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.55 },
+    // Blog entries match actual, published routes and their publication dates.
+    { url: SITE_URL + "/blog", lastModified: "2026-10-28", changeFrequency: "weekly", priority: 0.75 },
+    ...blogPosts.map((post) => ({ url: SITE_URL + "/blog/" + post.slug, lastModified: post.published, images: [post.image] })),
   ];
 }

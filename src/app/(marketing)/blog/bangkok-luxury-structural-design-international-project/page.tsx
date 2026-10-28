@@ -85,7 +85,7 @@ export default function BangkokLuxuryProject() {
             Led by our Creative Co-Founder Abhisheak, the design team developed a concept that blended contemporary minimalism with Southeast Asian spatial sensibility. The structure features floor-to-ceiling glazing, cantilevered terraces, and a façade system that plays with light at every hour of the day.
           </p>
           <p>
-            Every detail — from the lobby's double-height atrium to the rooftop sky garden — was designed to create a sense of arrival, privacy, and luxury for its residents.
+            Every detail — from the lobby&apos;s double-height atrium to the rooftop sky garden — was designed to create a sense of arrival, privacy, and luxury for its residents.
           </p>
 
           <h2>Engineering Highlights</h2>

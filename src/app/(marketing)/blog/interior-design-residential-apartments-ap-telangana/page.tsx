@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
+import { blogPosts } from "@/lib/blog.data";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "../bangkok-luxury-structural-design-international-project/post.module.css";
@@ -34,9 +36,13 @@ export const metadata: Metadata = {
   },
 };
 
+const entry = blogPosts.find((post) => post.slug === "interior-design-residential-apartments-ap-telangana")!;
+const articleSchema = { "@context": "https://schema.org", "@type": "BlogPosting", headline: "Interior Design for Residential Apartments in AP & Telangana", description: entry.excerpt, url: POST_URL, mainEntityOfPage: POST_URL, image: entry.image, datePublished: entry.published, author: { "@type": "Person", name: "Preethi", url: SITE_URL + "/about" }, publisher: { "@type": "Organization", name: "Nestique Studio", url: SITE_URL } };
+
 export default function InteriorDesignApts() {
   return (
     <main className={styles.main}>
+      <JsonLd data={articleSchema} />
       <div className={styles.heroImg}>
         <Image
           src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=1200&q=85"

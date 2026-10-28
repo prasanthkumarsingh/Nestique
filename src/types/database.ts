@@ -34,6 +34,17 @@ export type ProjectClient = {
   created_at: string;
 };
 
+// Image source for the homepage "Spaces With A Story" section. The project
+// copy lives in src/components/selectedWorks.data.ts and is merged by `slug`.
+export type ShowcaseProject = {
+  slug: string;
+  image_path: string | null;
+  alt: string | null;
+  published: boolean;
+  sort_order: number;
+  updated_at: string;
+};
+
 export type ProjectImage = {
   id: string;
   project_id: string;
@@ -87,6 +98,9 @@ export const PROJECT_STATUS_LABELS: Record<ProjectStatus, string> = {
 };
 
 export const STORAGE_BUCKET = "project-images";
+
+// Public bucket backing the homepage "Spaces With A Story" section.
+export const SHOWCASE_BUCKET = "showcase";
 
 // project_updates.status is a free-text column (no DB enum) — this is the
 // fixed set offered in the admin UI so update labels stay consistent.

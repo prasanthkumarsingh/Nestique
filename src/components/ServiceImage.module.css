@@ -1,0 +1,20 @@
+.fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(ellipse at 75% 15%, #ecddc5, transparent 65%), linear-gradient(135deg, #eee7dc, #d2bc9e);
+  color: #795c3c;
+}
+.iconFrame {
+  display: grid;
+  place-items: center;
+  width: 112px;
+  height: 112px;
+  border: 1px solid #a3896745;
+  border-radius: 50%;
+  background: #fffaf140;
+  box-shadow: 0 0 0 18px #fffaf120;
+}
+.iconFrame svg { width: 60px; height: 60px; }
+.photo { object-fit: cover; }
