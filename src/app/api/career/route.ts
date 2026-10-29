@@ -3,6 +3,7 @@ import { getResend } from "@/lib/resend";
 import { getSupabase } from "@/lib/supabase";
 
 export async function POST(req: NextRequest) {
+  let saved = false;
   try {
     const { name, email, phone, city, position, experience, portfolio, message } = await req.json();
 
@@ -16,12 +17,13 @@ export async function POST(req: NextRequest) {
         position, experience: experience || null,
         portfolio: portfolio || null, message: message || null,
       });
+      saved = !error;
       if (error) console.error("Career Supabase insert error:", error);
     } catch (err) {
       console.error("Career Supabase insert error:", err);
     }
 
-    await getResend().emails.send({
+    const { data: delivery, error: emailError } = await getResend().emails.send({
       from: "Nestique Studio Careers <hello@nestiquestudio.in>",
       to: "hello@nestiquestudio.in",
       replyTo: email,
@@ -59,8 +61,16 @@ export async function POST(req: NextRequest) {
       `,
     });
 
+    if (emailError || !delivery) {
+      throw new Error(`Email delivery failed: ${emailError?.name ?? "missing response"}: ${emailError?.message ?? "No delivery ID returned"}`);
+    }
+
     return NextResponse.json({ success: true });
   } catch (err) {
+    if (saved) {
+      console.error("Submission saved, but notification failed:", err);
+      return NextResponse.json({ success: true });
+    }
     console.error("Career application email error:", err);
     return NextResponse.json({ error: "Failed to send application" }, { status: 500 });
   }

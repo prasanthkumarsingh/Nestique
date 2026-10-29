@@ -39,12 +39,12 @@ export const projects: Project[] = [
   {
     slug: "jismat-jail-mandi",
     number: "02",
-    title: "JISMAT JAIL MANDI",
+    title: "GISMAT JAIL MANDI",
     category: "Restaurant Theme & Interior Design",
     location: "Visakhapatnam, Andhra Pradesh",
     image: "/images/projects/jismat.jpg",
     gallery: ["jismat.jpg", "jismat2.jpg", "jismat3.webp"].map((name) => `/images/projects/${name}`),
-    alt: "Jismat Jail Mandi restaurant interior designed by Nestique Studio in Visakhapatnam",
+    alt: "Gismat Jail Mandi restaurant interior designed by Nestique Studio in Visakhapatnam",
     concept: "Turning a meal into an experience.",
     description:
       "A distinctive jail-themed dining experience, with exposed brick, dark metalwork and atmospheric lighting. The design brings a playful brand identity into the architecture while creating welcoming spaces for shared meals.",

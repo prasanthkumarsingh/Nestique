@@ -8,7 +8,7 @@ export type PortfolioProject = { slug: string; name: string; subtitle: string; c
 export const portfolioProjects: PortfolioProject[] = [
   ...projects.map((project) => ({
     slug: project.slug,
-    name: project.title === "AMOGHAM" ? "Amogham" : project.title === "JISMAT JAIL MANDI" ? "Jismat Jail Mandi" : "Villa85",
+    name: project.title === "AMOGHAM" ? "Amogham" : project.title === "GISMAT JAIL MANDI" ? "Gismat Jail Mandi" : "Villa85",
     subtitle: project.subtitle ?? "Jail-themed dining",
     category: (project.slug === "villa85-iconica-grand" ? "Residential" : "Hospitality") as PortfolioProject["category"],
     description: project.concept,

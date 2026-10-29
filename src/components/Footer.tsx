@@ -4,6 +4,7 @@ import styles from "./Footer.module.css";
 export default function Footer() {
   return (
     <footer className={styles.footer}>
+      <div className={styles.footerIntro}><div><p className={styles.eyebrow}>Your next chapter starts here</p><h2>Have a space in mind?<br /><em>Let&apos;s bring it to life.</em></h2></div><Link href="/consultation" className={styles.footerCta}>Start a conversation <span aria-hidden="true">?</span></Link></div>
       <div className={styles.container}>
         <div className={styles.brand}>
           <div className={styles.logoRow}>
@@ -15,7 +16,7 @@ export default function Footer() {
             />
           </div>
           <p className={styles.tagline}>
-            Best interior design & civil construction company in Visakhapatnam and Hyderabad. Home interiors, modular kitchens, false ceilings, villa construction & office fit-outs.
+            Thoughtful architecture. Soulful interiors. From the first conversation to the finishing touches, we create spaces that feel like you.
           </p>
           <div className={styles.contact}>
             <a href="mailto:hello@nestiquestudio.in">hello@nestiquestudio.in</a>

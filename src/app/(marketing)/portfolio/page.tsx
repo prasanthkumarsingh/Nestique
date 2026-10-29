@@ -11,7 +11,7 @@ const SITE_URL = "https://www.nestiquestudio.in";
 export const metadata: Metadata = {
   title: "Our Project Gallery | Restaurants, Villas & Apartments | Nestique Studio",
   description:
-    "Explore Amogham, Jismat, Villa85 at Iconica Grand, and the Heritage Apartment collection through 32 project photographs.",
+    "Explore Amogham, Gismat, Villa85 at Iconica Grand, and the Heritage Apartment collection through 32 project photographs.",
   keywords: [
     "architecture portfolio Hyderabad",
     "construction projects Vizag",

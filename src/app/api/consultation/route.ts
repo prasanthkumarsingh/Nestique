@@ -3,6 +3,7 @@ import { getResend } from "@/lib/resend";
 import { getSupabase } from "@/lib/supabase";
 
 export async function POST(req: NextRequest) {
+  let saved = false;
   try {
     const { name, email, phone, city, projectType, timeline, land, message } = await req.json();
 
@@ -16,12 +17,13 @@ export async function POST(req: NextRequest) {
         project_type: projectType || null, timeline: timeline || null,
         land: land || null, message: message || null,
       });
+      saved = !error;
       if (error) console.error("Consultation Supabase insert error:", error);
     } catch (err) {
       console.error("Consultation Supabase insert error:", err);
     }
 
-    await getResend().emails.send({
+    const { data: delivery, error: emailError } = await getResend().emails.send({
       from: "Nestique Studio <hello@nestiquestudio.in>",
       to: "hello@nestiquestudio.in",
       replyTo: email,
@@ -59,8 +61,16 @@ export async function POST(req: NextRequest) {
       `,
     });
 
+    if (emailError || !delivery) {
+      throw new Error(`Email delivery failed: ${emailError?.name ?? "missing response"}: ${emailError?.message ?? "No delivery ID returned"}`);
+    }
+
     return NextResponse.json({ success: true });
   } catch (err) {
+    if (saved) {
+      console.error("Submission saved, but notification failed:", err);
+      return NextResponse.json({ success: true });
+    }
     console.error("Consultation email error:", err);
     return NextResponse.json({ error: "Failed to send email" }, { status: 500 });
   }

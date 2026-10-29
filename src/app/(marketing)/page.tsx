@@ -270,57 +270,31 @@ export default async function HomePage() {
       <JsonLd data={homeServiceSchema} />
       <JsonLd data={selectedWorksSchema} />
       {/* ── Hero ── */}
-      <section className={styles.hero}>
+      <section className={styles.hero} aria-labelledby="hero-heading">
         <div className={styles.heroInner}>
           <div className={styles.heroLeft}>
-            <h1 className={styles.heroTitle}>
-              You Dream.<br />We Deliver.
-            </h1>
-            <p className={styles.heroSub}>
-              Architecture, Interior Design &amp; Construction — hassle-free, with Nestique Studio.
-            </p>
-            <div className={styles.heroStats}>
-              <div className={styles.stat}>
-                <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="#e8773a" strokeWidth="1.8">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-                <span className={styles.statNum}>+81</span>
-                <span className={styles.statLabel}>NPS Score</span>
-              </div>
-              <div className={styles.statDivider} />
-              <div className={styles.stat}>
-                <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="#e8773a" strokeWidth="1.8">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-                  <polyline points="9 22 9 12 15 12 15 22" stroke="#e8773a" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <span className={styles.statNum}>130+</span>
-                <span className={styles.statLabel}>Projects Delivered</span>
-              </div>
-              <div className={styles.statDivider} />
-              <div className={styles.stat}>
-                <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="#e8773a" strokeWidth="1.8">
-                  <rect x="2" y="7" width="20" height="14" rx="2" stroke="#e8773a" strokeWidth="1.8" />
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2" />
-                </svg>
-                <span className={styles.statNum}>220+</span>
-                <span className={styles.statLabel}>Under Construction</span>
-              </div>
+            <p className={styles.heroEyebrow}><span /> Architecture. Interiors. Possibilities.</p>
+            <h1 id="hero-heading" className={styles.heroTitle}>Extraordinary spaces.<br /><em>Made for you.</em></h1>
+            <p className={styles.heroSub}>From a place you imagine to a space you love. We bring thoughtful architecture, beautiful interiors, and seamless execution together.</p>
+            <div className={styles.heroActions}>
+              <Link href="/consultation" className={styles.heroPrimary}>Let&apos;s create your space <ArrowUpRight size={19} aria-hidden="true" /></Link>
+              <Link href="/portfolio" className={styles.heroSecondary}>Explore our work <ArrowUpRight size={18} aria-hidden="true" /></Link>
             </div>
-            <Link href="/consultation" className={styles.orangeBtn}>Book a Meeting</Link>
+            <div className={styles.heroTrust}>
+              <div><strong>130<span>+</span></strong><p>Projects delivered</p></div>
+              <div><strong>One team.</strong><p>From concept to completion</p></div>
+            </div>
           </div>
           <div className={styles.heroRight}>
             <div className={styles.heroImgBox}>
-              <Image
-                src={IMG.hero}
-                alt="Modern luxury home by Nestique Studio"
-                fill
-                style={{ objectFit: "cover" }}
-                priority
-                unoptimized
-              />
+              <Image src="/images/projects/villa85-1.jpeg" alt="Warm contemporary interiors at Villa85, Iconica Grand, by Nestique Studio" fill sizes="(max-width: 800px) 100vw, 55vw" style={{ objectFit: "cover" }} priority />
+              <span className={styles.heroImageTag}>The art of living well</span>
+              <Link href="/portfolio#villa85-iconica-grand" className={styles.heroProject}><div><span>In focus / Residential interiors</span><strong>Villa85, Iconica Grand</strong></div><ArrowUpRight size={24} aria-hidden="true" /></Link>
             </div>
+            <div className={styles.heroSideNote}>Thoughtfully designed. Beautifully lived.</div>
           </div>
         </div>
+        <div className={styles.heroBottom}><span>Rooted in detail. Designed around you.</span><span>Visakhapatnam <i /> Hyderabad <i /> Beyond</span></div>
       </section>
 
       {/* ── Services We Offer ── */}

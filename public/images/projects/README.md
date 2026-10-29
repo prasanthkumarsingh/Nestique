@@ -1,6 +1,6 @@
 # Selected Works photography
 
-These 25 images are the named Amogham, Jismat, and Villa85 uploads downloaded from Supabase project-images storage for the public home page. Private client folders remain private.
+These 25 images are the named Amogham, Gismat, and Villa85 uploads downloaded from Supabase project-images storage for the public home page. Private client folders remain private.
 
 The home page uses bundled copies so visitors do not need storage credentials, signed URLs, or the optional showcase_projects table. Project copy and gallery order live in src/components/selectedWorks.data.ts. Villa85 is presented as Villa85 ? Iconica Grand.
 

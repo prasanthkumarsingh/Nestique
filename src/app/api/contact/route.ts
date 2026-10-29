@@ -3,6 +3,7 @@ import { getResend } from "@/lib/resend";
 import { getSupabase } from "@/lib/supabase";
 
 export async function POST(req: NextRequest) {
+  let saved = false;
   try {
     const { name, email, phone, city, subject, message } = await req.json();
 
@@ -15,12 +16,13 @@ export async function POST(req: NextRequest) {
         name, email, phone: phone || null, city: city || null,
         subject: subject || null, message,
       });
+      saved = !error;
       if (error) console.error("Contact Supabase insert error:", error);
     } catch (err) {
       console.error("Contact Supabase insert error:", err);
     }
 
-    await getResend().emails.send({
+    const { data: delivery, error: emailError } = await getResend().emails.send({
       from: "Nestique Studio <hello@nestiquestudio.in>",
       to: "hello@nestiquestudio.in",
       replyTo: email,
@@ -54,8 +56,16 @@ export async function POST(req: NextRequest) {
       `,
     });
 
+    if (emailError || !delivery) {
+      throw new Error(`Email delivery failed: ${emailError?.name ?? "missing response"}: ${emailError?.message ?? "No delivery ID returned"}`);
+    }
+
     return NextResponse.json({ success: true });
   } catch (err) {
+    if (saved) {
+      console.error("Submission saved, but notification failed:", err);
+      return NextResponse.json({ success: true });
+    }
     console.error("Contact email error:", err);
     return NextResponse.json({ error: "Failed to send email" }, { status: 500 });
   }
