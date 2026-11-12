@@ -30,6 +30,7 @@ export function submitEnquiry(req: Request, kind: EnquiryKind) {
     return createClient(url, key, { auth: { persistSession: false, autoRefreshToken: false } });
   }
   return handleEnquiry(req, kind, {
+    deliveryMode: setting("ENQUIRY_DELIVERY_MODE") === "email" ? "email" : undefined,
     async insert(key, hash, data) {
       const common = { request_key: key, request_hash: hash, name: data.name, email: data.email, phone: data.phone || null, city: data.city || null, message: data.message || null };
       const row: Record<string, string | null> = kind === "contact" ? { ...common, subject: data.subject || null } : { ...common, project_type: data.projectType || null, timeline: data.timeline || null, land: data.land || null };

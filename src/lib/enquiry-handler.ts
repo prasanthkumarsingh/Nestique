@@ -18,6 +18,7 @@ function reportFailure(error: unknown, kind: EnquiryKind, req: Request, fallback
 export type EnquiryFields = Record<string, string>;
 export type EnquiryRecord = { request_hash: string; notification_status: string };
 export type EnquiryDependencies = {
+  deliveryMode?: "email";
   insert: (key: string, hash: string, fields: EnquiryFields) => Promise<"inserted" | "duplicate">;
   find: (key: string) => Promise<EnquiryRecord | null>;
   notify: (key: string, fields: EnquiryFields) => Promise<string>;
@@ -52,6 +53,17 @@ export async function handleEnquiry(req: Request, kind: EnquiryKind, deps: Enqui
   if (!clean.name || !/^[^\s@<>"\r\n]+@[^\s@<>"\r\n]+\.[^\s@<>"\r\n]+$/.test(clean.email) || /[\r\n]/.test(clean.name + clean.subject + clean.city + clean.projectType) || (kind === "contact" ? !clean.message : !/^[+\d() .-]{7,30}$/.test(clean.phone))) return json({ error: "Missing or invalid required fields" }, 400);
   const key = req.headers.get("Idempotency-Key");
   if (!key || !/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(key)) return json({ error: "A valid submission key is required. Refresh the form and try again." }, 400);
+  if (deps.deliveryMode === "email") {
+    try {
+      // Provider idempotency protects retries for 24 hours without a database.
+      await deps.notify(key, clean);
+      return json({ success: true, accepted: true, delivery: "email" });
+    } catch (error) {
+      const diagnosticId = crypto.randomUUID();
+      reportFailure(error, kind, req, "notification", diagnosticId);
+      return json({ error: "Unable to send your enquiry. Please retry or call the studio.", diagnosticId }, 503);
+    }
+  }
   const bytes = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(JSON.stringify([kind, clean])));
   const hash = Array.from(new Uint8Array(bytes), byte => byte.toString(16).padStart(2, "0")).join("");
   try {

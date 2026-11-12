@@ -13,6 +13,7 @@
   },
   "vars": {
     "APP_ENV": "production",
+    "ENQUIRY_DELIVERY_MODE": "email",
     // Public, build-safe values. Real secrets go in Cloudflare → Settings →
     // Variables and Secrets (SUPABASE_SERVICE_ROLE_KEY, RESEND_API_KEY), and in
     // .dev.vars for local `pnpm preview`.

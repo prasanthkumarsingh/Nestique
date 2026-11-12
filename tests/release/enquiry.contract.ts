@@ -54,6 +54,27 @@ test("HTML special characters are escaped in notification content", async () => 
   expect(escapeHtml('<img src=x onerror="bad">&\'')).toBe('&lt;img src=x onerror=&quot;bad&quot;&gt;&amp;&#39;');
 });
 
+for (const kind of ["contact", "consultation"] as EnquiryKind[]) {
+  test(`${kind}: email mode accepts only provider-confirmed sends without any database access`, async () => {
+    const f = fixture({ dbFails: true }), key = crypto.randomUUID();
+    f.dependencies.deliveryMode = "email";
+    f.dependencies.find = async () => { throw new Error("Database must not be called"); };
+    f.dependencies.mark = async () => { throw new Error("Database must not be called"); };
+    const response = await handleEnquiry(request(details, key), kind, f.dependencies);
+    expect(response.status).toBe(200);
+    expect(await response.json()).toMatchObject({ success: true, accepted: true, delivery: "email" });
+    expect(f.records.size).toBe(0); expect(f.notifications).toEqual([key]);
+  });
+  test(`${kind}: email mode fails when the provider rejects the send`, async () => {
+    const f = fixture({ dbFails: true, emailFails: true });
+    f.dependencies.deliveryMode = "email";
+    const response = await handleEnquiry(request(details), kind, f.dependencies);
+    expect(response.status).toBe(503);
+    expect(await response.json()).not.toHaveProperty("success");
+    expect(f.records.size).toBe(0);
+  });
+}
+
 test("persistence diagnostics retain safe stage/code/correlation without enquiry fields or exception contents", async () => {
   const f = fixture(), logs: string[] = [], original = console.error;
   console.error = (...args) => { logs.push(args.join(" ")); };
