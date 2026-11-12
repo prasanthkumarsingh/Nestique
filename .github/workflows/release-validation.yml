@@ -40,6 +40,10 @@ jobs:
           pnpm exec wrangler dev --config wrangler.staging.jsonc --ip 127.0.0.1 --port 8788 > /tmp/nestique-workerd.log 2>&1 &
           echo $! > /tmp/nestique-workerd.pid
           node scripts/wait-for-release.mjs http://127.0.0.1:8788
+      - name: Strict XML parse of the complete generated sitemap
+        run: node scripts/check-sitemap.mjs
+        env:
+          SEO_TEST_ORIGIN: http://127.0.0.1:8788
       - name: HTTP crawl of the packaged Worker
         run: pnpm run check:seo
         env:
