@@ -1,0 +1,14 @@
+HTTP/1.1 200 OK
+Date: Thu, 12 Nov 2026 05:51:15 GMT
+Content-Type: application/xml
+Transfer-Encoding: chunked
+Connection: keep-alive
+Cache-Control: public, max-age=0, must-revalidate
+Vary: rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch
+x-nextjs-cache: HIT
+Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=NwvDUL9xkYG0%2BRAVcWWCFyn1QFQx2H28yan5HusvYbcJb%2BBvKjTzbMxBWLDJ%2FLaajTJlMT9LGknekK2lVFUVhdKDM%2FBYYRHDGPlCIF0LcS18uBivl1g9d1dVlMz0KtK43zKxdh9pV9TybbHGBkZu8jGPbO0%3D"}]}
+Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+Server: cloudflare
+CF-RAY: a5934388cb1a91a1-SIN
+alt-svc: h3=":443"; ma=86400
+

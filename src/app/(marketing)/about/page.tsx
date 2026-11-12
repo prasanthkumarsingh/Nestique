@@ -113,7 +113,7 @@ const team = [
   },
   {
     name: "Satya Pathuri",
-    role: "Creative Head ? Design & Interiors",
+    role: "Creative Head \u2014 Design & Interiors",
     dept: "Design & Interiors",
     qual: "Creative Direction",
     desc: "Guides the creative direction of design and interiors, connecting the overall concept with the details of each space.",
