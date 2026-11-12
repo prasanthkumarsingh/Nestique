@@ -1,4 +1,20 @@
 export type EnquiryKind = "contact" | "consultation";
+export class EnquiryAdapterError extends Error {
+  constructor(public stage: "configuration" | "insert" | "dedup_lookup" | "notification" | "notification_status", public code?: string, public status?: number) {
+    super("Enquiry adapter failed");
+  }
+}
+function reportFailure(error: unknown, kind: EnquiryKind, req: Request, fallback: string, diagnosticId: string) {
+  const failure = error instanceof EnquiryAdapterError ? error : undefined;
+  const ray = req.headers.get("cf-ray");
+  // Never log exception messages, provider response bodies, keys or form fields.
+  console.error(JSON.stringify({ event: "enquiry_failure", kind, diagnosticId,
+    ray: ray && /^[a-f0-9]+(?:-[A-Z]+)?$/i.test(ray) ? ray : undefined,
+    stage: failure?.stage || fallback,
+    code: failure?.code && /^[A-Z0-9_]{1,24}$/.test(failure.code) ? failure.code : undefined,
+    status: failure?.status && failure.status >= 100 && failure.status <= 599 ? failure.status : undefined,
+  }));
+}
 export type EnquiryFields = Record<string, string>;
 export type EnquiryRecord = { request_hash: string; notification_status: string };
 export type EnquiryDependencies = {
@@ -44,17 +60,19 @@ export async function handleEnquiry(req: Request, kind: EnquiryKind, deps: Enqui
       if (!existing || existing.request_hash !== hash) return json({ error: "This submission key has already been used for different details." }, 409);
       return json({ success: true, accepted: true, duplicate: true });
     }
-  } catch {
+  } catch (error) {
     // Never send email if durable persistence could not be confirmed.
-    console.error("Enquiry persistence unavailable", { kind });
-    return json({ error: "Unable to save your enquiry. Please retry or call the studio." }, 503);
+    const diagnosticId = crypto.randomUUID();
+    reportFailure(error, kind, req, "persistence", diagnosticId);
+    return json({ error: "Unable to save your enquiry. Please retry or call the studio.", diagnosticId }, 503);
   }
   try {
     const deliveryId = await deps.notify(key, clean);
     await deps.mark(key, "sent", deliveryId);
-  } catch {
-    console.error("Enquiry saved; notification needs review", { kind });
-    try { await deps.mark(key, "failed"); } catch { console.error("Unable to update notification status", { kind }); }
+  } catch (error) {
+    const diagnosticId = crypto.randomUUID();
+    reportFailure(error, kind, req, "notification", diagnosticId);
+    try { await deps.mark(key, "failed"); } catch (markError) { reportFailure(markError, kind, req, "notification_status", diagnosticId); }
   }
   // Success means the enquiry is durably saved. Email acceptance is not inbox delivery.
   return json({ success: true, accepted: true, duplicate: false });

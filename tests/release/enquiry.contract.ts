@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { handleEnquiry, escapeHtml, type EnquiryDependencies, type EnquiryFields, type EnquiryKind } from "../../src/lib/enquiry-handler";
+import { EnquiryAdapterError, handleEnquiry, escapeHtml, type EnquiryDependencies, type EnquiryFields, type EnquiryKind } from "../../src/lib/enquiry-handler";
 
 function fixture(options: { dbFails?: boolean; emailFails?: boolean; statusFails?: boolean } = {}) {
   const records = new Map<string, { request_hash: string; notification_status: string; fields: EnquiryFields }>();
@@ -52,4 +52,27 @@ test("malformed, oversized, non-string, invalid email and missing keys are rejec
 });
 test("HTML special characters are escaped in notification content", async () => {
   expect(escapeHtml('<img src=x onerror="bad">&\'')).toBe('&lt;img src=x onerror=&quot;bad&quot;&gt;&amp;&#39;');
+});
+
+test("persistence diagnostics retain safe stage/code/correlation without enquiry fields or exception contents", async () => {
+  const f = fixture(), logs: string[] = [], original = console.error;
+  console.error = (...args) => { logs.push(args.join(" ")); };
+  try {
+    for (const failure of [new EnquiryAdapterError("insert", "PGRST205", 404), new Error("SECRET_PROVIDER_RESPONSE " + details.email)]) {
+      f.dependencies.insert = async () => { throw failure; };
+      const response = await handleEnquiry(request(details), "consultation", f.dependencies);
+      expect(response.status).toBe(503);
+      const body = await response.json();
+      expect(body.diagnosticId).toMatch(/^[a-f0-9-]{36}$/);
+      expect(body).not.toHaveProperty("stage");
+      const logged = JSON.parse(logs.at(-1)!);
+      expect(logged.diagnosticId).toBe(body.diagnosticId);
+      expect(logged.stage).toBe(failure instanceof EnquiryAdapterError ? "insert" : "persistence");
+      if (failure instanceof EnquiryAdapterError) expect(logged).toMatchObject({ code: "PGRST205", status: 404 });
+    }
+    expect(logs.join()).not.toContain(details.email);
+    expect(logs.join()).not.toContain(details.name);
+    expect(logs.join()).not.toContain("SECRET_PROVIDER_RESPONSE");
+    expect(f.notifications).toHaveLength(0);
+  } finally { console.error = original; }
 });
