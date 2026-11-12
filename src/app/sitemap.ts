@@ -1,11 +1,12 @@
 import { MetadataRoute } from "next";
 import { services } from "@/lib/services.data";
 import { blogPosts } from "@/lib/blog.data";
+import { escapeXmlText } from "@/lib/xml";
 
 const SITE_URL = "https://www.nestiquestudio.in";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
+  const entries: MetadataRoute.Sitemap = [
     ...services.map(service => ({ url: `${SITE_URL}/services/${service.slug}` })),
     { url: SITE_URL, changeFrequency: "weekly", priority: 1.0 },
     // Commercial primary pages — highest priority
@@ -34,4 +35,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: SITE_URL + "/blog", lastModified: "2026-10-28", changeFrequency: "weekly", priority: 0.75 },
     ...blogPosts.map((post) => ({ url: SITE_URL + "/blog/" + post.slug, lastModified: post.published, images: [post.image] })),
   ];
+  // Next's metadata sitemap serializer interpolates these strings verbatim.
+  // Keep source data and URL encoding intact; XML-escape only the final values.
+  // This sitemap emits page/image URLs, with no image titles or captions.
+  return entries.map(entry => ({
+    ...entry,
+    url: escapeXmlText(entry.url),
+    ...(entry.images ? { images: entry.images.map(escapeXmlText) } : {}),
+  }));
 }
