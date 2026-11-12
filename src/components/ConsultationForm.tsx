@@ -1,57 +1,37 @@
 "use client";
 
-import { useState } from "react";
+import { useEnquirySubmit } from "@/lib/use-enquiry-submit";
 import styles from "../app/(marketing)/consultation/consultation.module.css";
 
-type Status = "idle" | "sending" | "success" | "error";
-
 export default function ConsultationForm() {
-  const [status, setStatus] = useState<Status>("idle");
-
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setStatus("sending");
-    const data = Object.fromEntries(new FormData(e.currentTarget));
-
-    try {
-      const res = await fetch("/api/consultation", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      setStatus(res.ok ? "success" : "error");
-      if (res.ok) (e.target as HTMLFormElement).reset();
-    } catch {
-      setStatus("error");
-    }
-  }
+  const { status, handleSubmit } = useEnquirySubmit("consultation");
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form className={styles.form} onSubmit={handleSubmit} aria-busy={status === "sending"}>
       <div className={styles.formRow}>
         <div className={styles.formGroup}>
-          <label>Full Name *</label>
-          <input type="text" name="name" placeholder="Your full name" required />
+          <label htmlFor="consultation-name">Full Name *</label>
+          <input type="text" id="consultation-name" name="name" placeholder="Your full name" required />
         </div>
         <div className={styles.formGroup}>
-          <label>Email Address *</label>
-          <input type="email" name="email" placeholder="you@example.com" required />
+          <label htmlFor="consultation-email">Email Address *</label>
+          <input type="email" id="consultation-email" name="email" placeholder="you@example.com" required />
         </div>
       </div>
 
       <div className={styles.formRow}>
         <div className={styles.formGroup}>
-          <label>Phone Number *</label>
-          <input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" required />
+          <label htmlFor="consultation-phone">Phone Number *</label>
+          <input type="tel" id="consultation-phone" name="phone" placeholder="+91 XXXXX XXXXX" required />
         </div>
         <div className={styles.formGroup}>
-          <label>City</label>
-          <select name="city">
+          <label htmlFor="consultation-city">City</label>
+          <select id="consultation-city" name="city">
             <option value="">Select your city</option>
-            <option>Visakhapatnam</option>
+            <option value="Visakhapatnam">Visakhapatnam / Vizag</option>
             <option>Vijayawada</option>
             <option>Hyderabad</option>
-            <option>Bangalore</option>
+            <option value="Bangalore">Bengaluru / Bangalore</option><option>Other</option>
             <option>Mumbai</option>
             <option>Pune</option>
           </select>
@@ -59,21 +39,21 @@ export default function ConsultationForm() {
       </div>
 
       <div className={styles.formGroup}>
-        <label>Project Type *</label>
-        <select name="projectType" required>
+        <label htmlFor="consultation-projectType">Project Type *</label>
+        <select id="consultation-projectType" name="projectType" required>
           <option value="">Select project type</option>
           <option value="architecture">Architecture &amp; Design</option>
           <option value="construction">Full Home Construction</option>
           <option value="interior">Interior Design</option>
           <option value="renovation">Renovation</option>
-          <option value="civil">Civil Works</option>
+          <option value="civil">Civil Works</option><option value="office-planning">Office planning</option><option value="commercial-construction">Commercial construction</option><option value="commercial-interiors">Office & commercial interiors</option><option value="facade-elevation">Façade & elevation design</option>
           <option value="landscape">Landscape Design</option>
         </select>
       </div>
 
       <div className={styles.formGroup}>
-        <label>I want to start construction in</label>
-        <select name="timeline">
+        <label htmlFor="consultation-timeline">I want to start construction in</label>
+        <select id="consultation-timeline" name="timeline">
           <option value="">Select timeline</option>
           <option>0–3 months</option>
           <option>3–6 months</option>
@@ -94,24 +74,25 @@ export default function ConsultationForm() {
         </div>
       </div>
 
+      <div className={styles.formGroup}><label htmlFor="consultation-property">Property type</label><select id="consultation-property" name="propertyType"><option value="">Select property type</option>{["House", "Villa", "Apartment", "Office", "Restaurant", "Shop", "Other"].map(value => <option key={value}>{value}</option>)}</select></div>
       <div className={styles.formGroup}>
-        <label>Tell us more (optional)</label>
-        <textarea name="message" rows={4} placeholder="Describe your vision, plot size, budget range, or any specific requirements..." />
+        <label htmlFor="consultation-message">Tell us more (optional)</label>
+        <textarea id="consultation-message" name="message" rows={4} placeholder="Describe your vision, plot size, budget range, or any specific requirements..." />
       </div>
 
       {status === "success" && (
-        <div className={styles.successMsg}>
-          Request received! Our team will reach out within 2 hours.
+        <div role="status" className={styles.successMsg}>
+          Request received! Our team will contact you to discuss your project.
         </div>
       )}
       {status === "error" && (
-        <div className={styles.errorMsg}>
+        <div role="alert" className={styles.errorMsg}>
           Something went wrong. Please call us at +91 78160 86291.
         </div>
       )}
 
       <button type="submit" className={styles.submitBtn} disabled={status === "sending"}>
-        {status === "sending" ? "Submitting…" : "Book Free Consultation"}
+        {status === "sending" ? "Submitting…" : "Request a consultation"}
       </button>
 
       <p className={styles.disclaimer}>

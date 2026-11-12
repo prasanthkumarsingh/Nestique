@@ -1,3 +1,4 @@
+import { services as detailedServices } from "@/lib/services.data";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight, Check, PencilRuler, Layers3, HardHat, KeyRound } from "lucide-react";
@@ -10,49 +11,16 @@ import styles from "./services.module.css";
 const SITE_URL = "https://www.nestiquestudio.in";
 
 export const metadata: Metadata = {
-  title: "Interior Design & Civil Construction Services in Visakhapatnam & Hyderabad | Nestique Studio",
+  title: { absolute: "Interior Design & Civil Construction Services in Visakhapatnam & Hyderabad | Nestique Studio" },
   description:
-    "Complete interior design & civil construction services in Visakhapatnam and Hyderabad. Modular kitchens, false ceilings, home interiors, house construction, villa construction, office fit-outs, renovation. Free consultation available.",
-  keywords: [
-    // Interior Vizag
-    "interior design services Visakhapatnam",
-    "modular kitchen design Visakhapatnam",
-    "false ceiling design Visakhapatnam",
-    "home interior design Vizag",
-    "bedroom interior Visakhapatnam",
-    "wardrobe design Vizag",
-    "living room interior design Vizag",
-    "bathroom interior design Visakhapatnam",
-    // Civil Vizag
-    "civil construction services Visakhapatnam",
-    "residential construction Vizag",
-    "house construction Visakhapatnam",
-    "villa construction Vizag",
-    "civil contractor services Vizag",
-    // Interior Hyderabad
-    "interior design services Hyderabad",
-    "modular kitchen design Hyderabad",
-    "false ceiling Hyderabad",
-    "home interior design Hyderabad",
-    "office interior design Hyderabad",
-    "apartment interior Hyderabad",
-    "turnkey interior design Hyderabad",
-    // Civil Hyderabad
-    "civil construction services Hyderabad",
-    "residential construction Hyderabad",
-    "house construction Hyderabad",
-    "villa construction Hyderabad",
-    "construction cost per sqft Hyderabad",
-    "home renovation Hyderabad",
-    "construction company AP Telangana",
-  ],
+    "Complete interior design & civil construction services in Visakhapatnam and Hyderabad. Modular kitchens, false ceilings, home interiors, house construction, villa construction, office fit-outs, renovation. Discuss scope and availability with the studio.",
   alternates: { canonical: `${SITE_URL}/services` },
   openGraph: {
     type: "website",
     url: `${SITE_URL}/services`,
     title: "Architecture, Interior Design & Construction Services | Nestique Studio",
     description:
-      "Complete architecture, interior design & construction services across Hyderabad, Vizag & Bangalore. Packages from ₹1,800/sq ft.",
+      "Explore architectural planning, interiors, construction, renovation, facade and landscape design. Scope and pricing are agreed for your property.",
     images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 }],
   },
 };
@@ -108,6 +76,7 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
+      <section className={styles.servicesSection}><div className={styles.container}><h2>Explore your project in detail</h2><div className={styles.servicesGrid}>{detailedServices.map(service => <article className={styles.serviceCard} key={service.slug}><div className={styles.serviceBody}><h3><Link href={"/services/" + service.slug}>{service.title}</Link></h3><p className={styles.serviceDescription}>{service.intro}</p><Link className={styles.serviceLink} href={"/services/" + service.slug}>Scope, process & questions →</Link></div></article>)}</div></div></section>
       <nav className={styles.serviceNav} aria-label="Explore services"><div>{services.map((service, index) => <a href={"#" + service.slug} key={service.slug}><span>{String(index + 1).padStart(2, "0")}</span>{service.title}</a>)}</div></nav>
       <section id="our-services" className={styles.servicesSection} aria-labelledby="services-title">
         <div className={styles.container}>
@@ -131,7 +100,7 @@ export default function ServicesPage() {
         <div className={styles.packagesGrid}>{packages.map((pkg, index) => <article className={styles.packageCard} data-featured={index === 1} key={pkg.name}><p className={styles.packageIndex}>0{index + 1} / {pkg.note}</p><h3>{pkg.name}</h3><p className={styles.packageDescription}>{pkg.description}</p><ul>{pkg.features.map((feature) => <li key={feature}><Check size={16} aria-hidden="true" />{feature}</li>)}</ul><Link href="/consultation" className={index === 1 ? styles.primaryButton : styles.outlineButton}>Request an estimate <ArrowUpRight size={17} aria-hidden="true" /></Link></article>)}</div>
       </div></section>
       <section className={styles.faqSection} aria-labelledby="faq-title"><div className={styles.faqInner}><div><p className={styles.eyebrow}>Before we begin</p><h2 id="faq-title">A few things<br /><em>you may be wondering.</em></h2></div><div className={styles.questions}>{questions.map((question) => <details key={question.question}><summary>{question.question}<span aria-hidden="true">+</span></summary><p>{question.answer}</p></details>)}</div></div></section>
-      <section className={styles.cta}><div><p className={styles.eyebrow}>Let&apos;s start with a conversation</p><h2>Your next chapter.<br /><em>Thoughtfully designed.</em></h2><p>Tell us about your space, your ideas, and what matters to you.<br />We will help you find a way forward.</p><Link href="/consultation" className={styles.primaryButton}>Book a free consultation <ArrowUpRight size={18} aria-hidden="true" /></Link></div></section>
+      <section className={styles.cta}><div><p className={styles.eyebrow}>Let&apos;s start with a conversation</p><h2>Your next chapter.<br /><em>Thoughtfully designed.</em></h2><p>Tell us about your space, your ideas, and what matters to you.<br />We will help you find a way forward.</p><Link href="/consultation" className={styles.primaryButton}>Request a consultation <ArrowUpRight size={18} aria-hidden="true" /></Link></div></section>
     </main>
   );
 }

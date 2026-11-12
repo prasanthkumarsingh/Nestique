@@ -1,8 +1,12 @@
 import { defineCloudflareConfig } from "@opennextjs/cloudflare";
+import staticAssetsIncrementalCache from "@opennextjs/cloudflare/overrides/incremental-cache/static-assets-incremental-cache";
 
-// Minimal config: no ISR/cache bindings yet. Add R2 incremental cache, a
-// queue, or a D1 tag cache here later if the app starts using ISR.
-const config = defineCloudflareConfig({});
+// The marketing pages are generated at build time, including dynamic slugs.
+// Serve their prerendered entries from the existing ASSETS binding. A dummy
+// cache loses those entries and returns 404 for dynamicParams=false routes.
+// This read-only cache requires a rebuild for content changes; add a writable
+// store only if the application later adopts ISR or on-demand revalidation.
+const config = defineCloudflareConfig({ incrementalCache: staticAssetsIncrementalCache });
 
 // package.json's "build" script is `opennextjs-cloudflare build` so the
 // Cloudflare dashboard's `pnpm run build` step produces `.open-next/`.

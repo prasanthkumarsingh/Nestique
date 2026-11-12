@@ -2,6 +2,25 @@
 
 This project now targets **Cloudflare Workers** via `@opennextjs/cloudflare`.
 
+## Verified Linux packaging and static-page cache
+
+The release passed OpenNext packaging, an unauthenticated Wrangler dry run,
+local workerd, the SEO crawl and desktop/mobile Playwright checks in Ubuntu
+26.04.1 through WSL. See `release/linux-validation.json` for versions and results.
+This is distinct from the still-pending GitHub Actions Ubuntu 24.04 run.
+
+Generated service slugs initially returned 404 in workerd because the default
+dummy cache did not retain prerendered entries. `open-next.config.ts` now uses
+the read-only Workers Static Assets incremental cache through the existing
+ASSETS binding. `pnpm run build` packages OpenNext and then runs
+`opennextjs-cloudflare populateCache local`, so direct Wrangler consumers get
+the complete asset bundle. No R2/KV/D1 resource or account login is needed.
+Content changes require a rebuild; adopting ISR later requires a writable cache.
+
+If invoking `opennextjs-cloudflare build` directly instead of `pnpm run build`,
+run `opennextjs-cloudflare populateCache local` with the matching config before
+a direct Wrangler dry run or deployment. No production deployment was performed.
+
 ## Why earlier builds failed
 
 1. **`ERR_PNPM_OUTDATED_LOCKFILE`** — `@opennextjs/cloudflare@1.20.6` needs
@@ -35,7 +54,7 @@ it runs on Workers with the `nodejs_compat` flag.
 
 | Script | Runs | Use |
 | --- | --- | --- |
-| `build` | `opennextjs-cloudflare build` | produces `.open-next/`; this is what CI's build step runs |
+| `build` | `opennextjs-cloudflare build && opennextjs-cloudflare populateCache local` | produces the complete `.open-next/` Worker and static cache; this is what CI's build step runs |
 | `build:next` | `next build` | plain Next build for local sanity checks (no `.open-next/`) |
 | `deploy` | `opennextjs-cloudflare build && opennextjs-cloudflare deploy` | manual deploy — self-contained |
 | `preview` | `opennextjs-cloudflare build && opennextjs-cloudflare preview` | local Worker at `http://localhost:8788` |

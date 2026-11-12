@@ -1,0 +1,62 @@
+name: Release validation (no deployment)
+on:
+  push:
+    branches:
+      - review/seo-release-validation-20261111
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  cloudflare-release:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      CI: 'true'
+      APP_ENV: release-test
+      NEXT_PUBLIC_SITE_URL: https://www.nestiquestudio.in
+      NEXT_PUBLIC_SUPABASE_URL: https://release-test.invalid
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: release-test-placeholder
+      WRANGLER_SEND_METRICS: 'false'
+      CLOUDFLARE_API_TOKEN: ''
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.30.3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+      - name: Isolated form contracts (no external adapters)
+        run: pnpm run test:contracts
+      - name: Package with OpenNext (not just next build)
+        run: pnpm run build
+      - name: Cloudflare upload dry run (no credentials or deployment)
+        run: pnpm exec wrangler deploy --dry-run --config wrangler.staging.jsonc --outdir release-results/worker-dry-run
+      - name: Start packaged Worker in local workerd
+        run: |
+          pnpm exec wrangler dev --config wrangler.staging.jsonc --ip 127.0.0.1 --port 8788 > /tmp/nestique-workerd.log 2>&1 &
+          echo $! > /tmp/nestique-workerd.pid
+          node scripts/wait-for-release.mjs http://127.0.0.1:8788
+      - name: HTTP crawl of the packaged Worker
+        run: pnpm run check:seo
+        env:
+          SEO_TEST_ORIGIN: http://127.0.0.1:8788
+      - name: Desktop and mobile browsers against packaged Worker
+        run: pnpm run test:browser
+        env:
+          RELEASE_BASE_URL: http://127.0.0.1:8788
+      - name: Preserve local runtime log
+        if: always()
+        run: |
+          mkdir -p release-results
+          cp /tmp/nestique-workerd.log release-results/workerd.log 2>/dev/null || true
+          if test -f /tmp/nestique-workerd.pid; then kill "$(cat /tmp/nestique-workerd.pid)" || true; fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: release-validation-${{ github.sha }}
+          path: release-results/
+          retention-days: 14

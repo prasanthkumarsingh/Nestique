@@ -21,7 +21,7 @@ export default function Footer() {
           <div className={styles.contact}>
             <a href="mailto:hello@nestiquestudio.in">hello@nestiquestudio.in</a>
             <a href="tel:+917816086291">+91 78160 86291</a>
-            <span>Mon–Sun, 9am–9pm</span>
+            <span>Contact us to arrange a conversation</span>
           </div>
           <div className={styles.socials}>
             <a href="https://youtu.be/jcexBwubaW8?si=dNpEfgBkxm5sURJJ" target="_blank" rel="noopener" aria-label="YouTube">
@@ -58,17 +58,17 @@ export default function Footer() {
             <Link href="/interior-design-hyderabad">Interior Design Hyderabad</Link>
             <Link href="/interior-design-visakhapatnam">Modular Kitchen Vizag</Link>
             <Link href="/interior-design-visakhapatnam">False Ceiling Design Vizag</Link>
-            <Link href="/interior-design-hyderabad">Office Interior Hyderabad</Link>
+            <Link href="/services/commercial-interiors">Office & commercial interiors</Link>
             <Link href="/interior-design-hyderabad">Apartment Interiors Hyderabad</Link>
           </div>
           <div className={styles.linkGroup}>
-            <h4>Civil Construction</h4>
+            <h4>Planning & Construction</h4>
             <Link href="/villa-construction-vizag">House Construction Visakhapatnam</Link>
             <Link href="/villa-construction-vizag">Villa Construction Vizag</Link>
-            <Link href="/services">Civil Contractor Hyderabad</Link>
-            <Link href="/services">Residential Construction Hyderabad</Link>
-            <Link href="/villa-construction-vizag">Home Renovation Visakhapatnam</Link>
-            <Link href="/consultation">Free Consultation</Link>
+            <Link href="/services/architecture">House & apartment planning</Link>
+            <Link href="/services/facade-elevation">Façade & elevation design</Link>
+            <Link href="/services/renovation">Renovation & remodelling</Link>
+            <Link href="/consultation">Project consultation</Link>
           </div>
         </div>
       </div>
@@ -76,7 +76,7 @@ export default function Footer() {
       <div className={styles.bottom}>
         <span>&copy; {new Date().getFullYear()} Nestique Studio. All rights reserved.</span>
         <span className={styles.cities}>
-          Interior Design &amp; Civil Construction in Visakhapatnam &middot; Hyderabad &middot; Vijayawada &middot; Bangalore &middot; Mumbai &middot; Pune
+          Architecture &amp; interiors · Visakhapatnam &amp; Hyderabad. Other locations by enquiry.
         </span>
       </div>
     </footer>

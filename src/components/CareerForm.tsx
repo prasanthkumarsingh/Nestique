@@ -95,7 +95,7 @@ export default function CareerForm({ defaultPosition }: { defaultPosition?: stri
 
       {status === "success" && (
         <div className={styles.successMsg} role="status">
-          Application submitted! We will review your profile and get back to you within 5–7 business days.
+          Application submitted! We will review your profile and contact you about suitable next steps.
         </div>
       )}
       {status === "error" && (

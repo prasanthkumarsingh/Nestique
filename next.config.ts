@@ -3,6 +3,9 @@ import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  async redirects() {
+    return [{ source: "/:path*", has: [{ type: "host", value: "nestiquestudio.in" }], destination: "https://www.nestiquestudio.in/:path*", permanent: true }];
+  },
   images: {
     // Cloudflare Workers has no Next.js image-optimization server. Serve images
     // as-is; swap in a Cloudflare Images loader later if optimization is needed.

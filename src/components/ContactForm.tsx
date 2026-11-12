@@ -1,31 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEnquirySubmit } from "@/lib/use-enquiry-submit";
 import { ArrowUpRight } from "lucide-react";
 import styles from "../app/(marketing)/contact/contact.module.css";
 
-type Status = "idle" | "sending" | "success" | "error";
-
 export default function ContactForm() {
-  const [status, setStatus] = useState<Status>("idle");
-
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setStatus("sending");
-    const data = Object.fromEntries(new FormData(e.currentTarget));
-
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      setStatus(res.ok ? "success" : "error");
-      if (res.ok) (e.target as HTMLFormElement).reset();
-    } catch {
-      setStatus("error");
-    }
-  }
+  const { status, handleSubmit } = useEnquirySubmit("contact");
 
   return (
     <form className={styles.form} onSubmit={handleSubmit} aria-busy={status === "sending"}>
@@ -78,7 +58,7 @@ export default function ContactForm() {
 
       {status === "success" && (
         <div className={styles.successMsg} role="status">
-          Thank you! Your message has been sent. Our team will be in touch.
+          Thank you! Your enquiry has been received. Our team will be in touch.
         </div>
       )}
       {status === "error" && (

@@ -6,57 +6,25 @@ import styles from "./consultation.module.css";
 const SITE_URL = "https://www.nestiquestudio.in";
 
 export const metadata: Metadata = {
-  title: "Free Interior Design & Construction Consultation in Vizag & Hyderabad | Nestique Studio",
+  title: { absolute: "Interior Design & Construction Consultation in Vizag & Hyderabad | Nestique Studio" },
   description:
-    "Book a free interior design or civil construction consultation with Nestique Studio in Visakhapatnam and Hyderabad. Get a personalised estimate for home interiors, modular kitchen, house construction or villa. No obligations. Call +91 78160 86291.",
-  keywords: [
-    "free interior design consultation Visakhapatnam",
-    "free civil construction consultation Vizag",
-    "interior design estimate Visakhapatnam",
-    "construction estimate Hyderabad",
-    "free home interior consultation Hyderabad",
-    "free consultation interior designer Vizag",
-    "modular kitchen consultation Visakhapatnam",
-    "house construction estimate Hyderabad",
-    "villa construction consultation Vizag",
-    "free design consultation AP Telangana",
-  ],
+    "Request an interior design or construction consultation with Nestique Studio in Visakhapatnam and Hyderabad. Get a personalised estimate for home interiors, modular kitchen, house construction or villa. No obligations. Call +91 78160 86291.",
   alternates: { canonical: `${SITE_URL}/consultation` },
   openGraph: {
     url: `${SITE_URL}/consultation`,
-    title: "Free Consultation | Architecture & Interior Design — Nestique Studio",
-    description: "Book a free, no-obligation design consultation. Get expert advice, design concepts, and a clear cost estimate within 24 hours.",
+    title: "Project Consultation | Architecture & Interior Design — Nestique Studio",
+    description: "Discuss your project with the studio. Discuss your brief, available site information and the next steps for an estimate.",
     images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 }],
   },
 };
 
-const consultationSchema = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  name: "Free Architecture & Interior Design Consultation",
-  provider: {
-    "@type": "LocalBusiness",
-    name: "Nestique Studio",
-    telephone: "+917816086291",
-    url: SITE_URL,
-  },
-  url: `${SITE_URL}/consultation`,
-  description: "Free 45-minute consultation covering architecture, construction, interior design, and renovation — personalised advice, cost estimates, and initial design concepts.",
-  areaServed: ["Hyderabad", "Visakhapatnam", "Vijayawada", "Bangalore"],
-  offers: {
-    "@type": "Offer",
-    price: "0",
-    priceCurrency: "INR",
-    description: "Free, no-obligation design consultation",
-    availability: "https://schema.org/InStock",
-  },
-};
+const consultationSchema = { "@context": "https://schema.org", "@type": "WebPage", name: "Discuss your project with Nestique Studio", url: SITE_URL + "/consultation", about: { "@id": SITE_URL + "/#organization" } };
 
 const benefits = [
   { icon: "🎯", title: "Personalised Advice", desc: "Get expert recommendations tailored to your plot size, budget, and goals." },
-  { icon: "💰", title: "Transparent Estimate", desc: "Walk away with a clear, no-surprise cost estimate for your project." },
-  { icon: "🏡", title: "Design Ideas", desc: "See initial design concepts and layout options during your consultation." },
-  { icon: "📅", title: "Flexible Timing", desc: "Meet in-person at our office or connect online — whichever suits you." },
+  { icon: "💰", title: "Transparent Estimate", desc: "Discuss the information and scope needed for a project estimate." },
+  { icon: "🏡", title: "Design Ideas", desc: "Discuss your design priorities and the next stages of planning." },
+  { icon: "📅", title: "Flexible Timing", desc: "Discuss suitable meeting arrangements and location-specific availability." },
 ];
 
 export default function ConsultationPage() {
@@ -66,10 +34,10 @@ export default function ConsultationPage() {
       {/* Header */}
       <section className={styles.pageHeader}>
         <div className={styles.pageHeaderInner}>
-          <p className={styles.breadcrumb}>Free Consultation</p>
+          <p className={styles.breadcrumb}>Project Consultation</p>
           <h1>You Dream. We Deliver.</h1>
           <p className={styles.headerSub}>
-            Book a free consultation with our experts. No obligations — just clarity on your dream home.
+            Discuss your property, priorities and the support your project needs.
           </p>
         </div>
       </section>
@@ -81,7 +49,7 @@ export default function ConsultationPage() {
           <div className={styles.benefitsCol}>
             <h2>What to Expect</h2>
             <p className={styles.benefitsSub}>
-              Our 45-minute consultation covers everything you need to make an informed decision.
+              We discuss your brief, site information and the next decisions for your project.
             </p>
             <div className={styles.benefitsList}>
               {benefits.map((b, i) => (
@@ -99,15 +67,15 @@ export default function ConsultationPage() {
               <a href="tel:+917816086291" className={styles.callLink}>
                 +91 78160 86291
               </a>
-              <span>Mon–Sun, 9am–9pm</span>
+              <span>Contact us to arrange a conversation</span>
             </div>
           </div>
 
           {/* Right: Form */}
           <div className={styles.formCol}>
             <div className={styles.formCard}>
-              <h2>Request a Free Consultation</h2>
-              <p>Fill in your details and our team will reach out within 2 hours.</p>
+              <h2>Request a Project Consultation</h2>
+              <p>Share your details and our team will contact you to discuss your project.</p>
               <ConsultationForm />
             </div>
           </div>

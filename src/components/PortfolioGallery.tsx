@@ -26,7 +26,8 @@ export default function PortfolioGallery({ projects }: { projects: PortfolioProj
   };
 
   return (
-    <section className={styles.section} aria-label="Project photographs">
+    <section className={styles.section} aria-label="Project images">
+      <p>Images are shown as design references. Image types and project completion details are awaiting confirmation.</p>
       <div className={styles.toolbar}>
         <div className={styles.filters} aria-label="Filter projects">
           {["All projects", "Residential", "Hospitality"].map((category) => <button key={category} type="button" aria-pressed={filter === category} onClick={() => setFilter(category)}>{category}</button>)}
@@ -57,8 +58,8 @@ export default function PortfolioGallery({ projects }: { projects: PortfolioProj
           </article>
         ))}
       </div>
-      <dialog ref={dialog} className={styles.dialog} aria-label={selectedProject.name + " full-size photograph"} onClick={(event) => { if (event.target === event.currentTarget) dialog.current?.close(); }} onKeyDown={(event) => { if (event.key === "ArrowLeft") { event.preventDefault(); move(-1); } if (event.key === "ArrowRight") { event.preventDefault(); move(1); } }}>
-        <button autoFocus type="button" className={styles.close} onClick={() => dialog.current?.close()} aria-label="Close photograph"><X aria-hidden="true" /></button>
+      <dialog ref={dialog} className={styles.dialog} aria-label={selectedProject.name + " full-size image"} onClick={(event) => { if (event.target === event.currentTarget) dialog.current?.close(); }} onKeyDown={(event) => { if (event.key === "ArrowLeft") { event.preventDefault(); move(-1); } if (event.key === "ArrowRight") { event.preventDefault(); move(1); } }}>
+        <button autoFocus type="button" className={styles.close} onClick={() => dialog.current?.close()} aria-label="Close image"><X aria-hidden="true" /></button>
         <div className={styles.lightboxPhoto}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={selectedPhoto.url} alt={selectedProject.name + " - " + selectedPhoto.caption} />

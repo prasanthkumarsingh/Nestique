@@ -89,7 +89,7 @@ export const selectedWorksSchema = {
   "@type": "ItemList",
   name: "Spaces With A Story — Selected Works by Nestique Studio",
   description:
-    "Restaurant interior design and residential architecture projects by Nestique Studio in Visakhapatnam.",
+    "Restaurant and residential design collections from Nestique Studio.",
   itemListElement: projects.map((p, i) => ({
     "@type": "ListItem",
     position: i + 1,

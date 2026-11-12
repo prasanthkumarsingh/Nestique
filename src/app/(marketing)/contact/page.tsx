@@ -15,58 +15,23 @@ const Facebook = () => <svg width="20" height="20" viewBox="0 0 24 24" fill="cur
 
 
 export const metadata: Metadata = {
-  title: "Contact Nestique Studio | Commercial Interior Designer in Visakhapatnam & Hyderabad",
+  title: { absolute: "Contact Nestique Studio | Commercial Interior Designer in Visakhapatnam & Hyderabad" },
   description: "Contact Nestique Studio for office, hospital or hotel interior design, architecture & construction in Visakhapatnam and Hyderabad. Call +91 78160 86291 or email hello@nestiquestudio.in.",
-  keywords: [
-    "contact interior designer Visakhapatnam",
-    "contact civil contractor Vizag",
-    "interior design company contact Hyderabad",
-    "construction company contact Visakhapatnam",
-    "Nestique Studio phone number",
-    "Nestique Studio Visakhapatnam",
-    "Nestique Studio Hyderabad",
-    "interior design enquiry Vizag",
-    "civil work enquiry Hyderabad",
-  ],
   alternates: { canonical: `${SITE_URL}/contact` },
   openGraph: {
     url: `${SITE_URL}/contact`,
     title: "Contact Nestique Studio | Architecture & Interior Design",
-    description: "Reach us at +91 78160 86291 or hello@nestiquestudio.in. Offices in Vizag, Hyderabad & Bangalore.",
+    description: "Reach Nestique Studio by phone or email to discuss your property and confirm location-specific availability.",
     images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 }],
   },
 };
 
-const contactSchema = {
-  "@context": "https://schema.org",
-  "@type": "ContactPage",
-  url: `${SITE_URL}/contact`,
-  name: "Contact Nestique Studio",
-  description: "Contact page for Nestique Studio — architecture, interior design & construction firm.",
-  mainEntity: {
-    "@type": "LocalBusiness",
-    name: "Nestique Studio",
-    telephone: "+917816086291",
-    email: "hello@nestiquestudio.in",
-    url: SITE_URL,
-    address: [
-      { "@type": "PostalAddress", addressLocality: "Visakhapatnam", addressRegion: "Andhra Pradesh", addressCountry: "IN" },
-      { "@type": "PostalAddress", addressLocality: "Hyderabad", addressRegion: "Telangana", addressCountry: "IN" },
-      { "@type": "PostalAddress", addressLocality: "Bangalore", addressRegion: "Karnataka", addressCountry: "IN" },
-    ],
-    openingHours: "Mo-Su 09:00-21:00",
-    sameAs: [
-      "https://www.instagram.com/nestiquestudio",
-      "https://www.facebook.com/nestiquestudio",
-      "https://www.linkedin.com/company/nestique-studio",
-    ],
-  },
-};
+const contactSchema = { "@context": "https://schema.org", "@type": "ContactPage", url: SITE_URL + "/contact", name: "Contact Nestique Studio", about: { "@id": SITE_URL + "/#organization" } };
 
 const officeLocations = [
-  { city: "Visakhapatnam", label: "Vizag HQ", region: "Andhra Pradesh" },
-  { city: "Hyderabad", label: "Hyderabad Office", region: "Telangana" },
-  { city: "Bangalore", label: "Bangalore Office", region: "Karnataka" },
+  { city: "Visakhapatnam", label: "Project enquiries", region: "Vizag / Andhra Pradesh" },
+  { city: "Hyderabad", label: "Project enquiries", region: "Telangana" },
+  { city: "Other locations", label: "Availability by enquiry", region: "Confirm coverage for Bengaluru / Bangalore and beyond" },
 ];
 const contactMethods = [
   { icon: Phone, title: "A conversation is a good start", label: "+91 78160 86291", href: "tel:+917816086291", description: "Call us about your ideas, your space, or the next step." },
@@ -79,7 +44,7 @@ export default function ContactPage() {
     <main className={styles.main}>
       <JsonLd data={contactSchema} />
       <section className={styles.hero}><div className={styles.heroInner}>
-        <div className={styles.heroCopy}><p className={styles.eyebrow}>Contact Nestique Studio</p><h1>Every great space starts<br /><em>with a conversation.</em></h1><p className={styles.heroDescription}>A new home, a different direction for your business, or a space ready for its next chapter. Tell us what you are thinking. We would love to listen.</p><div className={styles.heroActions}><a href="#send-message" className={styles.primaryButton}>Tell us about your project <ArrowUpRight size={18} aria-hidden="true" /></a><span><Clock3 size={15} aria-hidden="true" />Mon - Sun / 9am - 9pm IST</span></div></div>
+        <div className={styles.heroCopy}><p className={styles.eyebrow}>Contact Nestique Studio</p><h1>Every great space starts<br /><em>with a conversation.</em></h1><p className={styles.heroDescription}>A new home, a different direction for your business, or a space ready for its next chapter. Tell us what you are thinking. We would love to listen.</p><div className={styles.heroActions}><a href="#send-message" className={styles.primaryButton}>Tell us about your project <ArrowUpRight size={18} aria-hidden="true" /></a><span><Clock3 size={15} aria-hidden="true" />Call to confirm availability</span></div></div>
         <div className={styles.heroVisual}><ServiceImage src={project.photos[0].url} title="A warm contemporary living space at Villa85, Iconica Grand, designed by Nestique Studio" index={0} priority /><div className={styles.photoShade} /><Link href="/portfolio#villa85-iconica-grand" className={styles.photoCaption}><span>Thoughtfully designed, from the first hello.<small>Villa85 / Iconica Grand</small></span><ArrowUpRight size={19} aria-hidden="true" /></Link></div>
       </div></section>
       <section className={styles.methodsSection} aria-label="Ways to contact the studio"><div className={styles.methodsGrid}>{contactMethods.map((method) => { const Icon = method.icon; return <article className={styles.methodCard} key={method.label}><span className={styles.methodIcon}><Icon size={23} strokeWidth={1.5} aria-hidden="true" /></span><p className={styles.methodTitle}>{method.title}</p><a href={method.href} target={method.href.startsWith("https") ? "_blank" : undefined} rel={method.href.startsWith("https") ? "noopener noreferrer" : undefined}>{method.label}<ArrowUpRight size={17} aria-hidden="true" /></a><p className={styles.methodDescription}>{method.description}</p></article>; })}</div></section>
@@ -88,8 +53,8 @@ export default function ContactPage() {
         <div className={styles.formCard}><header><p className={styles.eyebrow}>We are listening</p><h3>Send us a message</h3><p>Share a few details. Fields marked with * are required.</p></header><ContactForm /></div>
       </div></section>
       <section className={styles.locationsSection} aria-labelledby="locations-title"><div className={styles.container}>
-        <header className={styles.sectionHeading}><div><p className={styles.eyebrow}>Closer to your next project</p><h2 id="locations-title">One studio.<br /><em>Connected across cities.</em></h2></div><p>Connect with our team in your city. Please call ahead to arrange a meeting and confirm the office location.</p></header>
-        <div className={styles.locationsGrid}>{officeLocations.map((location, index) => <article className={styles.locationCard} key={location.city}><div className={styles.locationTop}><MapPin size={25} strokeWidth={1.3} aria-hidden="true" /><span>0{index + 1}</span></div><p className={styles.locationLabel}>{location.label}</p><h3>{location.city}</h3><p className={styles.locationRegion}>{location.region}</p><p className={styles.locationHours}><Clock3 size={14} aria-hidden="true" />Mon - Sun / 9am - 9pm IST</p><a href="tel:+917816086291" aria-label={"Call to arrange a meeting in " + location.city}>Arrange a conversation <ArrowUpRight size={17} aria-hidden="true" /></a></article>)}</div>
+        <header className={styles.sectionHeading}><div><p className={styles.eyebrow}>Closer to your next project</p><h2 id="locations-title">One studio.<br /><em>Connected across cities.</em></h2></div><p>Share your project location so we can confirm service availability and suitable meeting arrangements.</p></header>
+        <div className={styles.locationsGrid}>{officeLocations.map((location, index) => <article className={styles.locationCard} key={location.city}><div className={styles.locationTop}><MapPin size={25} strokeWidth={1.3} aria-hidden="true" /><span>0{index + 1}</span></div><p className={styles.locationLabel}>{location.label}</p><h3>{location.city}</h3><p className={styles.locationRegion}>{location.region}</p><p className={styles.locationHours}><Clock3 size={14} aria-hidden="true" />Contact us to arrange a conversation</p><a href="tel:+917816086291" aria-label={"Call to arrange a meeting in " + location.city}>Arrange a conversation <ArrowUpRight size={17} aria-hidden="true" /></a></article>)}</div>
       </div></section>
       <section className={styles.followSection}><div className={styles.followInner}><div><p className={styles.eyebrow}>A glimpse into our world</p><h2>Stay close to the work.</h2><p>Explore our projects, our perspective, and the details that inspire us.</p></div><div className={styles.socialLinks}><a href="https://www.instagram.com/nestiquestudio" target="_blank" rel="noopener noreferrer"><Instagram /><span>Instagram</span><ArrowUpRight size={16} aria-hidden="true" /></a><a href="https://www.linkedin.com/company/nestique-studio" target="_blank" rel="noopener noreferrer"><Linkedin /><span>LinkedIn</span><ArrowUpRight size={16} aria-hidden="true" /></a><a href="https://www.facebook.com/nestiquestudio" target="_blank" rel="noopener noreferrer"><Facebook /><span>Facebook</span><ArrowUpRight size={16} aria-hidden="true" /></a></div></div></section>
     </main>

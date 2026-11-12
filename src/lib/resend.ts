@@ -8,7 +8,7 @@ export function getResend() {
     let apiKey = process.env.RESEND_API_KEY;
     if (!apiKey) {
       try {
-        const env = getCloudflareContext().env as CloudflareEnv & { RESEND_API_KEY?: string };
+        const env = getCloudflareContext().env as { RESEND_API_KEY?: string };
         apiKey = env.RESEND_API_KEY;
       } catch {
         // Outside Workers, local development uses .env.local.

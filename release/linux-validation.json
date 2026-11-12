@@ -1,0 +1,45 @@
+{
+  "date": "2026-11-11",
+  "status": "passed",
+  "environment": {
+    "distribution": "Ubuntu 26.04.1 LTS",
+    "wslVersion": 2,
+    "node": "24.22.2",
+    "pnpm": "10.30.3",
+    "next": "16.3.4",
+    "openNextCloudflare": "1.20.6",
+    "wrangler": "4.128.0",
+    "playwright": "1.65.0",
+    "browser": "Chromium 158.0.8127.18",
+    "linuxWorkspace": "/tmp/nestique-validation.xetPPveZ/source"
+  },
+  "source": {
+    "baseCommit": "8d4d2fd993e38f2ed47c2c967967f2cfc0e0a06a",
+    "testedCacheFixSha256": {
+      "open-next.config.ts": "734cde382d63ac44b6a390dd9021a0e389a92cf76d44d97894f6bc9919f38350",
+      "package.json": "49b15762ca33649027a0c1a0a216b9d5fe61b4d3d5a824b7fa65a6b3a54a20cb"
+    },
+    "windowsDependenciesReused": false,
+    "productionEnvironmentFilesUsed": false
+  },
+  "openNextPackaging": "passed",
+  "staticAssetCachePopulation": "passed",
+  "wranglerDryRun": {
+    "status": "passed",
+    "assets": 152,
+    "totalKiB": 8711.63,
+    "gzipKiB": 1710.40
+  },
+  "localWorkerd": { "status": "passed", "port": 8788, "stoppedAfterTests": true },
+  "httpCrawl": { "status": "passed", "sitemapPages": 35, "internalDestinations": 29, "localAssets": 51 },
+  "mockContracts": { "passed": 10, "failed": 0 },
+  "browserTests": { "passed": 10, "failed": 0, "desktop": "1440x1000", "mobile": "390x844" },
+  "runtimeLogObservations": { "logged5xxResponses": 0, "noFallbackErrors": 0, "clientDisconnectMessagesDuringBrowserChecks": 29 },
+  "cloudflareAuthenticationUsed": false,
+  "githubAuthenticationUsed": false,
+  "githubActionsRun": "not run",
+  "realStagingSubmissionTests": "not run; credentials unavailable",
+  "productionDeployments": 0,
+  "analyticsCollector": "unconnected",
+  "detailedArtifacts": "release-results/linux-wsl-validation/"
+}

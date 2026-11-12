@@ -3,6 +3,7 @@ import { PencilRuler, ShieldCheck, BadgeIndianRupee, CalendarCheck, ArrowUpRight
 import Link from "next/link";
 import Image from "next/image";
 import JsonLd from "@/components/JsonLd";
+import ConsultationForm from "@/components/ConsultationForm";
 import SelectedWorks from "@/components/SelectedWorks";
 import ServiceImage from "@/components/ServiceImage";
 import { selectedWorksSchema } from "@/components/selectedWorks.data";
@@ -13,122 +14,19 @@ const SITE_URL = "https://www.nestiquestudio.in";
 // Curated project galleries use the named Supabase uploads bundled locally.
 
 export const metadata: Metadata = {
-  title: "Nestique Studio | Commercial Interior Design & Architecture in Visakhapatnam & Hyderabad",
-  description:
-    "Leading commercial interior design, architecture & construction firm in Visakhapatnam & Hyderabad. Specialists in offices, hospitals & hotels — residential projects also undertaken. IIT Kharagpur-trained architects. 130+ projects. Free consultation today.",
-  keywords: [
-    // High-intent Vizag
-    "interior designer in Visakhapatnam",
-    "best interior designer Visakhapatnam",
-    "interior design Vizag",
-    "home interior design Visakhapatnam",
-    "modular kitchen Visakhapatnam",
-    "false ceiling Visakhapatnam",
-    "civil contractor Visakhapatnam",
-    "house construction Visakhapatnam",
-    "villa construction Vizag",
-    "residential construction Visakhapatnam",
-    "apartment interior Vizag",
-    "bedroom interior design Visakhapatnam",
-    "interior design cost Vizag",
-    "best civil contractor Vizag",
-    // High-intent Hyderabad
-    "interior designer Hyderabad",
-    "best interior designer Hyderabad",
-    "home interior design Hyderabad",
-    "modular kitchen Hyderabad",
-    "false ceiling Hyderabad",
-    "civil contractor Hyderabad",
-    "house construction Hyderabad",
-    "villa construction Hyderabad",
-    "apartment interior design Hyderabad",
-    "office interior design Hyderabad",
-    "turnkey interior Hyderabad",
-    "home renovation Hyderabad",
-    "construction company Hyderabad",
-    "best civil contractor Hyderabad",
-  ],
+  title: { absolute: "Nestique Studio | Commercial Interior Design & Architecture in Visakhapatnam & Hyderabad" },
+  description: "Architecture, house planning, interiors and construction for homes and commercial properties in Visakhapatnam and Hyderabad. Discuss your project with Nestique Studio.",
   alternates: { canonical: SITE_URL },
   openGraph: {
     type: "website",
     url: SITE_URL,
     title: "Nestique Studio | Architecture, Interior Design & Construction",
     description:
-      "Top-rated architecture, interior design & construction firm in Hyderabad, Vizag & Bangalore. Residential, commercial, malls, offices. Book a free consultation today.",
+      "Explore architecture, interior design, construction and renovation with Nestique Studio. Start with your property, priorities and a clear scope.",
     images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 }],
   },
 };
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Who is the best interior designer in Visakhapatnam?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Nestique Studio is one of the top-rated interior design firms in Visakhapatnam (Vizag), with 130+ completed projects. We offer full home interior packages including living room, bedroom, modular kitchen, false ceiling, wardrobe, and bathroom design. Call +91 78160 86291 for a free consultation.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How much does interior design cost in Visakhapatnam?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Interior design cost in Visakhapatnam typically ranges from ₹800–₹2,500 per sq ft depending on the scope and material quality. A 2BHK apartment interior can start from ₹4–8 lakhs. Nestique Studio provides transparent, all-inclusive quotes with no hidden charges. Contact us for a free estimate.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Who is the best civil contractor in Visakhapatnam?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Nestique Studio is a trusted civil contractor in Visakhapatnam, handling house construction, villa construction, apartment buildings, and commercial projects. We provide end-to-end civil work from foundation to finishing. Call us at +91 78160 86291 for a site visit and free estimate.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "How much does it cost to build a house in Hyderabad?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "House construction cost in Hyderabad ranges from ₹1,800–₹3,500 per sq ft depending on the grade (standard, premium, or luxury). Nestique Studio offers all-inclusive construction packages starting from ₹1,800/sq ft. Contact us for a free, detailed estimate for your plot.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "What interior design services are available in Hyderabad?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Nestique Studio provides complete interior design services in Hyderabad including home interiors, modular kitchens, false ceilings, wardrobes, bedroom design, office interiors, and commercial space fit-outs. We handle design, procurement, and execution under one roof.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Does Nestique Studio do modular kitchen and false ceiling work?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. Nestique Studio specialises in modular kitchen design and false ceiling work across Visakhapatnam and Hyderabad. We use premium materials, offer custom designs, and complete work on time with a quality guarantee.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Can I get a free consultation for home interior or construction?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. Nestique Studio offers a free, no-obligation consultation for all interior design and civil construction projects. Book online or call +91 78160 86291. We cover Visakhapatnam, Hyderabad, Vijayawada, and Bangalore.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Does Nestique Studio build villas and independent houses in Vizag?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Yes. Nestique Studio builds custom villas, independent houses, and duplexes in Visakhapatnam. We handle architectural design, structural drawings, approvals, civil construction, and interior fit-out — complete turnkey delivery.",
-      },
-    },
-  ],
-};
 
 const homeServiceSchema = {
   "@context": "https://schema.org",
@@ -178,7 +76,7 @@ const services = [
     icon: "🏠",
     title: "Residential Construction",
     sub: "Individual & Apartment Homes",
-    desc: "Custom-built homes, villas, and apartments with quality materials, on-time delivery, and complete project management.",
+    desc: "Custom-built homes, villas, and apartments with agreed materials, site coordination, and project management.",
     link: "/services",
   },
   {
@@ -186,7 +84,7 @@ const services = [
     icon: "🏢",
     title: "Commercial Construction",
     sub: "Offices, Retail & Hospitality",
-    desc: "Modern commercial spaces — offices, showrooms, hotels, and retail outlets built to world-class standards.",
+    desc: "Modern commercial spaces — offices, showrooms, hotels, and retail outlets planned around your operational requirements.",
     link: "/services",
   },
   {
@@ -240,33 +138,29 @@ const steps = [
 const packages = [
   {
     tier: "Standard",
-    price: "₹ 1,800",
     features: ["Design Consultation", "Structure", "Flooring & Dado", "Doors & Windows", "Plumbing Accessories", "Painting", "Electrical"],
   },
   {
     tier: "Premium",
-    price: "₹ 2,200",
     features: ["Custom Design", "Structure", "Flooring & Dado", "Doors & Windows", "Plumbing Accessories", "Painting", "Electrical", "Railing & Handrails"],
     highlight: true,
   },
   {
     tier: "Luxury",
-    price: "₹ 2,700",
     features: ["Premium Design", "Structure", "Flooring & Dado", "Doors & Windows", "Plumbing Accessories", "Painting", "Electrical", "Railing & Handrails", "Landscape Design"],
   },
 ];
 
-const testimonials = [
-  { quote: "Nestique Studio's expert team guided me at every step. Their quality gave me total confidence throughout the journey.", name: "Mr. Gururaj Naik", city: "Visakhapatnam" },
-  { quote: "Nestique Studio exceeded our expectations! The construction quality and timely delivery were remarkable. Truly a dream home.", name: "Mr. Hariharasudan", city: "Hyderabad" },
-  { quote: "Nestique Studio made my dream home a hassle-free reality — clear costs, quality build, and service you can trust.", name: "Mr. Radhakrishna", city: "Bangalore" },
+const planningGuides = [
+ { title: "Planning your home", text: "Start with the way you live, site constraints and a clear drawing scope.", href: "/services/architecture" },
+ { title: "Planning your workplace", text: "Connect occupancy, circulation and building services before fit-out.", href: "/services/office-planning" },
+ { title: "Rethinking an existing space", text: "Assess the building condition and priorities before deciding what to change.", href: "/services/renovation" },
 ];
 
 export default async function HomePage() {
 
   return (
     <main>
-      <JsonLd data={faqSchema} />
       <JsonLd data={homeServiceSchema} />
       <JsonLd data={selectedWorksSchema} />
       {/* ── Hero ── */}
@@ -281,7 +175,7 @@ export default async function HomePage() {
               <Link href="/portfolio" className={styles.heroSecondary}>Explore our work <ArrowUpRight size={18} aria-hidden="true" /></Link>
             </div>
             <div className={styles.heroTrust}>
-              <div><strong>130<span>+</span></strong><p>Projects delivered</p></div>
+              <div><strong>Your space.</strong><p>A considered approach</p></div>
               <div><strong>One team.</strong><p>From concept to completion</p></div>
             </div>
           </div>
@@ -428,19 +322,19 @@ export default async function HomePage() {
       {/* ── Testimonials ── */}
       <section className={styles.testimonialsSection}>
         <div className={styles.sectionCenter}>
-          <p className={styles.eyebrow}>Happy Customers</p>
-          <h2 className={styles.sectionTitle}>Real Stories, Real Homes</h2>
+          <p className={styles.eyebrow}>Before you begin</p>
+          <h2 className={styles.sectionTitle}>Make room for a clear plan</h2>
           <p className={styles.sectionSubOrange}>
-            Don&apos;t believe us? See what our customers have to say.
+            Explore the questions and decisions that shape your project.
           </p>
           <div className={styles.testimonialsGrid}>
-            {testimonials.map((t, i) => (
+            {planningGuides.map((t, i) => (
               <div className={styles.testimonialCard} key={i}>
                 <div className={styles.quoteIcon}>&ldquo;&rdquo;</div>
-                <p>{t.quote}</p>
+                <p>{t.text}</p>
                 <div className={styles.testimonialFooter}>
-                  <span className={styles.testimonialName}>{t.name}</span>
-                  <span className={styles.testimonialCity}>📍 {t.city}</span>
+                  <Link href={t.href} className={styles.testimonialName}>{t.title} →</Link>
+
                 </div>
               </div>
             ))}
@@ -452,43 +346,8 @@ export default async function HomePage() {
       <section className={styles.ctaSection}>
         <div className={styles.ctaCard}>
           <h2>You Dream. We Deliver.</h2>
-          <p>Ready to build your dream space? Schedule a free consultation to start your journey today.</p>
-          <form className={styles.ctaForm} action="/consultation" method="GET">
-            <div className={styles.ctaRow}>
-              <input type="text" placeholder="Full Name" name="name" required />
-              <input type="email" placeholder="Email" name="email" required />
-            </div>
-            <div className={styles.ctaRow}>
-              <input type="tel" placeholder="Mobile Number" name="phone" required />
-              <select name="city">
-                <option value="">Choose City</option>
-                <option>Visakhapatnam</option>
-                <option>Vijayawada</option>
-                <option>Hyderabad</option>
-                <option>Bangalore</option>
-                <option>Mumbai</option>
-                <option>Pune</option>
-              </select>
-            </div>
-            <div className={styles.ctaRow}>
-              <select name="serviceType">
-                <option value="">I need help with...</option>
-                <option>Interior Design</option>
-                <option>Residential Construction</option>
-                <option>Commercial Construction</option>
-                <option>Builders & Development</option>
-                <option>Architecture & Design</option>
-                <option>Renovation & Remodelling</option>
-                <option>Landscape Design</option>
-              </select>
-              <div className={styles.radioGroup}>
-                <span>Do you own a plot?</span>
-                <label><input type="radio" name="land" value="yes" /> Yes</label>
-                <label><input type="radio" name="land" value="no" /> No</label>
-              </div>
-            </div>
-            <button type="submit" className={styles.orangeBtn}>Book a Meeting</button>
-          </form>
+          <p>Ready to build your dream space? Request a consultation to start your journey today.</p>
+          <ConsultationForm />
         </div>
       </section>
     </main>

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getResend } from "@/lib/resend";
-import { getSupabase } from "@/lib/supabase";
+import { createAdminClient } from "@/lib/supabase/admin";
 
 export async function POST(req: NextRequest) {
   let saved = false;
@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
     }
 
     try {
-      const { error } = await getSupabase().from("career_applications").insert({
+      const { error } = await createAdminClient().from("career_applications").insert({
         name, email, phone, city: city || null,
         position, experience: experience || null,
         portfolio: portfolio || null, message: message || null,

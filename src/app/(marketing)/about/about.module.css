@@ -61,10 +61,11 @@
 .valueCard p { font-size: 0.8rem; line-height: 1.85; color: #bca88c; }
 .teamSection { background: #fff; }
 .teamGrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
-.teamCard { padding: 26px; border: 1px solid #eadfce; border-radius: 12px; background: #fcfaf6; }
-.teamTop { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
-.teamInitials { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: #ecdfca; color: #96754e; font-family: Georgia, serif; font-size: 1.45rem; }
-.teamDepartment { color: #a18662; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; }
+.teamCard { overflow: hidden; min-width: 0; border: 1px solid #eadfce; border-radius: 12px; background: #fcfaf6; }
+.teamPhoto { position: relative; aspect-ratio: 4 / 4.5; overflow: hidden; background: #e9dfd0; border-bottom: 1px solid #eadfce; }
+.teamPlaceholder { position: absolute; inset: 0; display: grid; place-items: center; color: #96754e; font-family: Georgia, serif; font-size: 4rem; }
+.teamBody { padding: 26px; }
+.teamDepartment { margin-bottom: 14px; line-height: 1.7; color: #a18662; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.1em; }
 .teamCard h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 7px; }
 .teamRole { color: #a27547; font-size: 0.75rem; margin-bottom: 9px; }
 .teamQualification { font-size: 0.66rem; color: #a28b70; margin-bottom: 18px; }
@@ -97,7 +98,7 @@
   .heroCopy h1 { font-size: 2.8rem; }
   .storyInner { gap: 48px; }
   .foundersGrid, .teamGrid { gap: 16px; }
-  .founderBody, .teamCard { padding: 22px 18px; }
+  .founderBody, .teamBody { padding: 22px 18px; }
   .valuesGrid, .processGrid { grid-template-columns: 1fr 1fr; gap: 32px; }
   .workCopy { padding: 48px 32px; }
 }

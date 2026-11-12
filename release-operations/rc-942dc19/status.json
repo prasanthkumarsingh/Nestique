@@ -1,0 +1,18 @@
+{
+  "releaseCandidate": "942dc19dd266924673fdf12647e8b31ba3593d26",
+  "candidateCodeChanged": false,
+  "linuxValidation": "passed",
+  "linuxValidationRerun": false,
+  "realStagingTests": "blocked: owner confirmed staging still needs setup",
+  "stagingHarnessPreflight": "blocked: required settings absent; zero network requests",
+  "productionTargetFromSource": "nestique",
+  "stagingTargetFromSource": "nestique-staging",
+  "accountAndDomainMapping": "unverified: no Cloudflare authentication or read token",
+  "automaticDeploymentTriggers": "unverified: account access unavailable",
+  "githubAccess": "HTTP 401",
+  "rollbackSyntax": "verified with installed Wrangler 4.128.0 help",
+  "rollbackVersionUuid": null,
+  "ownerApprovals": "pending",
+  "analyticsCollector": "unconnected",
+  "productionDeployments": 0
+}

@@ -10,21 +10,9 @@ import styles from "./careers.module.css";
 const SITE_URL = "https://www.nestiquestudio.in";
 
 export const metadata: Metadata = {
-  title: "Careers at Nestique Studio | Architecture & Interior Design Jobs — Hyderabad, Vizag",
+  title: { absolute: "Careers at Nestique Studio | Architecture & Interior Design Jobs — Hyderabad, Vizag" },
   description:
     "Join Nestique Studio — one of South India's fastest-growing architecture, interior design & construction firms. We're hiring Architects, Interior Designers, Civil Engineers, 3D Artists & more. Apply now.",
-  keywords: [
-    "architecture jobs Hyderabad",
-    "interior design jobs Vizag",
-    "architect jobs Visakhapatnam",
-    "civil engineer jobs Hyderabad",
-    "3D visualization artist jobs India",
-    "interior designer jobs India",
-    "careers in architecture India",
-    "Nestique Studio careers",
-    "design firm jobs South India",
-    "architecture firm hiring Hyderabad",
-  ],
   alternates: { canonical: `${SITE_URL}/careers` },
   openGraph: {
     type: "website",

@@ -10,84 +10,20 @@ import styles from "./about.module.css";
 const SITE_URL = "https://www.nestiquestudio.in";
 
 export const metadata: Metadata = {
-  title: "About Nestique Studio | Commercial Interior Design Firm in Visakhapatnam & Hyderabad",
+  title: { absolute: "About Nestique Studio | Commercial Interior Design Firm in Visakhapatnam & Hyderabad" },
   description:
-    "Nestique Studio — commercial interior design specialists for offices, hospitals & hotels in Visakhapatnam & Hyderabad. IIT Kharagpur-trained founders, 130+ projects. Meet the team.",
-  keywords: [
-    "Nestique Studio about",
-    "best architecture firm Hyderabad",
-    "interior design firm Vizag",
-    "Abhisheak architect Hyderabad",
-    "IIT Kharagpur architect India",
-    "architecture company founders India",
-    "trusted construction company Hyderabad",
-  ],
+    "Meet the Nestique Studio team and explore our approach to architecture, interiors and construction for homes and commercial spaces.",
   alternates: { canonical: `${SITE_URL}/about` },
   openGraph: {
     type: "website",
     url: `${SITE_URL}/about`,
     title: "About Nestique Studio | Architecture & Interior Design Firm",
-    description: "Founded by Abhisheak & Tulasi. 130+ projects across Hyderabad, Vizag, Vijayawada & Bangalore.",
+    description: "Meet the team and explore the design principles behind Nestique Studio’s architecture and interiors.",
     images: [{ url: `${SITE_URL}/og-image.png`, width: 1200, height: 630 }],
   },
 };
 
-const aboutSchema = {
-  "@context": "https://schema.org",
-  "@type": "AboutPage",
-  url: `${SITE_URL}/about`,
-  name: "About Nestique Studio",
-  description: "Nestique Studio is a premier architecture, interior design, and construction company in South India, founded by Abhisheak and Tulasi.",
-  mainEntity: {
-    "@type": "Organization",
-    name: "Nestique Studio",
-    url: SITE_URL,
-    foundingDate: "2020",
-    founder: [
-      {
-        "@type": "Person",
-        name: "Tulasi",
-        jobTitle: "Business Co-Founder",
-        description: "Leads business development, client relations, and operations at Nestique Studio.",
-        worksFor: { "@type": "Organization", name: "Nestique Studio" },
-      },
-      {
-        "@type": "Person",
-        name: "Abhisheak",
-        jobTitle: "Creative Co-Founder & Lead Architect",
-        description: "MTech in Architecture. Leads design direction, architectural projects, and creative vision at Nestique Studio.",
-        worksFor: { "@type": "Organization", name: "Nestique Studio" },
-      },
-      {
-        "@type": "Person",
-        name: "D. Sumanth",
-        jobTitle: "Visionary Co-Founder & Architect",
-        description: "Academic foundation from IIT Kharagpur. Brings deep expertise in architecture and a vision for spaces that resonate with culture, context, and purposeful design.",
-        worksFor: { "@type": "Organization", name: "Nestique Studio" },
-      },
-    ],
-    employee: [
-      {
-        "@type": "Person",
-        name: "Abhisheak",
-        jobTitle: "Lead Architect",
-        worksFor: { "@type": "Organization", name: "Nestique Studio" },
-      },
-      {
-        "@type": "Person",
-        name: "D. Sumanth",
-        jobTitle: "Visionary Co-Founder & Architect",
-        worksFor: { "@type": "Organization", name: "Nestique Studio" },
-      },
-      {
-        "@type": "Person",
-        name: "Preethi",
-        jobTitle: "Interior Designer",
-        worksFor: { "@type": "Organization", name: "Nestique Studio" },
-      },
-    ],
-  },
-};
+const aboutSchema = { "@context": "https://schema.org", "@type": "AboutPage", url: SITE_URL + "/about", name: "About Nestique Studio", about: { "@id": SITE_URL + "/#organization" } };
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -98,11 +34,13 @@ const breadcrumbSchema = {
   ],
 };
 
+
+
 const stats = [
-  { num: "130+", label: "Projects Delivered" },
-  { num: "220+", label: "Under Construction" },
-  { num: "6", label: "Cities Served" },
-  { num: "+81", label: "NPS Score" },
+  { num: "Design", label: "Architecture & interiors" },
+  { num: "Detail", label: "Materials & planning" },
+  { num: "People", label: "A shared brief" },
+  { num: "Process", label: "Scope & coordination" },
 ];
 
 const values = [
@@ -125,8 +63,8 @@ const founders = [
   {
     name: "Abhisheak",
     role: "Creative Co-Founder",
-    tag: "MTech in Architecture",
-    bio: "Abhisheak drives the creative soul of Nestique Studio. With a Master's in Architecture, he brings cutting-edge design thinking and structural expertise to every project — from intimate residential interiors to large-scale commercial builds. His philosophy: every space should tell a story.",
+    tag: "Architecture & Design",
+    bio: "Abhisheak drives the creative soul of Nestique Studio. He contributes to architectural planning and design development — from intimate residential interiors to large-scale commercial builds. His philosophy: every space should tell a story.",
     color: "#e8773a",
     initials: "A",
     img: "/abhi.jpg",
@@ -134,8 +72,8 @@ const founders = [
   {
     name: "D. Sumanth",
     role: "Visionary Co-Founder",
-    tag: "Architecture · IIT Kharagpur",
-    bio: "With an academic foundation from IIT Kharagpur and professional experience spanning diverse regions of India, Sumanth's journey has been shaped by a deep understanding of context, culture, and detail. This venture was founded with a vision to create spaces that go beyond aesthetics — spaces that resonate with people, reflect their lifestyles, and enhance their everyday experiences. At the core of our practice lies a commitment to craft, collaboration, and purposeful design — where every project becomes a dialogue between creativity, functionality, and emotion.",
+    tag: "Architecture & Design",
+    bio: "Sumanth contributes to design direction with an interest in context, culture, and detail. This venture was founded with a vision to create spaces that go beyond aesthetics — spaces that resonate with people, reflect their lifestyles, and enhance their everyday experiences. At the core of our practice lies a commitment to craft, collaboration, and purposeful design — where every project becomes a dialogue between creativity, functionality, and emotion.",
     color: "#2d6a4f",
     initials: "S",
     img: "/coFounder2.jpeg",
@@ -147,7 +85,7 @@ const team = [
     name: "Abhisheak",
     role: "Lead Architect",
     dept: "Architecture",
-    qual: "MTech in Architecture",
+    qual: "Architecture & Design",
     desc: "Leads structural and architectural design across all projects. Specialises in modern residential design, 3D planning, and Vastu-compliant layouts.",
     color: "#e8773a",
     initials: "A",
@@ -157,7 +95,7 @@ const team = [
     name: "D. Sumanth",
     role: "Visionary Co-Founder",
     dept: "Architecture",
-    qual: "IIT Kharagpur",
+    qual: "Architecture & Design",
     desc: "Brings a pan-India design perspective rooted in context, culture, and craft. Leads projects with a focus on purposeful design that resonates with people and elevates everyday experiences.",
     color: "#2d6a4f",
     initials: "S",
@@ -171,7 +109,27 @@ const team = [
     desc: "Transforms bare spaces into stunning, functional interiors. Expert in residential and commercial space planning, colour theory, and modular furniture.",
     color: "#c9a84c",
     initials: "P",
-    img: "",
+    img: "/images/team/preethi.jpeg",
+  },
+  {
+    name: "Satya Pathuri",
+    role: "Creative Head ? Design & Interiors",
+    dept: "Design & Interiors",
+    qual: "Creative Direction",
+    desc: "Guides the creative direction of design and interiors, connecting the overall concept with the details of each space.",
+    color: "#9c6942",
+    initials: "SP",
+    img: "/images/team/satya-pathuri.jpeg",
+  },
+  {
+    name: "Prasanth",
+    role: "Business Development Manager (BDM) & Site Engineer",
+    dept: "Business & Site Operations",
+    qual: "Business Development & Site Engineering",
+    desc: "Connects client conversations with on-site coordination, supporting business development and the day-to-day progress of projects.",
+    color: "#4a5c6e",
+    initials: "P",
+    img: "/images/team/prasanth.png",
   },
 ];
 
@@ -218,7 +176,7 @@ export default function AboutPage() {
       </div></section>
       <section className={styles.teamSection} aria-labelledby="team-title"><div className={styles.container}>
         <header className={styles.sectionHeading}><div><p className={styles.eyebrow}>Working together</p><h2 id="team-title">The expertise behind<br /><em>your everyday spaces.</em></h2></div><p>Architecture and interiors work best in conversation. Our team connects the bigger picture with the details you experience every day.</p></header>
-        <div className={styles.teamGrid}>{team.map((member) => <article className={styles.teamCard} key={member.name}><div className={styles.teamTop}><span className={styles.teamInitials} aria-hidden="true">{member.initials}</span><span className={styles.teamDepartment}>{member.dept}</span></div><h3>{member.name}</h3><p className={styles.teamRole}>{member.role}</p><p className={styles.teamQualification}>{member.qual}</p><p className={styles.teamDescription}>{member.desc}</p></article>)}</div>
+        <div className={styles.teamGrid}>{team.map((member) => <article className={styles.teamCard} key={member.name}><div className={styles.teamPhoto}>{member.img ? <StudioPortrait src={member.img} name={member.name} initials={member.initials} /> : <span className={styles.teamPlaceholder} role="img" aria-label={member.name}>{member.initials}</span>}</div><div className={styles.teamBody}><p className={styles.teamDepartment}>{member.dept}</p><h3>{member.name}</h3><p className={styles.teamRole}>{member.role}</p><p className={styles.teamQualification}>{member.qual}</p><p className={styles.teamDescription}>{member.desc}</p></div></article>)}</div>
       </div></section>
       <section className={styles.workSection} aria-labelledby="work-title"><div className={styles.workInner}>
         <div className={styles.workVisual}><ServiceImage src={amogham.photos[1].url} title="Warm materials and carefully considered dining spaces at Amogham Telugu Kitchen" index={0} /></div>
@@ -228,7 +186,7 @@ export default function AboutPage() {
         <header className={styles.sectionHeading}><div><p className={styles.eyebrow}>From first conversation to final detail</p><h2 id="process-title">A thoughtful journey.<br /><em>Every step, together.</em></h2></div><Link href="/services" className={styles.textLink}>Explore our services <ArrowUpRight size={18} aria-hidden="true" /></Link></header>
         <div className={styles.processGrid}>{steps.map((step) => <article key={step.step}><span className={styles.stepNumber}>{step.step}</span><h3>{step.title}</h3><p>{step.desc}</p></article>)}</div>
       </div></section>
-      <section className={styles.cta}><p className={styles.eyebrow}>Your ideas. Our next conversation.</p><h2>Something meaningful<br /><em>starts with you.</em></h2><p>Tell us about the space you have in mind.<br />We would love to help you shape it.</p><div className={styles.ctaActions}><Link href="/consultation" className={styles.primaryButton}>Book a free consultation <ArrowUpRight size={18} aria-hidden="true" /></Link><Link href="/portfolio" className={styles.ctaLink}>View our work <ArrowUpRight size={18} aria-hidden="true" /></Link></div></section>
+      <section className={styles.cta}><p className={styles.eyebrow}>Your ideas. Our next conversation.</p><h2>Something meaningful<br /><em>starts with you.</em></h2><p>Tell us about the space you have in mind.<br />We would love to help you shape it.</p><div className={styles.ctaActions}><Link href="/consultation" className={styles.primaryButton}>Request a consultation <ArrowUpRight size={18} aria-hidden="true" /></Link><Link href="/portfolio" className={styles.ctaLink}>View our work <ArrowUpRight size={18} aria-hidden="true" /></Link></div></section>
     </main>
   );
 }

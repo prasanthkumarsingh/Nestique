@@ -9,17 +9,9 @@ import styles from "./portfolio.module.css";
 const SITE_URL = "https://www.nestiquestudio.in";
 
 export const metadata: Metadata = {
-  title: "Our Project Gallery | Restaurants, Villas & Apartments | Nestique Studio",
+  title: { absolute: "Our Project Gallery | Restaurants, Villas & Apartments | Nestique Studio" },
   description:
     "Explore Amogham, Gismat, Villa85 at Iconica Grand, and the Heritage Apartment collection through 32 project photographs.",
-  keywords: [
-    "architecture portfolio Hyderabad",
-    "construction projects Vizag",
-    "interior design portfolio India",
-    "luxury home construction portfolio",
-    "commercial building projects Hyderabad",
-    "residential construction portfolio AP",
-  ],
   alternates: { canonical: `${SITE_URL}/portfolio` },
   openGraph: {
     url: `${SITE_URL}/portfolio`,
@@ -70,7 +62,7 @@ export default function PortfolioPage() {
           <p className={styles.ctaEyebrow}>Your space could be next</p>
           <h2>Let&apos;s create something<br />worth coming home to.</h2>
           <p>Let&apos;s discuss how we can bring your vision to life.</p>
-          <Link href="/consultation" className={styles.ctaBtn}>Book a Free Consultation <ArrowUpRight size={18} aria-hidden="true" /></Link>
+          <Link href="/consultation" className={styles.ctaBtn}>Request a consultation <ArrowUpRight size={18} aria-hidden="true" /></Link>
         </div>
       </section>
     </main>
