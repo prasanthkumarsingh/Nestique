@@ -4,7 +4,12 @@ import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   async redirects() {
-    return [{ source: "/:path*", has: [{ type: "host", value: "nestiquestudio.in" }], destination: "https://www.nestiquestudio.in/:path*", permanent: true }];
+    // OpenNext matches hosts as regexes and leaves an empty wildcard literal.
+    // Match only the apex host, and give the homepage a concrete destination.
+    return [
+      { source: "/", has: [{ type: "host", value: "^nestiquestudio\\.in$" }], destination: "https://www.nestiquestudio.in/", permanent: true },
+      { source: "/:path*", has: [{ type: "host", value: "^nestiquestudio\\.in$" }], destination: "https://www.nestiquestudio.in/:path*", permanent: true },
+    ];
   },
   images: {
     // Cloudflare Workers has no Next.js image-optimization server. Serve images
