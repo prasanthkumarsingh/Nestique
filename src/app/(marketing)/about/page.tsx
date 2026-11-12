@@ -93,7 +93,7 @@ const team = [
   },
   {
     name: "D. Sumanth",
-    role: "Visionary Co-Founder",
+    role: "Visionary",
     dept: "Architecture",
     qual: "Architecture & Design",
     desc: "Brings a pan-India design perspective rooted in context, culture, and craft. Leads projects with a focus on purposeful design that resonates with people and elevates everyday experiences.",
